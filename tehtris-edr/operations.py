@@ -9,10 +9,12 @@ from connectors.core.connector import ConnectorError, get_logger
 import json, requests, base64
 
 # Initialize logger
-logger = get_logger('tehtris')
+logger = get_logger('tehtris-edr')
+
 
 # Common function to make external API calls.
-def make_api_call(method="GET", endpoint="", config=None, params=None, headers=None, data=None, json_data=None, verify_ssl=False):
+def make_api_call(method="GET", endpoint="", config=None, params=None, headers=None, data=None, json_data=None,
+                  verify_ssl=False):
     try:
         default_headers = {
             "Authorization": "Basic " + base64.b64encode(('Basic:' + config['password']).encode()).decode(),
@@ -21,19 +23,20 @@ def make_api_call(method="GET", endpoint="", config=None, params=None, headers=N
 
         if headers:
             default_headers.update(headers)
-        logger.debug("endpoint: "+str(endpoint))
-        logger.debug("params: "+str(params))
-        logger.debug("method: "+str(method))
-        logger.debug("data: "+str(data))
-        logger.debug("json_data: "+str(json_data))
+        logger.debug("endpoint: " + str(endpoint))
+        logger.debug("params: " + str(params))
+        logger.debug("method: " + str(method))
+        logger.debug("data: " + str(data))
+        logger.debug("json_data: " + str(json_data))
         other_params = {}
         endpoint = config.get("server_url") + endpoint
-        response = requests.request(method=method, url=endpoint, headers=default_headers, data=data, json=json_data, params=params, verify=verify_ssl, **other_params)
+        response = requests.request(method=method, url=endpoint, headers=default_headers, data=data, json=json_data,
+                                    params=params, verify=verify_ssl, **other_params)
         if response.ok:
             if response.content:
                 response = response.json()
             else:
-                response = {"result": "No Data Returned", "status":"success"}
+                response = {"result": "No Data Returned", "status": "success"}
             return response
         else:
             logger.error("Error: {0}".format(response.json()))
@@ -48,6 +51,7 @@ def make_api_call(method="GET", endpoint="", config=None, params=None, headers=N
         logger.error('{0}'.format(e))
         raise ConnectorError('{0}'.format(e))
 
+
 # Operation definition
 
 def fetch_events(config, params):
@@ -55,9 +59,9 @@ def fetch_events(config, params):
         'fromDate': params.get('fromDate')
     }
     if params.get('countOnly'):
-        query_params['countOnly'] = params.get('countOnly')
+        query_params['countOnly'] = params.get('countOnly').lower()
     if params.get('byTag'):
-        query_params['byTag'] = params.get('byTag')
+        query_params['byTag'] = params.get('byTag').lower()
     if params.get('toDate'):
         query_params['toDate'] = params.get('toDate')
     if params.get('eventId'):
@@ -70,9 +74,10 @@ def fetch_events(config, params):
         query_params['filterID'] = params.get('filterID')
     if params.get('createdOrModified'):
         query_params['createdOrModified'] = params.get('createdOrModified')
-    
+
     endpoint = '/api/xdr/v1/event'
     return make_api_call(config=config, params=query_params, endpoint=endpoint, method="GET")
+
 
 def list_folders_and_filters(config, params):
     query_params = {}
@@ -83,41 +88,45 @@ def list_folders_and_filters(config, params):
     if params.get('oldFilterId'):
         query_params['oldFilterId'] = params.get('oldFilterId')
     if params.get('filtersOnly'):
-        query_params['filtersOnly'] = params.get('filtersOnly')
+        query_params['filtersOnly'] = params.get('filtersOnly').lower()
     if params.get('presetFilters'):
-        query_params['presetFilters'] = params.get('presetFilters')
-    
+        query_params['presetFilters'] = params.get('presetFilters').lower()
+
     endpoint = '/api/xdr/v2/filter'
     return make_api_call(config=config, params=query_params, endpoint=endpoint, method="GET")
+
 
 def get_filter_by_id(config, params):
     query_params = {}
     if params.get('withHistory'):
-        query_params['withHistory'] = params.get('withHistory')
-    
-    endpoint = '/api/xdr/v2/filter/filter/'+params.get('filterId')
+        query_params['withHistory'] = params.get('withHistory').lower()
+
+    endpoint = '/api/xdr/v2/filter/filter/' + params.get('filterId')
     return make_api_call(config=config, params=query_params, endpoint=endpoint, method="GET")
 
+
 def create_filter(config, params):
-    json_data={
+    json_data = {
         'name': params.get('name'),
         'description': params.get('description'),
         'module': params.get('module')
     }
-    json_data['filterQuery']={}
-    json_data['filterQuery']['module']="Endpoint_Active"
-    json_data['filterQuery']['offset']=0
-    json_data['filterQuery']['limit']=25
-    json_data['filterQuery']['timeOrder']='DESC'
-    json_data['filterQuery']['columns']={}
-    json_data['filterQuery']['columns']['lvl']={}
-    json_data['filterQuery']['columns']['lvl']['searchValue']= str(params.get('lvlmin')) + "~" + str(params.get('lvlmax'))
-    
+    json_data['filterQuery'] = {}
+    json_data['filterQuery']['module'] = "Endpoint_Active"
+    json_data['filterQuery']['offset'] = 0
+    json_data['filterQuery']['limit'] = 25
+    json_data['filterQuery']['timeOrder'] = 'DESC'
+    json_data['filterQuery']['columns'] = {}
+    json_data['filterQuery']['columns']['lvl'] = {}
+    json_data['filterQuery']['columns']['lvl']['searchValue'] = str(params.get('lvlmin')) + "~" + str(
+        params.get('lvlmax'))
+
     endpoint = '/api/xdr/v2/filter/filter'
     return make_api_call(config=config, json_data=json_data, endpoint=endpoint, method="POST")
 
+
 def update_filter(config, params):
-    json_data={}
+    json_data = {}
     if params.get('name'):
         json_data['name'] = params.get('name')
     if params.get('description'):
@@ -125,22 +134,24 @@ def update_filter(config, params):
     if params.get('module'):
         json_data['module'] = params.get('module')
     if params.get('lvlmin') and params.get('lvlmax'):
-        json_data['filterQuery']={}
-        json_data['filterQuery']['module']="Endpoint_Active"
-        json_data['filterQuery']['offset']=0
-        json_data['filterQuery']['limit']=25
-        json_data['filterQuery']['timeOrder']='DESC'
-        json_data['filterQuery']['columns']={}
-        json_data['filterQuery']['columns']['lvl']={}
-        json_data['filterQuery']['columns']['lvl']['searchValue']= str(params.get('lvlmin')) + "~" + str(params.get('lvlmax'))
+        json_data['filterQuery'] = {}
+        json_data['filterQuery']['module'] = "Endpoint_Active"
+        json_data['filterQuery']['offset'] = 0
+        json_data['filterQuery']['limit'] = 25
+        json_data['filterQuery']['timeOrder'] = 'DESC'
+        json_data['filterQuery']['columns'] = {}
+        json_data['filterQuery']['columns']['lvl'] = {}
+        json_data['filterQuery']['columns']['lvl']['searchValue'] = str(params.get('lvlmin')) + "~" + str(
+            params.get('lvlmax'))
 
-
-    endpoint = '/api/xdr/v2/filter/filter/'+params.get('filterId')
+    endpoint = '/api/xdr/v2/filter/filter/' + params.get('filterId')
     return make_api_call(config=config, json_data=json_data, endpoint=endpoint, method="PUT")
 
+
 def delete_filter(config, params):
-    endpoint = '/api/xdr/v2/filter/filter/'+params.get('filterId')
+    endpoint = '/api/xdr/v2/filter/filter/' + params.get('filterId')
     return make_api_call(config=config, endpoint=endpoint, method="DELETE")
+
 
 def get_all_endpoints(config, params):
     query_params = {}
@@ -176,7 +187,7 @@ def get_all_endpoints(config, params):
         query_params['os'] = params.get('os')
     if params.get('offset'):
         query_params['offset'] = params.get('offset')
-    
+
     func_headers_dict = {}
     endpoint = "/api/edr/v2/inventory"
     return make_api_call(config=config, params=query_params, endpoint=endpoint, headers=func_headers_dict, method="GET")
@@ -187,45 +198,51 @@ def set_event_status(config, params):
         'status': params.get('status'),
         'oldStatus': params.get('oldStatus')
     }
-    endpoint = '/api/xdr/v1/event/status/'+ str(params.get('id'))
+    endpoint = '/api/xdr/v1/event/status/' + str(params.get('id'))
     return make_api_call(config=config, json_data=json_data, endpoint=endpoint, method="PUT")
+
 
 def get_isolation_status(config, params):
     endpoint = "/api/edr/v2/live/" + str(params.get("applianceId")) + "/" + params.get("edrUuid") + "/isolation"
     return make_api_call(config=config, endpoint=endpoint, method="GET")
 
+
 def send_isolation_action(config, params):
     query_params = {
-        'isolationAction': params.get('isolationAction')
+        'isolationAction': params.get('isolationAction').lower()
     }
     if params.get('power'):
-        query_params['power'] = params.get('power')
+        query_params['power'] = params.get('power').lower()
     if params.get('persist'):
-        query_params['persist'] = params.get('persist')
+        query_params['persist'] = params.get('persist').lower()
 
-    json_data={}
-    if len(params.get('toWhitelist')) >0:
+    json_data = {}
+    if len(params.get('toWhitelist')) > 0:
         json_data['toWhitelist'] = params.get('toWhitelist')
 
     endpoint = "/api/edr/v2/live/" + str(params.get("applianceId")) + "/" + params.get("edrUuid") + "/isolation"
     return make_api_call(config=config, json_data=json_data, params=query_params, endpoint=endpoint, method="POST")
 
+
 def get_all_global_policies(config, params):
     endpoint = '/api/edr/v2/policies/global/list'
     return make_api_call(config=config, endpoint=endpoint, method="GET")
+
 
 def create_new_global_policies(config, params):
     json_data = params.get('policyData')
     endpoint = '/api/edr/v2/policies/global'
     return make_api_call(config=config, json_data=json_data, endpoint=endpoint, method=params.get('position'))
 
+
 def get_tags(config, params):
     endpoint = "/api/edr/v2/inventory/tags"
     return make_api_call(config=config, endpoint=endpoint, method="GET")
 
+
 def update_endpoints_tags(config, params):
     json_data = {}
-    if len(params.get('edrUuidList')) >0:
+    if len(params.get('edrUuidList')) > 0:
         json_data['edrUuidList'] = params.get('edrUuidList')
     if params.get('tags'):
         json_data['tags'] = params.get('tags')
@@ -233,10 +250,11 @@ def update_endpoints_tags(config, params):
     endpoint = "/api/edr/v2/inventory/tags"
     return make_api_call(config=config, json_data=json_data, endpoint=endpoint, method="PUT")
 
+
 def get_accesslogs(config, params):
-    query_params = { 
+    query_params = {
         'limit': params.get('limit')
-        }
+    }
     if params.get('admin'):
         query_params['admin'] = params.get('admin')
     if params.get('hostname'):
@@ -246,37 +264,40 @@ def get_accesslogs(config, params):
     if params.get('logonEventTimeTo'):
         query_params['logonEventTimeTo'] = params.get('logonEventTimeTo')
     if params.get('admin'):
-        query_params['admin'] = params.get('admin')
+        query_params['admin'] = params.get('admin').lower()
     if params.get('offset'):
         query_params['offset'] = params.get('offset')
 
-    endpoint = "/api/edr/v2/data/"+ str(params.get("applianceId")) + "/" + params.get("edrUuid") + "/accesslogs"
+    endpoint = "/api/edr/v2/data/" + str(params.get("applianceId")) + "/" + params.get("edrUuid") + "/accesslogs"
     return make_api_call(config=config, params=query_params, endpoint=endpoint, method="GET")
 
+
 def get_users_connected(config, params):
-    query_params = { 
+    query_params = {
         'limit': params.get('limit')
-        }
+    }
     if params.get('hostname'):
         query_params['hostname'] = params.get('hostname')
     if params.get('offset'):
         query_params['offset'] = params.get('offset')
 
-    endpoint = "/api/edr/v2/data/"+ str(params.get("applianceId")) + "/" + params.get("edrUuid") + "/users"
+    endpoint = "/api/edr/v2/data/" + str(params.get("applianceId")) + "/" + params.get("edrUuid") + "/users"
     return make_api_call(config=config, params=query_params, endpoint=endpoint, method="GET")
+
 
 def get_network_infos(config, params):
     query_params = {}
     if params.get('hostname'):
         query_params['hostname'] = params.get('hostname')
 
-    endpoint = "/api/edr/v2/data/"+ str(params.get("applianceId")) + "/" + params.get("edrUuid") + "/network"
+    endpoint = "/api/edr/v2/data/" + str(params.get("applianceId")) + "/" + params.get("edrUuid") + "/network"
     return make_api_call(config=config, params=query_params, endpoint=endpoint, method="GET")
 
+
 def get_history_of_processes(config, params):
-    query_params = { 
+    query_params = {
         'limit': params.get('limit')
-        }
+    }
     if len(params.get('pids')) > 0:
         query_params['pids'] = params.get('pids')
     if len(params.get('ppids')) > 0:
@@ -290,9 +311,9 @@ def get_history_of_processes(config, params):
     if params.get('domainName'):
         query_params['domainName'] = params.get('domainName')
     if params.get('localTime'):
-        query_params['localTime'] = params.get('localTime')
+        query_params['localTime'] = params.get('localTime').lower()
     if params.get('timeFilter'):
-        query_params['timeFilter'] = params.get('timeFilter')
+        query_params['timeFilter'] = params.get('timeFilter').lower()
     if params.get('timeFrom'):
         query_params['timeFrom'] = params.get('timeFrom')
     if params.get('timeTo'):
@@ -306,32 +327,34 @@ def get_history_of_processes(config, params):
     if params.get('path'):
         query_params['path'] = params.get('path')
     if params.get('cmdline'):
-        query_params['cmdline'] = params.get('cmdline')    
+        query_params['cmdline'] = params.get('cmdline')
     if params.get('offset'):
         query_params['offset'] = params.get('offset')
 
-    endpoint = "/api/edr/v2/data/"+ str(params.get("applianceId")) + "/" + params.get("edrUuid") + "/processes"
+    endpoint = "/api/edr/v2/data/" + str(params.get("applianceId")) + "/" + params.get("edrUuid") + "/processes"
     return make_api_call(config=config, params=query_params, endpoint=endpoint, method="GET")
 
+
 def get_process_tree(config, params):
-    query_params = { 
+    query_params = {
         'pid': params.get('pid'),
         'createTime': params.get('createTime'),
         'nbParents': params.get('nbParents'),
         'limit': params.get('limit')
-        }
+    }
     if params.get('offset'):
         query_params['offset'] = params.get('offset')
 
-    endpoint = "/api/edr/v2/data/"+ str(params.get("applianceId")) + "/" + params.get("edrUuid") + "/processes/tree"
+    endpoint = "/api/edr/v2/data/" + str(params.get("applianceId")) + "/" + params.get("edrUuid") + "/processes/tree"
     return make_api_call(config=config, params=query_params, endpoint=endpoint, method="GET")
+
 
 def get_persistence_entries(config, params):
     query_params = {
         'limit': params.get('limit')
     }
     if params.get('localTime'):
-        query_params['localTime'] = params.get('localTime')
+        query_params['localTime'] = params.get('localTime').lower()
     if params.get('t'):
         query_params['t'] = params.get('t')
     if params.get('persistence_path'):
@@ -353,50 +376,57 @@ def get_persistence_entries(config, params):
     if params.get('offset'):
         query_params['offset'] = params.get('offset')
 
-    endpoint = "/api/edr/v2/data/"+ str(params.get("applianceId")) + "/" + params.get("edrUuid") + "/autostart"
+    endpoint = "/api/edr/v2/data/" + str(params.get("applianceId")) + "/" + params.get("edrUuid") + "/autostart"
     return make_api_call(config=config, params=query_params, endpoint=endpoint, method="GET")
+
 
 def get_usb_history(config, params):
     query_params = {}
     if params.get('hostname'):
         query_params['hostname'] = params.get('hostname')
 
-    endpoint = "/api/edr/v2/data/"+ str(params.get("applianceId")) + "/" + params.get("edrUuid") + "/usb"
+    endpoint = "/api/edr/v2/data/" + str(params.get("applianceId")) + "/" + params.get("edrUuid") + "/usb"
     return make_api_call(config=config, params=query_params, endpoint=endpoint, method="GET")
+
 
 def get_browser_security(config, params):
     query_params = {}
     if params.get('hostname'):
         query_params['hostname'] = params.get('hostname')
 
-    endpoint = "/api/edr/v2/data/"+ str(params.get("applianceId")) + "/" + params.get("edrUuid") + "/browsers"
+    endpoint = "/api/edr/v2/data/" + str(params.get("applianceId")) + "/" + params.get("edrUuid") + "/browsers"
     return make_api_call(config=config, params=query_params, endpoint=endpoint, method="GET")
+
 
 def get_software_list(config, params):
     query_params = {}
     if params.get('persist'):
-        query_params['persist'] = params.get('persist')
+        query_params['persist'] = params.get('persist').lower()
 
-    endpoint = "/api/edr/v2/live/"+ str(params.get("applianceId")) + "/" + params.get("edrUuid") + "/software"
+    endpoint = "/api/edr/v2/live/" + str(params.get("applianceId")) + "/" + params.get("edrUuid") + "/software"
     return make_api_call(config=config, params=query_params, endpoint=endpoint, method="GET")
 
+
 def fetch_info_about_endpoint(config, params):
-    endpoint = "/api/edr/v2/live/"+ str(params.get("applianceId")) + "/" + params.get("edrUuid") + "/systemInfo"
+    endpoint = "/api/edr/v2/live/" + str(params.get("applianceId")) + "/" + params.get("edrUuid") + "/systemInfo"
     return make_api_call(config=config, endpoint=endpoint, method="GET")
+
 
 def get_last_offline_forensic_report(config, params):
-    endpoint = "/api/edr/v2/live/"+ str(params.get("applianceId")) + "/" + params.get("edrUuid") + "/tof/lastReport"
+    endpoint = "/api/edr/v2/live/" + str(params.get("applianceId")) + "/" + params.get("edrUuid") + "/tof/lastReport"
     return make_api_call(config=config, endpoint=endpoint, method="GET")
 
+
 def get_offline_forensic_status(config, params):
-    endpoint = "/api/edr/v2/live/"+ str(params.get("applianceId")) + "/" + params.get("edrUuid") + "/tof"
+    endpoint = "/api/edr/v2/live/" + str(params.get("applianceId")) + "/" + params.get("edrUuid") + "/tof"
     return make_api_call(config=config, endpoint=endpoint, method="GET")
+
 
 def start_offline_forensic(config, params):
     query_params = {}
     if params.get('persist'):
-        query_params['persist'] = params.get('persist')
-    
+        query_params['persist'] = params.get('persist').lower()
+
     json_data = {}
     if params.get('processes'):
         json_data['processes'] = params.get('processes')
@@ -419,13 +449,14 @@ def start_offline_forensic(config, params):
     if params.get('forensic'):
         json_data['forensic'] = params.get('forensic')
 
-    endpoint = "/api/edr/v2/live/"+ str(params.get("applianceId")) + "/" + params.get("edrUuid") + "/tof"
+    endpoint = "/api/edr/v2/live/" + str(params.get("applianceId")) + "/" + params.get("edrUuid") + "/tof"
     return make_api_call(config=config, params=query_params, json_data=json_data, endpoint=endpoint, method="POST")
 
-def stop_offline_forensic(config, params):
 
-    endpoint = "/api/edr/v2/live/"+ str(params.get("applianceId")) + "/" + params.get("edrUuid") + "/tof"
+def stop_offline_forensic(config, params):
+    endpoint = "/api/edr/v2/live/" + str(params.get("applianceId")) + "/" + params.get("edrUuid") + "/tof"
     return make_api_call(config=config, endpoint=endpoint, method="DELETE")
+
 
 def search_binaries(config, params):
     query_params = {}
@@ -454,8 +485,9 @@ def search_binaries(config, params):
     if params.get('offset'):
         query_params['offset'] = params.get('offset')
 
-    endpoint = "/api/edr/v2/search/"+ str(params.get("applianceId"))+ "/binaries"
+    endpoint = "/api/edr/v2/search/" + str(params.get("applianceId")) + "/binaries"
     return make_api_call(config=config, params=query_params, endpoint=endpoint, method="GET")
+
 
 def search_user_accesslogs(config, params):
     query_params = {
@@ -476,8 +508,9 @@ def search_user_accesslogs(config, params):
     if params.get('offset'):
         query_params['offset'] = params.get('offset')
 
-    endpoint = "/api/edr/v2/search/"+ str(params.get("applianceId"))+ "/accesslogs"
+    endpoint = "/api/edr/v2/search/" + str(params.get("applianceId")) + "/accesslogs"
     return make_api_call(config=config, params=query_params, endpoint=endpoint, method="GET")
+
 
 def search_persistent_entries_category(config, params):
     query_params = {
@@ -528,8 +561,10 @@ def search_persistent_entries_category(config, params):
     if params.get('offset'):
         query_params['offset'] = params.get('offset')
 
-    endpoint = "/api/edr/v2/search/"+ str(params.get("applianceId"))+ "/autostart/" +str(params.get("category"))
+    endpoint = "/api/edr/v2/search/" + str(params.get("applianceId")) + "/autostart/" + str(
+        params.get("category").lower())
     return make_api_call(config=config, params=query_params, endpoint=endpoint, method="GET")
+
 
 def search_persistent_entries(config, params):
     query_params = {
@@ -580,21 +615,23 @@ def search_persistent_entries(config, params):
     if params.get('offset'):
         query_params['offset'] = params.get('offset')
 
-    endpoint = "/api/edr/v2/search/"+ str(params.get("applianceId"))+ "/autostart"
+    endpoint = "/api/edr/v2/search/" + str(params.get("applianceId")) + "/autostart"
     return make_api_call(config=config, params=query_params, endpoint=endpoint, method="GET")
+
 
 def get_disk_scan_status(config, params):
     query_params = {}
     if params.get('scanId'):
         query_params['scanId'] = params.get('scanId')
-    
-    endpoint = "/api/edr/v2/live/"+ str(params.get("applianceId")) + "/" + params.get("edrUuid") + "/scan-disk"
+
+    endpoint = "/api/edr/v2/live/" + str(params.get("applianceId")) + "/" + params.get("edrUuid") + "/scan-disk"
     return make_api_call(config=config, params=query_params, endpoint=endpoint, method="GET")
+
 
 def launch_disk_scan(config, params):
     query_params = {}
     if params.get('persist'):
-        query_params['persist'] = params.get('persist')
+        query_params['persist'] = params.get('persist').lower()
 
     json_data = {}
     if params.get('scanADS'):
@@ -604,42 +641,51 @@ def launch_disk_scan(config, params):
     if params.get('startFolders'):
         json_data['startFolders'] = params.get('startFolders')
 
-    endpoint = "/api/edr/v2/live/"+ str(params.get("applianceId")) + "/" + params.get("edrUuid") + "/scan-disk"
+    endpoint = "/api/edr/v2/live/" + str(params.get("applianceId")) + "/" + params.get("edrUuid") + "/scan-disk"
     return make_api_call(config=config, params=query_params, json_data=json_data, endpoint=endpoint, method="POST")
 
+
 def get_current_scan_status(config, params):
-    endpoint = "/api/edr/v2/live/"+ str(params.get("applianceId")) + "/" + params.get("edrUuid") + "/scan-disk/current"
+    endpoint = "/api/edr/v2/live/" + str(params.get("applianceId")) + "/" + params.get("edrUuid") + "/scan-disk/current"
     return make_api_call(config=config, endpoint=endpoint, method="GET")
+
 
 def stop_current_scan(config, params):
-    endpoint = "/api/edr/v2/live/"+ str(params.get("applianceId")) + "/" + params.get("edrUuid") + "/scan-disk/current"
+    endpoint = "/api/edr/v2/live/" + str(params.get("applianceId")) + "/" + params.get("edrUuid") + "/scan-disk/current"
     return make_api_call(config=config, endpoint=endpoint, method="DELETE")
 
+
 def list_quarantine_files(config, params):
-    endpoint = "/api/edr/v2/live/"+ str(params.get("applianceId")) + "/" + params.get("edrUuid") + "/remediation/quarantine"
+    endpoint = "/api/edr/v2/live/" + str(params.get("applianceId")) + "/" + params.get(
+        "edrUuid") + "/remediation/quarantine"
     return make_api_call(config=config, endpoint=endpoint, method="GET")
+
 
 def quarantine_file(config, params):
     query_params = {
         'path': params.get('path')
     }
     if params.get('persist'):
-        query_params['persist'] = params.get('persist')
+        query_params['persist'] = params.get('persist').lower()
     if params.get('notification'):
         query_params['notification'] = params.get('notification')
 
-    endpoint = "/api/edr/v2/live/"+ str(params.get("applianceId")) + "/" + params.get("edrUuid") + "/remediation/quarantine"
+    endpoint = "/api/edr/v2/live/" + str(params.get("applianceId")) + "/" + params.get(
+        "edrUuid") + "/remediation/quarantine"
     return make_api_call(config=config, params=query_params, endpoint=endpoint, method="POST")
+
 
 def restore_file_from_quarantine(config, params):
     query_params = {
         'path': params.get('path')
     }
     if params.get('persist'):
-        query_params['persist'] = params.get('persist')
+        query_params['persist'] = params.get('persist').lower()
 
-    endpoint = "/api/edr/v2/live/"+ str(params.get("applianceId")) + "/" + params.get("edrUuid") + "/remediation/quarantine"
+    endpoint = "/api/edr/v2/live/" + str(params.get("applianceId")) + "/" + params.get(
+        "edrUuid") + "/remediation/quarantine"
     return make_api_call(config=config, params=query_params, endpoint=endpoint, method="PATCH")
+
 
 def get_unmanaged_hosts(config, params):
     query_params = {
@@ -652,8 +698,19 @@ def get_unmanaged_hosts(config, params):
     if params.get('offset'):
         query_params['offset'] = params.get('offset')
 
-    endpoint = "/api/edr/v2/discovery/"+ str(params.get("applianceId"))
+    endpoint = "/api/edr/v2/discovery/" + str(params.get("applianceId"))
     return make_api_call(config=config, params=query_params, endpoint=endpoint, method="GET")
+
+
+def execute_an_api_call(config, params):
+    endpoint = params.get("endpoint")
+    http_method = params.get("method")
+    query_params = params.get("query_params") if params.get("query_params") else {}
+    payload = params.get("payload") if params.get("payload") else {}
+    logger.debug("Payload: {0}".format(payload))
+    response = make_api_call(config=config, endpoint=endpoint, method=http_method, params=query_params,
+                             json_data=payload)
+    return response
 
 
 operations_map = {
@@ -696,5 +753,6 @@ operations_map = {
     'list_quarantine_files': list_quarantine_files,
     'quarantine_file': quarantine_file,
     'restore_file_from_quarantine': restore_file_from_quarantine,
-    'get_unmanaged_hosts': get_unmanaged_hosts
+    'get_unmanaged_hosts': get_unmanaged_hosts,
+    'execute_an_api_call': execute_an_api_call
 }

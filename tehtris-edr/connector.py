@@ -9,7 +9,8 @@ from connectors.core.connector import Connector, ConnectorError, get_logger
 from .operations import operations_map, make_api_call
 
 # Initialise logger
-logger = get_logger('tehtris')
+logger = get_logger('tehtris-edr')
+
 
 # Class Definition
 class Tehtris(Connector):
