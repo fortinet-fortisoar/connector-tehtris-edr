@@ -6,13 +6,14 @@ TEHTRIS EDR (Endpoint Detection and Response) is designed to detect, analyze, an
 
 Connector Version: 1.0.0
 
+
 Authored By: Fortinet SE
 
 Contributor: ArnaudN
 
 Certified: No
 ## Installing the connector
-<p>From FortiSOAR&trade; 6.0.0 onwards, use the <strong>Connector Store</strong> to install the connector. For the detailed procedure to install a connector, click <a href="https://docs.fortinet.com/document/fortisoar/0.0.0/installing-a-connector/1/installing-a-connector" target="_top">here</a>.<br>You can also use the following <code>yum</code> command as a root user to install connectors from an SSH session:</p>
+<p>From FortiSOAR&trade; 6.4.3 onwards, use the <strong>Connector Store</strong> to install the connector. For the detailed procedure to install a connector, click <a href="https://docs.fortinet.com/document/fortisoar/0.0.0/installing-a-connector/1/installing-a-connector" target="_top">here</a>.<br>You can also use the following <code>yum</code> command as a root user to install connectors from an SSH session:</p>
 `yum install cyops-connector-tehtris-edr`
 
 ## Prerequisites to configuring the connector
@@ -32,7 +33,7 @@ For the procedure to configure a connector, click [here](https://docs.fortinet.c
 </tbody></table>
 
 ## Actions supported by the connector
-The following automated operations can be included in playbooks and you can also use the annotations to access operations from FortiSOAR&trade; release 6.0.0 and onwards:
+The following automated operations can be included in playbooks and you can also use the annotations to access operations from FortiSOAR&trade; release 6.4.3 and onwards:
 <table border=1><thead><tr><th>Function<br></th><th>Description<br></th><th>Annotation and Category<br></th></tr></thead><tbody><tr><td>Fetch Events<br></td><td>Fetch events from the TEHTRIS EDR based on the filter criteria that you have specified.<br></td><td>fetch_events <br/>Utilities<br></td></tr>
 <tr><td>List Folders and Filters<br></td><td>Retrieve a list of all folders and all filters the user has access to (as owner, editor or viewer) from TEHTRIS EDR based on the filter criteria that you have specified.<br></td><td>list_folders_and_filters <br/>Utilities<br></td></tr>
 <tr><td>Get Filter by ID<br></td><td>Retrieve a filter by its unique ID from the TEHTRIS EDR platform.<br></td><td>get_filter_by_id <br/>Utilities<br></td></tr>
@@ -48,7 +49,7 @@ The following automated operations can be included in playbooks and you can also
 <tr><td>Get Tags<br></td><td>Retrieve all tags from the TEHTRIS EDR platform.<br></td><td>get_tags <br/>Utilities<br></td></tr>
 <tr><td>Update Endpoints Tags<br></td><td>Update or assign specific tags to one or multiple endpoints managed by the TEHTRIS EDR platform.<br></td><td>update_endpoints_tags <br/>Utilities<br></td></tr>
 <tr><td>Get Access Logs<br></td><td>Create a cursor and fetch the first batch of access log data from the TEHTRIS EDR platform. Access logs are displayed from the most recent to the least recent by default.<br></td><td>get_accesslogs <br/>Utilities<br></td></tr>
-<tr><td>Get Users Connected<br></td><td>Retrieve a list of users who have connected to a specified endpoint within the last 6 months using the TEHTRIS EDr platform.<br></td><td>get_users_connected <br/>Utilities<br></td></tr>
+<tr><td>Get Users Connected<br></td><td>Retrieve a list of users who have connected to a specified endpoint within the last 6 months using the TEHTRIS EDR platform.<br></td><td>get_users_connected <br/>Utilities<br></td></tr>
 <tr><td>Get Network Information<br></td><td>Retrieve detailed network information for a specified endpoint using the TEHTRIS EDR platform.<br></td><td>get_network_infos <br/>Utilities<br></td></tr>
 <tr><td>Get Processes History<br></td><td>Retrieve the historical list of processes executed on a specific endpoint within a defined time interval using the TEHTRIS EDR platform.<br></td><td>get_history_of_processes <br/>Utilities<br></td></tr>
 <tr><td>Get Process Tree<br></td><td>Retrieve the hierarchical process tree for a given process on a specific endpoint using the TEHTRIS EDR platform.<br></td><td>get_process_tree <br/>Utilities<br></td></tr>
@@ -78,8 +79,8 @@ The following automated operations can be included in playbooks and you can also
 
 ### operation: Fetch Events
 #### Input parameters
-<table border=1><thead><tr><th>Parameter<br></th><th>Description<br></th></tr></thead><tbody><tr><td>From Date<br></td><td>Specify the timestamp (in seconds since EPOCH) to define the starting point for fetching events.<br>
-</td></tr><tr><td>To Date<br></td><td>Specify the timestamp (in seconds since EPOCH) to define the end point for fetching events.<br>
+<table border=1><thead><tr><th>Parameter<br></th><th>Description<br></th></tr></thead><tbody><tr><td>From Date<br></td><td>Specify the start timestamp for filtering events.<br>
+</td></tr><tr><td>To Date<br></td><td>Specify the end date-time for filtering events.<br>
 </td></tr><tr><td>Event ID<br></td><td>Specify the unique event ID to fetch details for a specific event.<br>
 </td></tr><tr><td>Count Only<br></td><td>Select whether to count alerts only instead of retrieving the full list of events.<br>
 </td></tr><tr><td>By Tag<br></td><td>Select whether to count alerts by their associated tags when count Only is enabled.<br>
@@ -155,7 +156,7 @@ The following automated operations can be included in playbooks and you can also
  The output contains a non-dictionary value.
 ### operation: Set an event status
 #### Input parameters
-<table border=1><thead><tr><th>Parameter<br></th><th>Description<br></th></tr></thead><tbody><tr><td>Event ID<br></td><td>Specify the event ID corresponding to the event you want to update in the Tehtris EDR platform.<br>
+<table border=1><thead><tr><th>Parameter<br></th><th>Description<br></th></tr></thead><tbody><tr><td>Event ID<br></td><td>Specify the event ID corresponding to the event you want to update in the TEHTRIS EDR platform.<br>
 </td></tr><tr><td>New Status<br></td><td>Select the new status to assign to the event. Possible values include 'checked', 'false positive', 'incident', 'on going', 'pending', and 'resolved'.<br>
 </td></tr><tr><td>Old Status<br></td><td>Specify the current status of the event to verify before updating. Use null to bypass the old status check.<br>
 </td></tr></tbody></table>
@@ -165,22 +166,22 @@ The following automated operations can be included in playbooks and you can also
  The output contains a non-dictionary value.
 ### operation: Get All Endpoints
 #### Input parameters
-<table border=1><thead><tr><th>Parameter<br></th><th>Description<br></th></tr></thead><tbody><tr><td>Tags<br></td><td>Provide the list of tags to filter endpoints. Example: ["ABC_TEST", "DEF_TEST"].<br>
-</td></tr><tr><td>Hostname<br></td><td>Specify the hostname of the endpoint to filter results.<br>
+<table border=1><thead><tr><th>Parameter<br></th><th>Description<br></th></tr></thead><tbody><tr><td>Hostname<br></td><td>Specify the hostname of the endpoint to filter results.<br>
 </td></tr><tr><td>Hostname Regex<br></td><td>Specify a regular expression to match endpoint hostnames.<br>
 </td></tr><tr><td>Domain<br></td><td>Specify the domain name to filter endpoints.<br>
 </td></tr><tr><td>Domain Regex<br></td><td>Specify a regular expression to match endpoint domains.<br>
 </td></tr><tr><td>Network<br></td><td>Specify the local or remote IP address or network subnet to filter endpoints.<br>
-</td></tr><tr><td>Versions<br></td><td>Provide the list of EDR versions to filter endpoints. Example: ["1.0.2", "1.1.0"].<br>
-</td></tr><tr><td>Config UUIDs<br></td><td>Provide the list of configuration UUIDs to filter endpoints. Example: ["uuid-123", "uuid-456"].<br>
-</td></tr><tr><td>UUIDs<br></td><td>Provide the list of endpoint UUIDs to filter results. Example: ["uuid-abc", "uuid-def"].<br>
-</td></tr><tr><td>Appliance IDs<br></td><td>Provide the list of appliance IDs to filter endpoints. If not specified, defaults to appliances where the user has access rights.<br>
 </td></tr><tr><td>First Seen From<br></td><td>Specify the start date-time for filtering endpoints based on when they were first seen.<br>
 </td></tr><tr><td>First Seen To<br></td><td>Specify the end date-time for filtering endpoints based on when they were first seen.<br>
 </td></tr><tr><td>Last Seen From<br></td><td>Specify the start date-time for filtering endpoints based on when they were last seen.<br>
 </td></tr><tr><td>Last Seen To<br></td><td>Specify the end date-time for filtering endpoints based on when they were last seen.<br>
-</td></tr><tr><td>OS<br></td><td>Provide the operating system filter in dictionary format. Example: {"windows": ["10", "8"], "linux": ["Ubuntu 18.04 bionic"]}.<br>
 </td></tr><tr><td>Offset<br></td><td>Specify the offset value for pagination. The default value is 0.<br>
+</td></tr><tr><td>Tags<br></td><td>Provide the list of tags to filter endpoints. Example: ["ABC_TEST", "DEF_TEST"].<br>
+</td></tr><tr><td>Versions<br></td><td>Provide the list of EDR versions to filter endpoints. Example: ["1.0.2", "1.1.0"].<br>
+</td></tr><tr><td>Config UUIDs<br></td><td>Provide the list of configuration UUIDs to filter endpoints. Example: ["uuid-123", "uuid-456"].<br>
+</td></tr><tr><td>UUIDs<br></td><td>Provide the list of endpoint UUIDs to filter results. Example: ["uuid-abc", "uuid-def"].<br>
+</td></tr><tr><td>Appliance IDs<br></td><td>Provide the list of appliance IDs to filter endpoints. If not specified, defaults to appliances where the user has access rights.<br>
+</td></tr><tr><td>OS<br></td><td>Provide the operating system filter in dictionary format. Example: {"windows": ["10", "8"], "linux": ["Ubuntu 18.04 bionic"]}.<br>
 </td></tr></tbody></table>
 
 #### Output
@@ -279,9 +280,6 @@ None.
 #### Input parameters
 <table border=1><thead><tr><th>Parameter<br></th><th>Description<br></th></tr></thead><tbody><tr><td>EDR UUID<br></td><td>The unique identifier of the endpoint (EDR) whose process history is being queried.<br>
 </td></tr><tr><td>Appliance ID<br></td><td>Specify the ID of the appliance managing the specified endpoint.<br>
-</td></tr><tr><td>Process IDs<br></td><td>Filter for specific process IDs (PID list).<br>
-</td></tr><tr><td>Parent Process IDs<br></td><td>Filter for specific parent process IDs (PPID list).<br>
-</td></tr><tr><td>Logon IDs<br></td><td>Filter for logon session identifiers linked to processes.<br>
 </td></tr><tr><td>User Identifier<br></td><td>Filter by user identifier (SID on Windows, UID on Linux). Supports substring matching.<br>
 </td></tr><tr><td>Username<br></td><td>Filter results by username associated with the process.<br>
 </td></tr><tr><td>Domain Name<br></td><td>Filter processes based on the domain name. Supports substring matching.<br>
@@ -296,6 +294,9 @@ None.
 </td></tr><tr><td>CMD Line<br></td><td>Filter processes by the command line arguments used when launching the process.<br>
 </td></tr><tr><td>Limit<br></td><td>Maximum number of records to return. Value cannot exceed 1000.<br>
 </td></tr><tr><td>Offset<br></td><td>Number of records to skip before beginning to return results (for pagination).<br>
+</td></tr><tr><td>Process IDs<br></td><td>Filter for specific process IDs (PID list).<br>
+</td></tr><tr><td>Parent Process IDs<br></td><td>Filter for specific parent process IDs (PPID list).<br>
+</td></tr><tr><td>Logon IDs<br></td><td>Filter for logon session identifiers linked to processes.<br>
 </td></tr></tbody></table>
 
 #### Output
@@ -320,7 +321,7 @@ None.
 <table border=1><thead><tr><th>Parameter<br></th><th>Description<br></th></tr></thead><tbody><tr><td>EDR UUID<br></td><td>Specify the unique identifier (UUID) of the endpoint as registered in the TEHTRIS EDR system.<br>
 </td></tr><tr><td>Appliance ID<br></td><td>Specify the numeric identifier of the TEHTRIS EDR appliance managing the specified endpoint.<br>
 </td></tr><tr><td>Local Time<br></td><td>Specify whether the time filter should use the endpoint’s local time or the server time.<br>
-</td></tr><tr><td>Time<br></td><td>A timestamp to filter persistence entries that existed at a specific point in time.<br>
+</td></tr><tr><td>Time Filter<br></td><td>A timestamp to filter persistence entries that existed at a specific point in time.<br>
 </td></tr><tr><td>Persistence Path<br></td><td>Filter results based on the file path where the persistence mechanism is defined (e.g., configuration file or startup script).<br>
 </td></tr><tr><td>Persistence Type<br></td><td>Filter persistence entries by their type or category (e.g., SystemD service, cron job, startup script).<br>
 </td></tr><tr><td>Name<br></td><td>Filter by the name associated with the persistence mechanism.<br>
@@ -401,13 +402,13 @@ None.
 </td></tr><tr><td>Processes<br></td><td>Perform analysis of active and historical processes running on the endpoint.<br>
 </td></tr><tr><td>Startup<br></td><td>Scan for persistence mechanisms and startup items configured on the endpoint.<br>
 </td></tr><tr><td>Disk<br></td><td>Perform disk-level forensic analysis for specified directories and file extensions.<br>
-</td></tr><tr><td>Disk Paths<br></td><td>Specify target directories to include in the disk forensic scan. Required only if disk scanning is enabled.<br>
-</td></tr><tr><td>Extensions<br></td><td>Specify file extensions to target during disk forensic analysis. Required only if disk scanning is enabled.<br>
 </td></tr><tr><td>Privacy<br></td><td>Perform privacy-related forensic checks, such as identifying sensitive data exposure or user information artifacts.<br>
 </td></tr><tr><td>Advanced<br></td><td>Execute extended forensic scans including system logs, configurations, and advanced OS artifacts.<br>
 </td></tr><tr><td>Commands<br></td><td>Run a set of pre-defined forensic commands to collect detailed endpoint data.<br>
 </td></tr><tr><td>Yara<br></td><td>Apply YARA rules during analysis to detect potential malware or suspicious patterns.<br>
 </td></tr><tr><td>Forensic<br></td><td>Trigger a comprehensive offline forensic analysis, encompassing all enabled modules.<br>
+</td></tr><tr><td>Disk Paths<br></td><td>Specify target directories to include in the disk forensic scan. Required only if disk scanning is enabled.<br>
+</td></tr><tr><td>Extensions<br></td><td>Specify file extensions to target during disk forensic analysis. Required only if disk scanning is enabled.<br>
 </td></tr></tbody></table>
 
 #### Output

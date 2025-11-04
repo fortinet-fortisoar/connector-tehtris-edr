@@ -5,6 +5,7 @@
   Copyright end """
 
 # Imports
+import time
 from connectors.core.connector import ConnectorError, get_logger
 import json, requests, base64
 
@@ -52,18 +53,31 @@ def make_api_call(method="GET", endpoint="", config=None, params=None, headers=N
         raise ConnectorError('{0}'.format(e))
 
 
+
+def get_epoch(date_time):
+    try:
+        if 'T' in date_time:
+            pattern = '%Y-%m-%dT%H:%M:%S.%fZ'
+            date_time = int(time.mktime(time.strptime(date_time, pattern)))
+            return date_time
+        else:
+            return date_time
+    except Exception as Err:
+        logger.error('get_epoch: Exception occurred [{0}]'.format(str(Err)))
+        raise ConnectorError('get_epoch: Exception occurred [{0}]'.format(str(Err)))
+
 # Operation definition
 
 def fetch_events(config, params):
     query_params = {
-        'fromDate': params.get('fromDate')
+        'fromDate': get_epoch(params.get('fromDate'))
     }
     if params.get('countOnly'):
-        query_params['countOnly'] = params.get('countOnly').lower()
+        query_params['countOnly'] = str(params.get('countOnly')).lower()
     if params.get('byTag'):
-        query_params['byTag'] = params.get('byTag').lower()
+        query_params['byTag'] = str(params.get('byTag')).lower()
     if params.get('toDate'):
-        query_params['toDate'] = params.get('toDate')
+        query_params['toDate'] = get_epoch(params.get('toDate'))
     if params.get('eventId'):
         query_params['eventId'] = params.get('eventId')
     if params.get('limit'):
@@ -88,9 +102,9 @@ def list_folders_and_filters(config, params):
     if params.get('oldFilterId'):
         query_params['oldFilterId'] = params.get('oldFilterId')
     if params.get('filtersOnly'):
-        query_params['filtersOnly'] = params.get('filtersOnly').lower()
+        query_params['filtersOnly'] = str(params.get('filtersOnly')).lower()
     if params.get('presetFilters'):
-        query_params['presetFilters'] = params.get('presetFilters').lower()
+        query_params['presetFilters'] = str(params.get('presetFilters')).lower()
 
     endpoint = '/api/xdr/v2/filter'
     return make_api_call(config=config, params=query_params, endpoint=endpoint, method="GET")
@@ -99,7 +113,7 @@ def list_folders_and_filters(config, params):
 def get_filter_by_id(config, params):
     query_params = {}
     if params.get('withHistory'):
-        query_params['withHistory'] = params.get('withHistory').lower()
+        query_params['withHistory'] = str(params.get('withHistory')).lower()
 
     endpoint = '/api/xdr/v2/filter/filter/' + params.get('filterId')
     return make_api_call(config=config, params=query_params, endpoint=endpoint, method="GET")
@@ -113,8 +127,8 @@ def create_filter(config, params):
     }
     json_data['filterQuery'] = {}
     json_data['filterQuery']['module'] = "Endpoint_Active"
-    json_data['filterQuery']['offset'] = 0
-    json_data['filterQuery']['limit'] = 25
+    #json_data['filterQuery']['offset'] = 0
+    #json_data['filterQuery']['limit'] = 25
     json_data['filterQuery']['timeOrder'] = 'DESC'
     json_data['filterQuery']['columns'] = {}
     json_data['filterQuery']['columns']['lvl'] = {}
@@ -136,8 +150,8 @@ def update_filter(config, params):
     if params.get('lvlmin') and params.get('lvlmax'):
         json_data['filterQuery'] = {}
         json_data['filterQuery']['module'] = "Endpoint_Active"
-        json_data['filterQuery']['offset'] = 0
-        json_data['filterQuery']['limit'] = 25
+        #json_data['filterQuery']['offset'] = 0
+        #json_data['filterQuery']['limit'] = 25
         json_data['filterQuery']['timeOrder'] = 'DESC'
         json_data['filterQuery']['columns'] = {}
         json_data['filterQuery']['columns']['lvl'] = {}
@@ -214,7 +228,7 @@ def send_isolation_action(config, params):
     if params.get('power'):
         query_params['power'] = params.get('power').lower()
     if params.get('persist'):
-        query_params['persist'] = params.get('persist').lower()
+        query_params['persist'] = str(params.get('persist')).lower()
 
     json_data = {}
     if len(params.get('toWhitelist')) > 0:
@@ -255,8 +269,6 @@ def get_accesslogs(config, params):
     query_params = {
         'limit': params.get('limit')
     }
-    if params.get('admin'):
-        query_params['admin'] = params.get('admin')
     if params.get('hostname'):
         query_params['hostname'] = params.get('hostname')
     if params.get('logonEventTimeFrom'):
@@ -264,7 +276,7 @@ def get_accesslogs(config, params):
     if params.get('logonEventTimeTo'):
         query_params['logonEventTimeTo'] = params.get('logonEventTimeTo')
     if params.get('admin'):
-        query_params['admin'] = params.get('admin').lower()
+        query_params['admin'] = str(params.get('admin')).lower()
     if params.get('offset'):
         query_params['offset'] = params.get('offset')
 
@@ -311,7 +323,7 @@ def get_history_of_processes(config, params):
     if params.get('domainName'):
         query_params['domainName'] = params.get('domainName')
     if params.get('localTime'):
-        query_params['localTime'] = params.get('localTime').lower()
+        query_params['localTime'] = str(params.get('localTime')).lower()
     if params.get('timeFilter'):
         query_params['timeFilter'] = params.get('timeFilter').lower()
     if params.get('timeFrom'):
@@ -354,7 +366,7 @@ def get_persistence_entries(config, params):
         'limit': params.get('limit')
     }
     if params.get('localTime'):
-        query_params['localTime'] = params.get('localTime').lower()
+        query_params['localTime'] = str(params.get('localTime')).lower()
     if params.get('t'):
         query_params['t'] = params.get('t')
     if params.get('persistence_path'):
@@ -401,7 +413,7 @@ def get_browser_security(config, params):
 def get_software_list(config, params):
     query_params = {}
     if params.get('persist'):
-        query_params['persist'] = params.get('persist').lower()
+        query_params['persist'] = str(params.get('persist')).lower()
 
     endpoint = "/api/edr/v2/live/" + str(params.get("applianceId")) + "/" + params.get("edrUuid") + "/software"
     return make_api_call(config=config, params=query_params, endpoint=endpoint, method="GET")
@@ -425,7 +437,7 @@ def get_offline_forensic_status(config, params):
 def start_offline_forensic(config, params):
     query_params = {}
     if params.get('persist'):
-        query_params['persist'] = params.get('persist').lower()
+        query_params['persist'] = str(params.get('persist')).lower()
 
     json_data = {}
     if params.get('processes'):
@@ -631,7 +643,7 @@ def get_disk_scan_status(config, params):
 def launch_disk_scan(config, params):
     query_params = {}
     if params.get('persist'):
-        query_params['persist'] = params.get('persist').lower()
+        query_params['persist'] = str(params.get('persist')).lower()
 
     json_data = {}
     if params.get('scanADS'):
@@ -666,7 +678,7 @@ def quarantine_file(config, params):
         'path': params.get('path')
     }
     if params.get('persist'):
-        query_params['persist'] = params.get('persist').lower()
+        query_params['persist'] = str(params.get('persist')).lower()
     if params.get('notification'):
         query_params['notification'] = params.get('notification')
 
@@ -680,7 +692,7 @@ def restore_file_from_quarantine(config, params):
         'path': params.get('path')
     }
     if params.get('persist'):
-        query_params['persist'] = params.get('persist').lower()
+        query_params['persist'] = str(params.get('persist')).lower()
 
     endpoint = "/api/edr/v2/live/" + str(params.get("applianceId")) + "/" + params.get(
         "edrUuid") + "/remediation/quarantine"

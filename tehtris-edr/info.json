@@ -62,23 +62,23 @@
       "parameters": [
         {
           "title": "From Date",
-          "description": "Specify the timestamp (in seconds since EPOCH) to define the starting point for fetching events.",
-          "type": "integer",
+          "description": "Specify the start timestamp for filtering events.",
+          "type": "datetime",
           "name": "fromDate",
           "required": true,
           "visible": true,
           "editable": true,
-          "tooltip": "Specify the starting date in seconds since EPOCH."
+          "tooltip": "Specify the start timestamp for filtering events."
         },
         {
           "title": "To Date",
-          "description": "Specify the timestamp (in seconds since EPOCH) to define the end point for fetching events.",
-          "type": "integer",
+          "description": "Specify the end date-time for filtering events.",
+          "type": "datetime",
           "name": "toDate",
           "required": false,
           "visible": true,
           "editable": true,
-          "tooltip": "Specify the ending date in seconds since EPOCH."
+          "tooltip": "Specify the end date-time for filtering events."
         },
         {
           "title": "Event ID",
@@ -93,30 +93,22 @@
         {
           "title": "Count Only",
           "description": "Select whether to count alerts only instead of retrieving the full list of events.",
-          "type": "select",
+          "type": "checkbox",
           "name": "countOnly",
           "required": false,
           "visible": true,
           "editable": true,
-          "tooltip": "Select whether to count alerts only instead of retrieving the full list of events.",
-          "options": [
-            "True",
-            "False"
-          ]
+          "tooltip": "Select whether to count alerts only instead of retrieving the full list of events."
         },
         {
           "title": "By Tag",
           "description": "Select whether to count alerts by their associated tags when count Only is enabled.",
-          "type": "select",
+          "type": "checkbox",
           "name": "byTag",
           "required": false,
           "visible": true,
           "editable": true,
-          "tooltip": "Select whether to count alerts by their associated tags when count Only is enabled.",
-          "options": [
-            "True",
-            "False"
-          ]
+          "tooltip": "Select whether to count alerts by their associated tags when count Only is enabled."
         },
         {
           "title": "Filter ID",
@@ -206,31 +198,22 @@
         {
           "title": "Filters Only",
           "description": "Select whether to return only filters, leaving the folder list empty.",
-          "type": "select",
+          "type": "checkbox",
           "name": "filtersOnly",
           "required": false,
           "visible": true,
           "editable": true,
-          "tooltip": "Select whether to return only filters, leaving the folder list empty.",
-          "options": [
-            "True",
-            "False"
-          ]
+          "tooltip": "Select whether to return only filters, leaving the folder list empty."
         },
         {
           "title": "Preset Filters",
           "description": "Select whether to include preset filters in addition to the user’s own filters.",
-          "type": "select",
+          "type": "checkbox",
           "name": "presetFilters",
           "required": false,
           "visible": true,
           "editable": true,
-          "value": "",
-          "tooltip": "Select whether to include preset filters in addition to the user’s own filters.",
-          "options": [
-            "True",
-            "False"
-          ]
+          "tooltip": "Select whether to include preset filters in addition to the user’s own filters."
         }
       ],
       "output_schema": {}
@@ -255,17 +238,12 @@
         {
           "title": "With History",
           "description": "Select whether to retrieve the filter along with its historical versions and changes.",
-          "type": "select",
+          "type": "checkbox",
           "name": "withHistory",
           "required": false,
           "visible": true,
           "editable": true,
-          "value": "",
-          "tooltip": "Select whether to retrieve the filter along with its historical versions and changes.",
-          "options": [
-            "True",
-            "False"
-          ]
+          "tooltip": "Select whether to retrieve the filter along with its historical versions and changes."
         }
       ],
       "output_schema": {}
@@ -554,20 +532,6 @@
       "description": "Retrieve all endpoints managed by the TEHTRIS EDR platform, with optional filters such as tags, hostnames, domains, IP ranges, OS versions, and time-based parameters.",
       "parameters": [
         {
-          "title": "Tags",
-          "description": "Provide the list of tags to filter endpoints. Example: [\"ABC_TEST\", \"DEF_TEST\"].",
-          "type": "json",
-          "name": "tags",
-          "required": false,
-          "visible": true,
-          "editable": true,
-          "value": [
-            "ABC_TEST",
-            "DEF_TEST"
-          ],
-          "tooltip": "Filter endpoints by tags. Example: [\"ABC_TEST\", \"DEF_TEST\"]."
-        },
-        {
           "title": "Hostname",
           "description": "Specify the hostname of the endpoint to filter results.",
           "type": "text",
@@ -616,6 +580,71 @@
           "visible": true,
           "editable": true,
           "tooltip": "Filter endpoints by network IP or subnet. Example: 192.168.0.142 or 192.168.0.0/24."
+        },
+        {
+          "title": "First Seen From",
+          "description": "Specify the start date-time for filtering endpoints based on when they were first seen.",
+          "type": "datetime",
+          "name": "firstSeenFrom",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Filter endpoints first seen after this date-time. Example: 2025-09-26T14:40:22.924Z."
+        },
+        {
+          "title": "First Seen To",
+          "description": "Specify the end date-time for filtering endpoints based on when they were first seen.",
+          "type": "datetime",
+          "name": "firstSeenTo",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Filter endpoints first seen before this date-time. Example: 2025-09-26T14:40:22.924Z."
+        },
+        {
+          "title": "Last Seen From",
+          "description": "Specify the start date-time for filtering endpoints based on when they were last seen.",
+          "type": "datetime",
+          "name": "lastSeenFrom",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Filter endpoints last seen after this date-time. Example: 2025-09-26T14:40:22.924Z."
+        },
+        {
+          "title": "Last Seen To",
+          "description": "Specify the end date-time for filtering endpoints based on when they were last seen.",
+          "type": "datetime",
+          "name": "lastSeenTo",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Filter endpoints last seen before this date-time. Example: 2025-09-26T14:40:22.924Z."
+        },
+        {
+          "title": "Offset",
+          "description": "Specify the offset value for pagination. The default value is 0.",
+          "type": "integer",
+          "name": "offset",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "value": 0,
+          "tooltip": "Specify pagination offset. Default is 0."
+        },
+        {
+          "title": "Tags",
+          "description": "Provide the list of tags to filter endpoints. Example: [\"ABC_TEST\", \"DEF_TEST\"].",
+          "type": "json",
+          "name": "tags",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "value": [
+            "ABC_TEST",
+            "DEF_TEST"
+          ],
+          "tooltip": "Filter endpoints by tags. Example: [\"ABC_TEST\", \"DEF_TEST\"]."
         },
         {
           "title": "Versions",
@@ -670,46 +699,6 @@
           "tooltip": "Filter endpoints by appliance IDs. Defaults to appliances where the user has access rights. Example: [\"appliance-001\"]."
         },
         {
-          "title": "First Seen From",
-          "description": "Specify the start date-time for filtering endpoints based on when they were first seen.",
-          "type": "datetime",
-          "name": "firstSeenFrom",
-          "required": false,
-          "visible": true,
-          "editable": true,
-          "tooltip": "Filter endpoints first seen after this date-time. Example: 2025-09-26T14:40:22.924Z."
-        },
-        {
-          "title": "First Seen To",
-          "description": "Specify the end date-time for filtering endpoints based on when they were first seen.",
-          "type": "datetime",
-          "name": "firstSeenTo",
-          "required": false,
-          "visible": true,
-          "editable": true,
-          "tooltip": "Filter endpoints first seen before this date-time. Example: 2025-09-26T14:40:22.924Z."
-        },
-        {
-          "title": "Last Seen From",
-          "description": "Specify the start date-time for filtering endpoints based on when they were last seen.",
-          "type": "datetime",
-          "name": "lastSeenFrom",
-          "required": false,
-          "visible": true,
-          "editable": true,
-          "tooltip": "Filter endpoints last seen after this date-time. Example: 2025-09-26T14:40:22.924Z."
-        },
-        {
-          "title": "Last Seen To",
-          "description": "Specify the end date-time for filtering endpoints based on when they were last seen.",
-          "type": "datetime",
-          "name": "lastSeenTo",
-          "required": false,
-          "visible": true,
-          "editable": true,
-          "tooltip": "Filter endpoints last seen before this date-time. Example: 2025-09-26T14:40:22.924Z."
-        },
-        {
           "title": "OS",
           "description": "Provide the operating system filter in dictionary format. Example: {\"windows\": [\"10\", \"8\"], \"linux\": [\"Ubuntu 18.04 bionic\"]}.",
           "type": "json",
@@ -727,17 +716,6 @@
             ]
           },
           "tooltip": "Filter endpoints by operating system. Example: {\"windows\": [\"10\", \"8\"], \"linux\": [\"Ubuntu 18.04 bionic\"]}."
-        },
-        {
-          "title": "Offset",
-          "description": "Specify the offset value for pagination. The default value is 0.",
-          "type": "integer",
-          "name": "offset",
-          "required": false,
-          "visible": true,
-          "editable": true,
-          "value": 0,
-          "tooltip": "Specify pagination offset. Default is 0."
         }
       ],
       "output_schema": {}
@@ -842,16 +820,12 @@
         {
           "title": "Persist",
           "description": "Select whether to queue the isolation action until the endpoint reconnects, ensuring execution even when the endpoint is temporarily disconnected.",
-          "type": "select",
+          "type": "checkbox",
           "name": "persist",
           "required": false,
           "visible": true,
           "editable": true,
-          "tooltip": "Select whether the isolation action should persist if the endpoint is currently offline. If true, the action executes once the endpoint reconnects.",
-          "options": [
-            "True",
-            "False"
-          ]
+          "tooltip": "Select whether the isolation action should persist if the endpoint is currently offline. If true, the action executes once the endpoint reconnects."
         }
       ],
       "output_schema": {}
@@ -983,16 +957,12 @@
         {
           "title": "Admin",
           "description": "Select whether to return only the count of alerts (True) or the full list of access logs (False).",
-          "type": "select",
+          "type": "checkbox",
           "name": "admin",
           "required": false,
           "visible": true,
           "editable": true,
-          "tooltip": "Select whether to count alerts (True) instead of retrieving the full list (False).",
-          "options": [
-            "True",
-            "False"
-          ]
+          "tooltip": "Select whether to count alerts (True) instead of retrieving the full list (False)."
         },
         {
           "title": "Logon Event Time From",
@@ -1169,36 +1139,6 @@
           "tooltip": "Specify the ID of the appliance managing this endpoint."
         },
         {
-          "title": "Process IDs",
-          "description": "Filter for specific process IDs (PID list).",
-          "type": "object",
-          "name": "pids",
-          "required": false,
-          "visible": true,
-          "editable": true,
-          "tooltip": "Filter on specific process IDs (array format)."
-        },
-        {
-          "title": "Parent Process IDs",
-          "description": "Filter for specific parent process IDs (PPID list).",
-          "type": "object",
-          "name": "ppids",
-          "required": false,
-          "visible": true,
-          "editable": true,
-          "tooltip": "Filter on specific parent process IDs (array format)."
-        },
-        {
-          "title": "Logon IDs",
-          "description": "Filter for logon session identifiers linked to processes.",
-          "type": "object",
-          "name": "logonIds",
-          "required": false,
-          "visible": true,
-          "editable": true,
-          "tooltip": "Filter on specific logon session identifiers (array format)."
-        },
-        {
           "title": "User Identifier",
           "description": "Filter by user identifier (SID on Windows, UID on Linux). Supports substring matching.",
           "type": "text",
@@ -1231,15 +1171,11 @@
         {
           "title": "Local Time",
           "description": "If set to True, converts timestamps to the endpoint’s local time. Defaults to UTC.",
-          "type": "select",
+          "type": "checkbox",
           "name": "localTime",
           "required": false,
           "visible": true,
           "editable": true,
-          "options": [
-            "True",
-            "False"
-          ],
           "tooltip": "If true, converts timestamps to local time. Defaults to UTC if false."
         },
         {
@@ -1348,6 +1284,36 @@
           "editable": true,
           "value": 0,
           "tooltip": "Number of results to skip before starting to collect data (useful for pagination)."
+        },
+        {
+          "title": "Process IDs",
+          "description": "Filter for specific process IDs (PID list).",
+          "type": "object",
+          "name": "pids",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Filter on specific process IDs (array format)."
+        },
+        {
+          "title": "Parent Process IDs",
+          "description": "Filter for specific parent process IDs (PPID list).",
+          "type": "object",
+          "name": "ppids",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Filter on specific parent process IDs (array format)."
+        },
+        {
+          "title": "Logon IDs",
+          "description": "Filter for logon session identifiers linked to processes.",
+          "type": "object",
+          "name": "logonIds",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Filter on specific logon session identifiers (array format)."
         }
       ],
       "output_schema": {}
@@ -1464,19 +1430,15 @@
         {
           "title": "Local Time",
           "description": "Specify whether the time filter should use the endpoint’s local time or the server time.",
-          "type": "select",
+          "type": "checkbox",
           "name": "localTime",
           "required": false,
           "visible": true,
           "editable": true,
-          "tooltip": "Choose 'True' to interpret the time filter based on the endpoint’s local time zone or 'False' for the server’s time zone.",
-          "options": [
-            "True",
-            "False"
-          ]
+          "tooltip": "Choose 'True' to interpret the time filter based on the endpoint’s local time zone or 'False' for the server’s time zone."
         },
         {
-          "title": "Time",
+          "title": "Time Filter",
           "description": "A timestamp to filter persistence entries that existed at a specific point in time.",
           "type": "datetime",
           "name": "t",
@@ -1699,16 +1661,12 @@
         {
           "title": "Persist",
           "description": "Specify whether the task should persist until completion if the endpoint is currently offline.",
-          "type": "select",
+          "type": "checkbox",
           "name": "persist",
           "required": false,
           "visible": true,
           "editable": true,
-          "tooltip": "Select 'True' to ensure the task is queued and executed once the endpoint reconnects, or 'False' to skip execution if the endpoint is offline.",
-          "options": [
-            "True",
-            "False"
-          ]
+          "tooltip": "Select 'True' to ensure the task is queued and executed once the endpoint reconnects, or 'False' to skip execution if the endpoint is offline."
         }
       ],
       "output_schema": {}
@@ -1833,16 +1791,12 @@
         {
           "title": "Persist",
           "description": "Specify whether the forensic task should persist until it can be executed if the endpoint is currently offline.",
-          "type": "select",
+          "type": "checkbox",
           "name": "persist",
           "required": false,
           "visible": true,
           "editable": true,
-          "tooltip": "Select 'True' to queue the forensic task until the endpoint reconnects, or 'False' to skip if the endpoint is offline.",
-          "options": [
-            "True",
-            "False"
-          ]
+          "tooltip": "Select 'True' to queue the forensic task until the endpoint reconnects, or 'False' to skip if the endpoint is offline."
         },
         {
           "title": "Processes",
@@ -1876,30 +1830,6 @@
           "editable": true,
           "value": false,
           "tooltip": "Activate at least one scan in processes, startup, disk, advanced, commands or forensic."
-        },
-        {
-          "title": "Disk Paths",
-          "description": "Specify target directories to include in the disk forensic scan. Required only if disk scanning is enabled.",
-          "type": "object",
-          "name": "diskPaths",
-          "required": false,
-          "visible": true,
-          "editable": true,
-          "tooltip": "Provide an array of paths to scan during disk analysis, e.g. [\"C:\\\\Windows\", \"C:\\\\Users\"]."
-        },
-        {
-          "title": "Extensions",
-          "description": "Specify file extensions to target during disk forensic analysis. Required only if disk scanning is enabled.",
-          "type": "object",
-          "name": "extensions",
-          "required": false,
-          "visible": true,
-          "editable": true,
-          "value": [
-            ".mov",
-            ".png"
-          ],
-          "tooltip": "Provide an array of file extensions to scan, e.g. [\".mov\", \".png\"]."
         },
         {
           "title": "Privacy",
@@ -1955,6 +1885,30 @@
           "editable": true,
           "value": false,
           "tooltip": "Enable to perform a full forensic investigation that includes all selected scanning modules."
+        },
+        {
+          "title": "Disk Paths",
+          "description": "Specify target directories to include in the disk forensic scan. Required only if disk scanning is enabled.",
+          "type": "object",
+          "name": "diskPaths",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Provide an array of paths to scan during disk analysis, e.g. [\"C:\\\\Windows\", \"C:\\\\Users\"]."
+        },
+        {
+          "title": "Extensions",
+          "description": "Specify file extensions to target during disk forensic analysis. Required only if disk scanning is enabled.",
+          "type": "object",
+          "name": "extensions",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "value": [
+            ".mov",
+            ".png"
+          ],
+          "tooltip": "Provide an array of file extensions to scan, e.g. [\".mov\", \".png\"]."
         }
       ],
       "output_schema": {}
@@ -2822,16 +2776,12 @@
         {
           "title": "Persist",
           "description": "Specify whether the task should remain pending until execution if the endpoint is currently offline.",
-          "type": "select",
+          "type": "checkbox",
           "name": "persist",
           "required": false,
           "visible": true,
           "editable": true,
-          "tooltip": "Select 'True' to ensure the scan is executed automatically once the endpoint reconnects, or 'False' to skip if the endpoint is offline.",
-          "options": [
-            "True",
-            "False"
-          ]
+          "tooltip": "Select 'True' to ensure the scan is executed automatically once the endpoint reconnects, or 'False' to skip if the endpoint is offline."
         },
         {
           "title": "Scan ADS",
@@ -2997,16 +2947,12 @@
         {
           "title": "Persist",
           "description": "Defines whether the task should be queued and executed when the endpoint reconnects if it is currently offline.",
-          "type": "select",
+          "type": "checkbox",
           "name": "persist",
           "required": false,
           "visible": true,
           "editable": true,
-          "tooltip": "If set to 'True', the quarantine task will persist and execute automatically once the endpoint becomes available.",
-          "options": [
-            "True",
-            "False"
-          ]
+          "tooltip": "If set to 'True', the quarantine task will persist and execute automatically once the endpoint becomes available."
         },
         {
           "title": "Notification",
@@ -3061,17 +3007,12 @@
         {
           "title": "Persist",
           "description": "Defines whether the restore task should be queued and executed when the endpoint reconnects if it is currently offline.",
-          "type": "select",
+          "type": "checkbox",
           "name": "persist",
           "required": false,
           "visible": true,
           "editable": true,
-          "value": "",
-          "tooltip": "If set to 'True', the restore task will persist and execute automatically once the endpoint becomes available.",
-          "options": [
-            "True",
-            "False"
-          ]
+          "tooltip": "If set to 'True', the restore task will persist and execute automatically once the endpoint becomes available."
         }
       ],
       "output_schema": {}
