@@ -1,0 +1,3147 @@
+{
+  "name": "tehtris-edr",
+  "version": "1.0.0",
+  "label": "TEHTRIS EDR",
+  "description": "TEHTRIS EDR (Endpoint Detection and Response) is designed to detect, analyze, and respond to security incidents on endpoints (such as computers, servers, and mobile devices) in real time.",
+  "publisher": "Fortinet SE",
+  "cs_approved": false,
+  "cs_compatible": true,
+  "contributor": "ArnaudN",
+  "icon_small_name": "small.png",
+  "icon_large_name": "large.png",
+  "category": [
+    "Endpoint Security"
+  ],
+  "help_online": "https://github.com/fortinet-fortisoar/connector-tehtris-edr/blob/release/1.0.0/docs/readme.md",
+  "ingestion_supported": true,
+  "ingestion_modes": [
+    "scheduled"
+  ],
+  "configuration": {
+    "fields": [
+      {
+        "title": "Server URL",
+        "description": "Specify the URL of the TEHTRIS EDR server to connect and perform automated operations.",
+        "type": "text",
+        "name": "server_url",
+        "required": true,
+        "visible": true,
+        "editable": true,
+        "tooltip": "Specify the URL of the TEHTRIS EDR server to connect and perform automated operations."
+      },
+      {
+        "title": "Password",
+        "description": "Specify the password to connect to the endpoint and perform automated operations",
+        "type": "password",
+        "name": "password",
+        "required": true,
+        "visible": true,
+        "editable": true,
+        "tooltip": "Specify the password to connect to the endpoint and perform automated operations"
+      },
+      {
+        "title": "Verify SSL",
+        "description": "Specifies whether the SSL certificate for the server is to be verified. By default, this option is selected, i.e., set to true.",
+        "type": "checkbox",
+        "name": "verify_ssl",
+        "required": false,
+        "visible": true,
+        "editable": true,
+        "value": true,
+        "tooltip": "Specifies whether the SSL certificate for the server is to be verified. By default, this option is selected, i.e., set to true."
+      }
+    ]
+  },
+  "operations": [
+    {
+      "operation": "fetch_events",
+      "title": "Fetch Events",
+      "annotation": "fetch_events",
+      "category": "utilities",
+      "description": "Fetch events from the TEHTRIS EDR based on the filter criteria that you have specified.",
+      "parameters": [
+        {
+          "title": "From Date",
+          "description": "Specify the start timestamp for filtering events.",
+          "type": "datetime",
+          "name": "fromDate",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Specify the start timestamp for filtering events."
+        },
+        {
+          "title": "To Date",
+          "description": "Specify the end date-time for filtering events.",
+          "type": "datetime",
+          "name": "toDate",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Specify the end date-time for filtering events."
+        },
+        {
+          "title": "Event ID",
+          "description": "Specify the unique event ID to fetch details for a specific event.",
+          "type": "integer",
+          "name": "eventId",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Specify the unique event ID to fetch details for a specific event."
+        },
+        {
+          "title": "Count Only",
+          "description": "Select whether to count alerts only instead of retrieving the full list of events.",
+          "type": "checkbox",
+          "name": "countOnly",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Select whether to count alerts only instead of retrieving the full list of events."
+        },
+        {
+          "title": "By Tag",
+          "description": "Select whether to count alerts by their associated tags when count Only is enabled.",
+          "type": "checkbox",
+          "name": "byTag",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Select whether to count alerts by their associated tags when count Only is enabled."
+        },
+        {
+          "title": "Filter ID",
+          "description": "Specify the filter ID to use for retrieving events. If none is provided, the first filter associated with the API key will be used.",
+          "type": "text",
+          "name": "filterID",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Specify the filter ID to use for retrieving events. If none is provided, the first filter associated with the API key will be used."
+        },
+        {
+          "title": "Created or Modified",
+          "description": "Select whether to fetch events based on their creation time or last modification time.",
+          "type": "select",
+          "name": "createdOrModified",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Select whether to fetch events based on their creation time or last modification time.",
+          "options": [
+            "CREATED",
+            "MODIFIED"
+          ]
+        },
+        {
+          "title": "Offset",
+          "description": "Specify the number of events to skip before starting to retrieve results, useful for pagination.",
+          "type": "integer",
+          "name": "offset",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "If Count Only is false, the number of events to skip before starting to retrieve results, useful for pagination."
+        },
+        {
+          "title": "Limit",
+          "description": "Specify the maximum number of events to fetch, up to a limit of 1000.",
+          "type": "integer",
+          "name": "limit",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Specify the maximum number of events to fetch, up to a limit of 1000."
+        }
+      ],
+      "output_schema": {}
+    },
+    {
+      "operation": "list_folders_and_filters",
+      "title": "List Folders and Filters",
+      "annotation": "list_folders_and_filters",
+      "category": "utilities",
+      "description": "Retrieve a list of all folders and all filters the user has access to (as owner, editor or viewer) from TEHTRIS EDR based on the filter criteria that you have specified.",
+      "parameters": [
+        {
+          "title": "Name",
+          "description": "Specify the name or partial name to filter and return only folders and filters that contain this value.",
+          "type": "text",
+          "name": "name",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "value": "",
+          "tooltip": "Specify the name or partial name to filter and return only folders and filters that contain this value."
+        },
+        {
+          "title": "Module",
+          "description": "Specify the module name to return only filters related to that specific module.",
+          "type": "text",
+          "name": "module",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Specify the module name to return only filters related to that specific module."
+        },
+        {
+          "title": "Old Filter ID",
+          "description": "Specify the old filter ID to search for filters that were migrated from releases prior to version 10.1.",
+          "type": "integer",
+          "name": "oldFilterId",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Specify the old filter ID to search for filters that were migrated from releases prior to version 10.1."
+        },
+        {
+          "title": "Filters Only",
+          "description": "Select whether to return only filters, leaving the folder list empty.",
+          "type": "checkbox",
+          "name": "filtersOnly",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Select whether to return only filters, leaving the folder list empty."
+        },
+        {
+          "title": "Preset Filters",
+          "description": "Select whether to include preset filters in addition to the user’s own filters.",
+          "type": "checkbox",
+          "name": "presetFilters",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Select whether to include preset filters in addition to the user’s own filters."
+        }
+      ],
+      "output_schema": {}
+    },
+    {
+      "operation": "get_filter_by_id",
+      "title": "Get Filter by ID",
+      "annotation": "get_filter_by_id",
+      "category": "utilities",
+      "description": "Retrieve a filter by its unique ID from the TEHTRIS EDR platform.",
+      "parameters": [
+        {
+          "title": "Filter ID",
+          "description": "Specify the unique filter ID to retrieve the corresponding filter details.",
+          "type": "text",
+          "name": "filterId",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Specify the unique filter ID to retrieve the corresponding filter details."
+        },
+        {
+          "title": "With History",
+          "description": "Select whether to retrieve the filter along with its historical versions and changes.",
+          "type": "checkbox",
+          "name": "withHistory",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Select whether to retrieve the filter along with its historical versions and changes."
+        }
+      ],
+      "output_schema": {}
+    },
+    {
+      "operation": "create_filter",
+      "title": "Create Filter",
+      "annotation": "create_filter",
+      "category": "utilities",
+      "description": "Create a new filter in the TEHTRIS EDR platform based on specified parameters.",
+      "parameters": [
+        {
+          "title": "Name",
+          "description": "Specify the name for the new filter. The name should clearly describe the purpose or scope of the filter.",
+          "type": "text",
+          "name": "name",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Specify the name for the new filter. The name should clearly describe the purpose or scope of the filter."
+        },
+        {
+          "title": "Minimum Severity Level",
+          "description": "Specify the minimum severity level that this filter should capture, where 0 represents the least severe and 9 the most severe.",
+          "type": "integer",
+          "name": "lvlmin",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Minimum severity level to be filtered (0-9)"
+        },
+        {
+          "title": "Maximum Severity Level",
+          "description": "Specify the maximum severity level that this filter should capture, where 0 represents the least severe and 9 the most severe.",
+          "type": "integer",
+          "name": "lvlmax",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Maximum severity level to be filtered (0-9)"
+        },
+        {
+          "title": "Description",
+          "description": "Specify the description for the filter.",
+          "type": "text",
+          "name": "description",
+          "required": true,
+          "visible": true,
+          "editable": false,
+          "value": "Filter autocreated by FortiSOAR for playbook ingestion, based on severity level.",
+          "tooltip": "Specify the description for the filter."
+        },
+        {
+          "title": "Module",
+          "description": "Specify the module to which this filter applies.",
+          "type": "text",
+          "name": "module",
+          "required": true,
+          "visible": true,
+          "editable": false,
+          "value": "Endpoint",
+          "tooltip": "Specify the module to which this filter applies."
+        }
+      ],
+      "output_schema": {}
+    },
+    {
+      "operation": "update_filter",
+      "title": "Update Filter",
+      "annotation": "update_filter",
+      "category": "utilities",
+      "description": "Update an existing filter in the TEHTRIS EDR platform by modifying its parameters or attributes.",
+      "parameters": [
+        {
+          "title": "Filter ID",
+          "description": "Specify the unique filter ID for the filter you want to update.",
+          "type": "text",
+          "name": "filterId",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Specify the unique ID of the filter to be updated."
+        },
+        {
+          "title": "Name",
+          "description": "Specify the updated name for the filter. The name should clearly represent the filter’s purpose.",
+          "type": "text",
+          "name": "name",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Specify the new name for the filter being updated."
+        },
+        {
+          "title": "Minimum Severity Level",
+          "description": "Specify the minimum severity level that the filter should capture, where 0 is the least severe and 9 is the most severe.",
+          "type": "integer",
+          "name": "lvlmin",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Minimum severity level to be filtered (0-9)"
+        },
+        {
+          "title": "Maximum Severity Level",
+          "description": "Specify the maximum severity level that this filter should capture, where 0 represents the least severe and 9 the most severe.",
+          "type": "integer",
+          "name": "lvlmax",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Maximum severity level to be filtered (0-9)"
+        },
+        {
+          "title": "Description",
+          "description": "Specify the updated description for the filter to provide context about its purpose or criteria.",
+          "type": "text",
+          "name": "description",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Specify the description of the filter to explain its purpose or context."
+        },
+        {
+          "title": "Tag",
+          "description": "Specify the tag associated with the filter to update.",
+          "type": "text",
+          "name": "tag",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Specify the tag associated with the filter to update."
+        },
+        {
+          "title": "Device Name",
+          "description": "Specify the name of the device associated with this filter to update.",
+          "type": "text",
+          "name": "deviceName",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Specify the name of the device associated with this filter to update."
+        },
+        {
+          "title": "Path",
+          "description": "Specify the relevant file path if applicable to update the filter.",
+          "type": "text",
+          "name": "path",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Specify the relevant file path if applicable to update the filter."
+        },
+        {
+          "title": "CMD Line",
+          "description": "Specify the command line value associated with this filter to update.",
+          "type": "text",
+          "name": "cmdline",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Specify the command line value associated with this filter to update."
+        },
+        {
+          "title": "SHA256",
+          "description": "Specify the SHA-256 hash that may be tied to the filter for identification or verification purposes.",
+          "type": "text",
+          "name": "sha256",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Specify the SHA-256 hash that may be tied to the filter for identification or verification purposes."
+        },
+        {
+          "title": "Event Name",
+          "description": "Specify the event name related to the filter to update.",
+          "type": "text",
+          "name": "eventName",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Specify the event name related to the filter to update."
+        },
+        {
+          "title": "EG Knowledge Base ID",
+          "description": "Specify the EG knowledge base ID associated with the filter to update.",
+          "type": "text",
+          "name": "egKBId",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Specify the EG knowledge base ID associated with the filter to update."
+        },
+        {
+          "title": "Module",
+          "description": "Select the applicable module for the filter. By default, it is set to \"Endpoint\".",
+          "type": "select",
+          "name": "module",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "value": "Endpoint",
+          "options": [
+            "Endpoint"
+          ],
+          "tooltip": "Select the applicable module for the filter. By default, it is set to \"Endpoint\"."
+        }
+      ],
+      "output_schema": {}
+    },
+    {
+      "operation": "delete_filter",
+      "title": "Delete Filter",
+      "annotation": "delete_filter",
+      "category": "utilities",
+      "description": "Delete an existing filter from the TEHTRIS EDR platform using its unique identifier.",
+      "parameters": [
+        {
+          "title": "Filter ID",
+          "description": "Specify the filter ID corresponding to the filter that should be removed from the system.",
+          "type": "text",
+          "name": "filterId",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Specify the unique ID of the filter you want to delete."
+        }
+      ],
+      "output_schema": {}
+    },
+    {
+      "operation": "set_event_status",
+      "title": "Set an event status",
+      "category": "utilities",
+      "annotation": "set_event_status",
+      "description": "Update the status of a specific event in the TEHTRIS EDR platform. The \"Old Status\" field can optionally be used to verify the current status before updating, or set to null to skip verification.",
+      "parameters": [
+        {
+          "title": "Event ID",
+          "description": "Specify the event ID corresponding to the event you want to update in the TEHTRIS EDR platform.",
+          "type": "integer",
+          "name": "id",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Specify the unique identifier (ID) of the event whose status needs to be updated."
+        },
+        {
+          "title": "New Status",
+          "description": "Select the new status to assign to the event. Possible values include 'checked', 'false positive', 'incident', 'on going', 'pending', and 'resolved'.",
+          "type": "select",
+          "name": "status",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Select the new status to assign to the event. Possible values include 'checked', 'false positive', 'incident', 'on going', 'pending', and 'resolved'.",
+          "options": [
+            "null",
+            "checked",
+            "false positive",
+            "incident",
+            "on going",
+            "pending",
+            "resolved"
+          ]
+        },
+        {
+          "title": "Old Status",
+          "description": "Specify the current status of the event to verify before updating. Use null to bypass the old status check.",
+          "type": "text",
+          "name": "oldStatus",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "value": null,
+          "tooltip": "Specify the current (old) status of the event before updating. Use null to skip verification."
+        }
+      ],
+      "output_schema": {}
+    },
+    {
+      "operation": "get_all_endpoints",
+      "title": "Get All Endpoints",
+      "category": "utilities",
+      "annotation": "get_all_endpoints",
+      "description": "Retrieve all endpoints managed by the TEHTRIS EDR platform, with optional filters such as tags, hostnames, domains, IP ranges, OS versions, and time-based parameters.",
+      "parameters": [
+        {
+          "title": "Hostname",
+          "description": "Specify the hostname of the endpoint to filter results.",
+          "type": "text",
+          "name": "hostname",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Filter endpoints by hostname."
+        },
+        {
+          "title": "Hostname Regex",
+          "description": "Specify a regular expression to match endpoint hostnames.",
+          "type": "text",
+          "name": "hostnameRegex",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Filter endpoints by hostname using a regular expression."
+        },
+        {
+          "title": "Domain",
+          "description": "Specify the domain name to filter endpoints.",
+          "type": "text",
+          "name": "domain",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Filter endpoints by domain name."
+        },
+        {
+          "title": "Domain Regex",
+          "description": "Specify a regular expression to match endpoint domains.",
+          "type": "text",
+          "name": "domainRegex",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Filter endpoints by domain using a regular expression."
+        },
+        {
+          "title": "Network",
+          "description": "Specify the local or remote IP address or network subnet to filter endpoints.",
+          "type": "text",
+          "name": "network",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Filter endpoints by network IP or subnet. Example: 192.168.0.142 or 192.168.0.0/24."
+        },
+        {
+          "title": "First Seen From",
+          "description": "Specify the start date-time for filtering endpoints based on when they were first seen.",
+          "type": "datetime",
+          "name": "firstSeenFrom",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Filter endpoints first seen after this date-time. Example: 2025-09-26T14:40:22.924Z."
+        },
+        {
+          "title": "First Seen To",
+          "description": "Specify the end date-time for filtering endpoints based on when they were first seen.",
+          "type": "datetime",
+          "name": "firstSeenTo",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Filter endpoints first seen before this date-time. Example: 2025-09-26T14:40:22.924Z."
+        },
+        {
+          "title": "Last Seen From",
+          "description": "Specify the start date-time for filtering endpoints based on when they were last seen.",
+          "type": "datetime",
+          "name": "lastSeenFrom",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Filter endpoints last seen after this date-time. Example: 2025-09-26T14:40:22.924Z."
+        },
+        {
+          "title": "Last Seen To",
+          "description": "Specify the end date-time for filtering endpoints based on when they were last seen.",
+          "type": "datetime",
+          "name": "lastSeenTo",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Filter endpoints last seen before this date-time. Example: 2025-09-26T14:40:22.924Z."
+        },
+        {
+          "title": "Offset",
+          "description": "Specify the offset value for pagination. The default value is 0.",
+          "type": "integer",
+          "name": "offset",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "value": 0,
+          "tooltip": "Specify pagination offset. Default is 0."
+        },
+        {
+          "title": "Tags",
+          "description": "Provide the list of tags to filter endpoints. Example: [\"ABC_TEST\", \"DEF_TEST\"].",
+          "type": "json",
+          "name": "tags",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "value": [
+            "ABC_TEST",
+            "DEF_TEST"
+          ],
+          "tooltip": "Filter endpoints by tags. Example: [\"ABC_TEST\", \"DEF_TEST\"]."
+        },
+        {
+          "title": "Versions",
+          "description": "Provide the list of EDR versions to filter endpoints. Example: [\"1.0.2\", \"1.1.0\"].",
+          "type": "json",
+          "name": "versions",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "value": [
+            "1.0.2",
+            "1.1.0"
+          ],
+          "tooltip": "Filter endpoints by EDR version. Example: [\"1.0.2\", \"1.1.0\"]."
+        },
+        {
+          "title": "Config UUIDs",
+          "description": "Provide the list of configuration UUIDs to filter endpoints. Example: [\"uuid-123\", \"uuid-456\"].",
+          "type": "json",
+          "name": "configUuid",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "value": [
+            "uuid-123",
+            "uuid-456"
+          ],
+          "tooltip": "Filter endpoints by configuration UUIDs. Example: [\"uuid-123\", \"uuid-456\"]."
+        },
+        {
+          "title": "UUIDs",
+          "description": "Provide the list of endpoint UUIDs to filter results. Example: [\"uuid-abc\", \"uuid-def\"].",
+          "type": "json",
+          "name": "uuids",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "value": [
+            "uuid-abc",
+            "uuid-def"
+          ],
+          "tooltip": "Filter endpoints by their UUIDs. Example: [\"uuid-abc\", \"uuid-def\"]."
+        },
+        {
+          "title": "Appliance IDs",
+          "description": "Provide the list of appliance IDs to filter endpoints. If not specified, defaults to appliances where the user has access rights.",
+          "type": "json",
+          "name": "applianceIds",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Filter endpoints by appliance IDs. Defaults to appliances where the user has access rights. Example: [\"appliance-001\"]."
+        },
+        {
+          "title": "OS",
+          "description": "Provide the operating system filter in dictionary format. Example: {\"windows\": [\"10\", \"8\"], \"linux\": [\"Ubuntu 18.04 bionic\"]}.",
+          "type": "json",
+          "name": "os",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "value": {
+            "windows": [
+              "10",
+              "8"
+            ],
+            "linux": [
+              "Ubuntu 18.04 bionic"
+            ]
+          },
+          "tooltip": "Filter endpoints by operating system. Example: {\"windows\": [\"10\", \"8\"], \"linux\": [\"Ubuntu 18.04 bionic\"]}."
+        }
+      ],
+      "output_schema": {}
+    },
+    {
+      "operation": "get_isolation_status",
+      "title": "Get Isolation Status",
+      "annotation": "get_isolation_status",
+      "category": "utilities",
+      "description": "Retrieve the current network isolation status of a specific endpoint from the TEHTRIS EDR platform.",
+      "parameters": [
+        {
+          "title": "Appliance ID",
+          "description": "Specify the appliance ID that manages the endpoint whose isolation status is being retrieved.",
+          "type": "integer",
+          "name": "applianceId",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Specify the unique ID of the appliance managing the endpoint."
+        },
+        {
+          "title": "EDR UUID",
+          "description": "Specify the EDR UUID corresponding to the endpoint whose isolation status you want to retrieve.",
+          "type": "text",
+          "name": "edrUuid",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Specify the UUID of the endpoint to check its isolation status."
+        }
+      ],
+      "output_schema": {}
+    },
+    {
+      "operation": "send_isolation_action",
+      "title": "Send Isolation Action",
+      "category": "utilities",
+      "annotation": "send_isolation_action",
+      "description": "Send a network isolation command to a specific endpoint through the TEHTRIS EDR platform. This allows enabling, disabling, or whitelisting isolation rules on managed endpoints.",
+      "parameters": [
+        {
+          "title": "Appliance ID",
+          "description": "Specify the appliance ID that manages the endpoint on which the isolation action will be performed.",
+          "type": "integer",
+          "name": "applianceId",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Specify the unique ID of the appliance where the isolation action should be executed."
+        },
+        {
+          "title": "EDR UUID",
+          "description": "Specify the EDR UUID corresponding to the endpoint targeted for the isolation command.",
+          "type": "text",
+          "name": "edrUuid",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Specify the UUID of the endpoint on which to perform the isolation action."
+        },
+        {
+          "title": "Isolation Action",
+          "description": "Select the type of isolation action to perform — Enable, Disable, or Whitelist — based on the required isolation state of the endpoint.",
+          "type": "select",
+          "name": "isolationAction",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "value": "enable",
+          "tooltip": "Select the isolation action to perform: \"Enable\" to block all connections except TEHTRIS and DNS, \"Disable\" to remove isolation, or \"Whitelist\" to allow specific traffic during isolation.",
+          "options": [
+            "Enable",
+            "Disable",
+            "Whitelist"
+          ]
+        },
+        {
+          "title": "WhiteList",
+          "description": "Specify the whitelist ruleset to apply during isolation, allowing specific connections or policies when soft isolation is active.",
+          "type": "text",
+          "name": "toWhitelist",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Specify the ruleset or IPs to whitelist when isolation is enabled or using the whitelist command."
+        },
+        {
+          "title": "Power",
+          "description": "Select whether to use Soft isolation (policy-based) or Hard isolation (immediate enforcement without configuration).",
+          "type": "select",
+          "name": "power",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Select the isolation power mode: \"Soft\" applies the isolation policy, while \"Hard\" enforces it directly without configuration.",
+          "options": [
+            "Soft",
+            "Hard"
+          ]
+        },
+        {
+          "title": "Persist",
+          "description": "Select whether to queue the isolation action until the endpoint reconnects, ensuring execution even when the endpoint is temporarily disconnected.",
+          "type": "checkbox",
+          "name": "persist",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Select whether the isolation action should persist if the endpoint is currently offline. If true, the action executes once the endpoint reconnects."
+        }
+      ],
+      "output_schema": {}
+    },
+    {
+      "operation": "get_all_global_policies",
+      "title": "Get All Global Policies",
+      "category": "utilities",
+      "annotation": "get_all_global_policies",
+      "description": "Retrieve all global policies from the TEHTRIS EDR platform.",
+      "parameters": [],
+      "output_schema": {}
+    },
+    {
+      "operation": "create_new_global_policies",
+      "title": "Create New Global Policies",
+      "category": "utilities",
+      "annotation": "create_new_global_policies",
+      "description": "Create or update global policies within the TEHTRIS EDR platform. This operation supports both upsert and downsert actions, depending on the selected method.",
+      "parameters": [
+        {
+          "title": "Upsert/Downsert",
+          "description": "Select the HTTP method to define how the policy should be processed — \"POST\", to create a new policy (downsert) or \"PUT\" to update an existing one (upsert).",
+          "type": "select",
+          "name": "position",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "value": "POST",
+          "tooltip": "Select the method for the operation. Use \"POST\" for downsert (insert new) or \"PUT\" for upsert (update existing).",
+          "options": [
+            "POST",
+            "PUT"
+          ]
+        },
+        {
+          "title": "Policy Data",
+          "description": "Specify the complete JSON data defining the global policy, including configurations, parameters, and applicable rules.",
+          "type": "json",
+          "name": "policyData",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Specify the data payload for the new or updated global policy in JSON format."
+        }
+      ],
+      "output_schema": {}
+    },
+    {
+      "operation": "get_tags",
+      "title": "Get Tags",
+      "category": "utilities",
+      "annotation": "get_tags",
+      "description": "Retrieve all tags from the TEHTRIS EDR platform.",
+      "parameters": [],
+      "output_schema": {}
+    },
+    {
+      "operation": "update_endpoints_tags",
+      "title": "Update Endpoints Tags",
+      "annotation": "update_endpoints_tags",
+      "category": "utilities",
+      "description": "Update or assign specific tags to one or multiple endpoints managed by the TEHTRIS EDR platform.",
+      "parameters": [
+        {
+          "title": "EDR UUID List",
+          "description": "Specify the list of EDR UUIDs representing the endpoints that will receive the new or updated tags.",
+          "type": "object",
+          "name": "edrUuidList",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "value": [
+            "UUID1",
+            "UUID2"
+          ],
+          "tooltip": "Specify the list of endpoint UUIDs to which the tag updates will be applied. Format: [\"UUID1\", \"UUID2\", ...]"
+        },
+        {
+          "title": "Tags",
+          "description": "Specify the tag value to assign to the endpoints. The tag must follow the format 'XXX_tags', where 'XXX' is a trigram identifier.",
+          "type": "text",
+          "name": "tags",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Specify the tag string to apply, following the pattern XXX_tags (e.g., trigram followed by an underscore and the tag name)."
+        }
+      ],
+      "output_schema": {}
+    },
+    {
+      "operation": "get_accesslogs",
+      "title": "Get Access Logs",
+      "category": "utilities",
+      "annotation": "get_accesslogs",
+      "description": "Create a cursor and fetch the first batch of access log data from the TEHTRIS EDR platform. Access logs are displayed from the most recent to the least recent by default.",
+      "parameters": [
+        {
+          "title": "EDR UUID",
+          "description": "Specify the UUID of the EDR endpoint from which access logs will be fetched.",
+          "type": "text",
+          "name": "edrUuid",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Specify the UUID of the endpoint whose access logs are to be retrieved."
+        },
+        {
+          "title": "Appliance ID",
+          "description": "Specify the ID of the appliance that manages the target endpoint.",
+          "type": "integer",
+          "name": "applianceId",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Specify the unique identifier of the appliance managing the endpoint."
+        },
+        {
+          "title": "Hostname",
+          "description": "Specify the hostname filter for access logs. If omitted, the most recent hostname will be used.",
+          "type": "text",
+          "name": "hostname",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Specify the hostname to filter logs. The last known hostname is used by default if not provided."
+        },
+        {
+          "title": "Admin",
+          "description": "Select whether to return only the count of alerts (True) or the full list of access logs (False).",
+          "type": "checkbox",
+          "name": "admin",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Select whether to count alerts (True) instead of retrieving the full list (False)."
+        },
+        {
+          "title": "Logon Event Time From",
+          "description": "Specify the start timestamp for filtering access logs based on logon event time.",
+          "type": "datetime",
+          "name": "logonEventTimeFrom",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Specify the start of the logon event time range in ISO 8601 format (e.g., 2025-09-26T14:40:22.924Z)."
+        },
+        {
+          "title": "Logon Event Time To",
+          "description": "Specify the end timestamp for filtering access logs based on logon event time. Must be later than \"Logon Event Time From\".",
+          "type": "datetime",
+          "name": "logonEventTimeTo",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Specify the end of the logon event time range in ISO 8601 format (e.g., 2025-09-26T14:40:22.924Z). Must be later than \"Logon Event Time From\"."
+        },
+        {
+          "title": "Limit",
+          "description": "Specify the maximum number of access log entries to fetch in a single query. The value cannot exceed 1000.",
+          "type": "integer",
+          "name": "limit",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "value": 10,
+          "tooltip": "Specify the maximum number of access logs to return (cannot exceed 1000)."
+        },
+        {
+          "title": "Offset",
+          "description": "Specify the number of records to skip before starting to retrieve access log results, for pagination purposes.",
+          "type": "integer",
+          "name": "offset",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "value": 0,
+          "tooltip": "Specify the number of log entries to skip before returning results. Used for pagination."
+        }
+      ],
+      "output_schema": {}
+    },
+    {
+      "operation": "get_users_connected",
+      "title": "Get Users Connected",
+      "annotation": "get_users_connected",
+      "category": "utilities",
+      "description": "Retrieve a list of users who have connected to a specified endpoint within the last 6 months using the TEHTRIS EDR platform.",
+      "parameters": [
+        {
+          "title": "EDR UUID",
+          "description": "Specify the UUID of the EDR endpoint from which to retrieve connected user information.",
+          "type": "text",
+          "name": "edrUuid",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Specify the UUID of the endpoint whose connected users are to be retrieved."
+        },
+        {
+          "title": "Appliance ID",
+          "description": "Specify the unique identifier of the appliance managing the endpoint.",
+          "type": "integer",
+          "name": "applianceId",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Specify the ID of the appliance managing the endpoint."
+        },
+        {
+          "title": "Hostname",
+          "description": "Specify the hostname to filter connected users. If omitted, the latest known hostname will be used.",
+          "type": "text",
+          "name": "hostname",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Specify the hostname to filter results. The last known hostname is used by default if not specified."
+        },
+        {
+          "title": "Limit",
+          "description": "Specify the maximum number of connected user records to retrieve in a single query. The limit cannot exceed 1000.",
+          "type": "integer",
+          "name": "limit",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "value": 10,
+          "tooltip": "Specify the maximum number of connected users to return (cannot exceed 1000)."
+        },
+        {
+          "title": "Offset",
+          "description": "Specify the number of connected user entries to skip before returning results, for pagination purposes.",
+          "type": "integer",
+          "name": "offset",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "value": 0,
+          "tooltip": "Specify the number of records to skip before returning results. Used for pagination."
+        }
+      ],
+      "output_schema": {}
+    },
+    {
+      "operation": "get_network_infos",
+      "title": "Get Network Information",
+      "annotation": "get_network_infos",
+      "category": "utilities",
+      "description": "Retrieve detailed network information for a specified endpoint using the TEHTRIS EDR platform.",
+      "parameters": [
+        {
+          "title": "EDR UUID",
+          "description": "Specify the UUID of the EDR endpoint for which to collect detailed network data.",
+          "type": "text",
+          "name": "edrUuid",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Specify the UUID of the endpoint whose network information you want to retrieve."
+        },
+        {
+          "title": "Appliance ID",
+          "description": "Specify the unique appliance ID associated with the endpoint to retrieve its network details.",
+          "type": "integer",
+          "name": "applianceId",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Specify the ID of the appliance managing this endpoint."
+        },
+        {
+          "title": "Hostname",
+          "description": "Specify the hostname to refine the network information query. Defaults to the latest hostname if omitted.",
+          "type": "text",
+          "name": "hostname",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Specify the hostname to filter results. The latest known hostname is used by default if not provided."
+        }
+      ],
+      "output_schema": {}
+    },
+    {
+      "operation": "get_history_of_processes",
+      "title": "Get Processes History",
+      "category": "utilities",
+      "annotation": "get_history_of_processes",
+      "description": "Retrieve the historical list of processes executed on a specific endpoint within a defined time interval using the TEHTRIS EDR platform.",
+      "parameters": [
+        {
+          "title": "EDR UUID",
+          "description": "The unique identifier of the endpoint (EDR) whose process history is being queried.",
+          "type": "text",
+          "name": "edrUuid",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Specify the UUID of the endpoint whose process history should be retrieved."
+        },
+        {
+          "title": "Appliance ID",
+          "description": "Specify the ID of the appliance managing the specified endpoint.",
+          "type": "integer",
+          "name": "applianceId",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Specify the ID of the appliance managing this endpoint."
+        },
+        {
+          "title": "User Identifier",
+          "description": "Filter by user identifier (SID on Windows, UID on Linux). Supports substring matching.",
+          "type": "text",
+          "name": "userIdentifier",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Filter by user identifier (SID on Windows, UID on Linux). Substring compatible."
+        },
+        {
+          "title": "Username",
+          "description": "Filter results by username associated with the process.",
+          "type": "text",
+          "name": "username",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Filter by username. Substring compatible."
+        },
+        {
+          "title": "Domain Name",
+          "description": "Filter processes based on the domain name. Supports substring matching.",
+          "type": "text",
+          "name": "domainName",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Filter by domain name. Substring compatible."
+        },
+        {
+          "title": "Local Time",
+          "description": "If set to True, converts timestamps to the endpoint’s local time. Defaults to UTC.",
+          "type": "checkbox",
+          "name": "localTime",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "If true, converts timestamps to local time. Defaults to UTC if false."
+        },
+        {
+          "title": "Time Filter",
+          "description": "Select which process lifecycle timestamp to filter by — Alive, Created, or Stopped.",
+          "type": "select",
+          "name": "timeFilter",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "options": [
+            "Alive",
+            "Created",
+            "Stopped"
+          ],
+          "tooltip": "Choose which process time attribute to filter by."
+        },
+        {
+          "title": "Time From",
+          "description": "Start of the time range for retrieving process history. Format: 2025-09-26T14:40:22.924Z.",
+          "type": "datetime",
+          "name": "timeFrom",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Start of the time range for process history. Format: 2025-09-26T14:40:22.924Z."
+        },
+        {
+          "title": "Time To",
+          "description": "End of the time range for retrieving process history. Format: 2025-09-26T14:40:22.924Z.",
+          "type": "datetime",
+          "name": "timeTo",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "End of the time range for process history. Format: 2025-09-26T14:40:22.924Z."
+        },
+        {
+          "title": "SHA256",
+          "description": "Filter processes by their executable file’s SHA256 hash.",
+          "type": "text",
+          "name": "sha256",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Filter by file hash (SHA256)."
+        },
+        {
+          "title": "SHA1",
+          "description": "Filter processes by their executable file’s SHA1 hash.",
+          "type": "text",
+          "name": "sha1",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Filter by file hash (SHA1)."
+        },
+        {
+          "title": "MD5",
+          "description": "Filter processes by their executable file’s MD5 hash.",
+          "type": "text",
+          "name": "md5",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Filter by file hash (MD5)."
+        },
+        {
+          "title": "Path",
+          "description": "Filter processes based on the executable file path. Supports substring matching.",
+          "type": "text",
+          "name": "path",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Filter by executable file path. Substring compatible."
+        },
+        {
+          "title": "CMD Line",
+          "description": "Filter processes by the command line arguments used when launching the process.",
+          "type": "text",
+          "name": "cmdline",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Filter by command line arguments used when launching the process."
+        },
+        {
+          "title": "Limit",
+          "description": "Maximum number of records to return. Value cannot exceed 1000.",
+          "type": "integer",
+          "name": "limit",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "value": 100,
+          "tooltip": "Maximum number of results to return (cannot exceed 1000)."
+        },
+        {
+          "title": "Offset",
+          "description": "Number of records to skip before beginning to return results (for pagination).",
+          "type": "integer",
+          "name": "offset",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "value": 0,
+          "tooltip": "Number of results to skip before starting to collect data (useful for pagination)."
+        },
+        {
+          "title": "Process IDs",
+          "description": "Filter for specific process IDs (PID list).",
+          "type": "object",
+          "name": "pids",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Filter on specific process IDs (array format)."
+        },
+        {
+          "title": "Parent Process IDs",
+          "description": "Filter for specific parent process IDs (PPID list).",
+          "type": "object",
+          "name": "ppids",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Filter on specific parent process IDs (array format)."
+        },
+        {
+          "title": "Logon IDs",
+          "description": "Filter for logon session identifiers linked to processes.",
+          "type": "object",
+          "name": "logonIds",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Filter on specific logon session identifiers (array format)."
+        }
+      ],
+      "output_schema": {}
+    },
+    {
+      "operation": "get_process_tree",
+      "title": "Get Process Tree",
+      "category": "utilities",
+      "annotation": "get_process_tree",
+      "description": "Retrieve the hierarchical process tree for a given process on a specific endpoint using the TEHTRIS EDR platform.",
+      "parameters": [
+        {
+          "title": "EDR UUID",
+          "description": "The unique identifier of the endpoint (EDR) from which the process tree will be retrieved.",
+          "type": "text",
+          "name": "edrUuid",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Specify the EDR UUID of the endpoint."
+        },
+        {
+          "title": "Appliance ID",
+          "description": "Specify the identifier of the appliance managing the target endpoint.",
+          "type": "integer",
+          "name": "applianceId",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Specify the appliance ID of the appliance."
+        },
+        {
+          "title": "Process ID",
+          "description": "The process ID (PID) used as the root of the process tree to be retrieved.",
+          "type": "integer",
+          "name": "pid",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "tooltip": "PID of the process used to build the tree."
+        },
+        {
+          "title": "Created Time",
+          "description": "The local creation time of the process, used to identify it precisely. Format: 2025-09-26T14:40:22.924Z.",
+          "type": "datetime",
+          "name": "createTime",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Local created time of the process. Format date-time. 2025-09-26T14:40:22.924Z."
+        },
+        {
+          "title": "Number of Parents",
+          "description": "Specifies how many parent processes should be included in the returned process tree hierarchy.",
+          "type": "integer",
+          "name": "nbParents",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Number of parent processes to retrieve."
+        },
+        {
+          "title": "Limit",
+          "description": "Maximum number of processes to retrieve in the tree. Cannot exceed 1000.",
+          "type": "integer",
+          "name": "limit",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "value": 100,
+          "tooltip": "Maximum number of results to return (cannot exceed 1000)."
+        },
+        {
+          "title": "Offset",
+          "description": "Pagination offset for results. This parameter is deprecated and fixed to 0.",
+          "type": "integer",
+          "name": "offset",
+          "required": false,
+          "visible": true,
+          "editable": false,
+          "value": 0,
+          "tooltip": "Offset is deprecated and locked to 0."
+        }
+      ],
+      "output_schema": {}
+    },
+    {
+      "operation": "get_persistence_entries",
+      "title": "Get Persistence Entries",
+      "category": "utilities",
+      "annotation": "get_persistence_entries",
+      "description": "Retrieve persistence mechanisms (such as services, startup scripts, cron jobs, or configuration-based auto-start entries) detected on a specified Linux endpoint.",
+      "parameters": [
+        {
+          "title": "EDR UUID",
+          "description": "Specify the unique identifier (UUID) of the endpoint as registered in the TEHTRIS EDR system.",
+          "type": "text",
+          "name": "edrUuid",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Provide the UUID assigned to the endpoint within the TEHTRIS EDR platform. This uniquely identifies the device being queried."
+        },
+        {
+          "title": "Appliance ID",
+          "description": "Specify the numeric identifier of the TEHTRIS EDR appliance managing the specified endpoint.",
+          "type": "integer",
+          "name": "applianceId",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Enter the appliance ID corresponding to the TEHTRIS EDR appliance that manages the endpoint."
+        },
+        {
+          "title": "Local Time",
+          "description": "Specify whether the time filter should use the endpoint’s local time or the server time.",
+          "type": "checkbox",
+          "name": "localTime",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Choose 'True' to interpret the time filter based on the endpoint’s local time zone or 'False' for the server’s time zone."
+        },
+        {
+          "title": "Time Filter",
+          "description": "A timestamp to filter persistence entries that existed at a specific point in time.",
+          "type": "datetime",
+          "name": "t",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Specify an ISO 8601 timestamp (e.g., 2025-09-26T14:40:22.924Z) to retrieve persistence entries active at that moment. If omitted, all currently active entries are returned."
+        },
+        {
+          "title": "Persistence Path",
+          "description": "Filter results based on the file path where the persistence mechanism is defined (e.g., configuration file or startup script).",
+          "type": "text",
+          "name": "persistence_path",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Filter on \"source\" file path (substring compatible). This means if the persistence is defined in a configuration file, the filter will be applied on that file's path"
+        },
+        {
+          "title": "Persistence Type",
+          "description": "Filter persistence entries by their type or category (e.g., SystemD service, cron job, startup script).",
+          "type": "text",
+          "name": "persistence_type",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Filter on the type of persistence, similar to previous \"category\" parameter (substring compatible)"
+        },
+        {
+          "title": "Name",
+          "description": "Filter by the name associated with the persistence mechanism.",
+          "type": "text",
+          "name": "name",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Filter on persistence name (substring compatible). The structure of the name can vary depending on the type of persistence. For instance, for a SystemD service, it would be the service name along with the operation associated (start/stop), or for an Upstart job, it would be the job's name"
+        },
+        {
+          "title": "SHA256",
+          "description": "Filter persistence entries associated with files that have the specified SHA-256 hash value.",
+          "type": "text",
+          "name": "sha256",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Filter persistence entries associated with files that have the specified SHA-256 hash value."
+        },
+        {
+          "title": "SHA1",
+          "description": "Filter persistence entries associated with files that have the specified SHA-1 hash value.",
+          "type": "text",
+          "name": "sha1",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Filter persistence entries associated with files that have the specified SHA-1 hash value."
+        },
+        {
+          "title": "MD5",
+          "description": "Filter persistence entries associated with files that have the specified MD5 hash value.",
+          "type": "text",
+          "name": "md5",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Filter persistence entries associated with files that have the specified MD5 hash value"
+        },
+        {
+          "title": "Path",
+          "description": "Filter based on the file path of the executable or component involved in the persistence mechanism.",
+          "type": "text",
+          "name": "path",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Filter based on the file path of the executable or component involved in the persistence mechanism."
+        },
+        {
+          "title": "CMD Line",
+          "description": "Filter persistence entries based on command-line arguments or execution parameters.",
+          "type": "text",
+          "name": "cmdline",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Provide a substring to match command-line strings associated with the persistence entry."
+        },
+        {
+          "title": "Limit",
+          "description": "The maximum number of persistence entries to return in the result set.",
+          "type": "integer",
+          "name": "limit",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "value": 10,
+          "tooltip": "Specify the maximum number of entries to retrieve (cannot exceed 10,000)."
+        },
+        {
+          "title": "Offset",
+          "description": "The number of entries to skip before starting to collect the result set.",
+          "type": "integer",
+          "name": "offset",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Specify how many entries to skip from the beginning of the result set, useful for pagination."
+        }
+      ],
+      "output_schema": {}
+    },
+    {
+      "operation": "get_usb_history",
+      "title": "Get USB History",
+      "category": "utilities",
+      "annotation": "get_usb_history",
+      "description": "Retrieve the history of USB device connections for a specified endpoint from TEHTRIS EDR platform.",
+      "parameters": [
+        {
+          "title": "EDR UUID",
+          "description": "The unique identifier (UUID) of the endpoint as registered in the TEHTRIS EDR system.",
+          "type": "text",
+          "name": "edrUuid",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "tooltip": "The unique identifier (UUID) of the endpoint as registered in the TEHTRIS EDR system."
+        },
+        {
+          "title": "Appliance ID",
+          "description": "The numeric identifier of the EDR appliance managing the endpoint.",
+          "type": "integer",
+          "name": "applianceId",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Enter the ID of the EDR appliance that manages or monitors the specified endpoint."
+        },
+        {
+          "title": "Hostname",
+          "description": "Filter results by the hostname of the endpoint associated with the USB activity.",
+          "type": "text",
+          "name": "hostname",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Specify a hostname to limit results to USB events from a specific device. If not provided, the last known host is used by default."
+        }
+      ],
+      "output_schema": {}
+    },
+    {
+      "operation": "get_browser_security",
+      "title": "Get Browser Security",
+      "category": "utilities",
+      "annotation": "get_browser_security",
+      "description": "Retrieve detailed browser security information for a specified endpoint from TEHTRIS EDR platform.",
+      "parameters": [
+        {
+          "title": "EDR UUID",
+          "description": "The unique identifier (UUID) of the endpoint as registered in the TEHTRIS EDR system.",
+          "type": "text",
+          "name": "edrUuid",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "tooltip": "The unique identifier (UUID) of the endpoint as registered in the TEHTRIS EDR system."
+        },
+        {
+          "title": "Appliance ID",
+          "description": "The numeric identifier of the EDR appliance managing the endpoint.",
+          "type": "integer",
+          "name": "applianceId",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Enter the ID of the EDR appliance that manages or monitors the specified endpoint."
+        },
+        {
+          "title": "Hostname",
+          "description": "Filter results by the hostname of the endpoint associated with the browser security information.",
+          "type": "text",
+          "name": "hostname",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Specify a hostname to limit results to browser security data from a specific device. If not provided, the last known host for the UUID is used by default."
+        }
+      ],
+      "output_schema": {}
+    },
+    {
+      "operation": "get_software_list",
+      "title": "Get Software List",
+      "category": "utilities",
+      "annotation": "get_software_list",
+      "description": "Retrieve a comprehensive list of software installed on a specified endpoint from TEHTRIS EDR platform.",
+      "parameters": [
+        {
+          "title": "EDR UUID",
+          "description": "The unique identifier (UUID) of the endpoint as registered in the TEHTRIS EDR system.",
+          "type": "text",
+          "name": "edrUuid",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "tooltip": "The unique identifier (UUID) of the endpoint as registered in the TEHTRIS EDR system."
+        },
+        {
+          "title": "Appliance ID",
+          "description": "The numeric identifier of the EDR appliance managing the endpoint.",
+          "type": "integer",
+          "name": "applianceId",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Enter the ID of the EDR appliance responsible for managing or monitoring the specified endpoint."
+        },
+        {
+          "title": "Persist",
+          "description": "Specify whether the task should persist until completion if the endpoint is currently offline.",
+          "type": "checkbox",
+          "name": "persist",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Select 'True' to ensure the task is queued and executed once the endpoint reconnects, or 'False' to skip execution if the endpoint is offline."
+        }
+      ],
+      "output_schema": {}
+    },
+    {
+      "operation": "fetch_info_about_endpoint",
+      "title": "Fetch Endpoint Details",
+      "category": "utilities",
+      "annotation": "fetch_info_about_endpoint",
+      "description": "Retrieve detailed system information about a specified endpoint, including hardware and user-related data from TEHTRIS EDR platform.",
+      "parameters": [
+        {
+          "title": "EDR UUID",
+          "description": "The unique identifier (UUID) of the endpoint as registered in the TEHTRIS EDR system.",
+          "type": "text",
+          "name": "edrUuid",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "tooltip": "The unique identifier (UUID) of the endpoint as registered in the TEHTRIS EDR system."
+        },
+        {
+          "title": "Appliance ID",
+          "description": "The numeric identifier of the EDR appliance managing the endpoint.",
+          "type": "integer",
+          "name": "applianceId",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Enter the ID of the EDR appliance responsible for managing or monitoring the specified endpoint."
+        }
+      ],
+      "output_schema": {}
+    },
+    {
+      "operation": "get_last_offline_forensic_report",
+      "title": "Get Last Offline Forensic Report",
+      "category": "utilities",
+      "annotation": "get_last_offline_forensic_report",
+      "description": "Retrieve the most recent TEHTRIS Offline Forensic report generated for a specified endpoint from TEHTRIS EDR platform.",
+      "parameters": [
+        {
+          "title": "EDR UUID",
+          "description": "The unique identifier (UUID) of the endpoint as registered in the TEHTRIS EDR system.",
+          "type": "text",
+          "name": "edrUuid",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "tooltip": "The unique identifier (UUID) of the endpoint as registered in the TEHTRIS EDR system."
+        },
+        {
+          "title": "Appliance ID",
+          "description": "The numeric identifier of the EDR appliance managing the endpoint.",
+          "type": "integer",
+          "name": "applianceId",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Enter the ID of the EDR appliance responsible for managing or monitoring the specified endpoint."
+        }
+      ],
+      "output_schema": {}
+    },
+    {
+      "operation": "get_offline_forensic_status",
+      "title": "Get Offline Forensic Status",
+      "category": "utilities",
+      "annotation": "get_offline_forensic_status",
+      "description": "Retrieve the current status of the TEHTRIS Offline Forensic module for a specified endpoint.",
+      "parameters": [
+        {
+          "title": "EDR UUID",
+          "description": "The unique identifier (UUID) of the endpoint as registered in the TEHTRIS EDR system.",
+          "type": "text",
+          "name": "edrUuid",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "tooltip": "The unique identifier (UUID) of the endpoint as registered in the TEHTRIS EDR system."
+        },
+        {
+          "title": "Appliance ID",
+          "description": "The numeric identifier of the EDR appliance managing the endpoint.",
+          "type": "integer",
+          "name": "applianceId",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Enter the ID of the EDR appliance responsible for managing or monitoring the specified endpoint."
+        }
+      ],
+      "output_schema": {}
+    },
+    {
+      "operation": "start_offline_forensic",
+      "title": "Start Offline Forensic",
+      "category": "utilities",
+      "annotation": "start_offline_forensic",
+      "description": "Initiate a TEHTRIS Offline Forensic analysis on a specified endpoint.",
+      "parameters": [
+        {
+          "title": "EDR UUID",
+          "description": "The unique identifier (UUID) of the endpoint as registered in the TEHTRIS EDR system.",
+          "type": "text",
+          "name": "edrUuid",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "tooltip": "The unique identifier (UUID) of the endpoint as registered in the TEHTRIS EDR system."
+        },
+        {
+          "title": "Appliance ID",
+          "description": "The numeric identifier of the EDR appliance managing the endpoint.",
+          "type": "integer",
+          "name": "applianceId",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Enter the ID of the EDR appliance responsible for managing or monitoring the specified endpoint."
+        },
+        {
+          "title": "Persist",
+          "description": "Specify whether the forensic task should persist until it can be executed if the endpoint is currently offline.",
+          "type": "checkbox",
+          "name": "persist",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Select 'True' to queue the forensic task until the endpoint reconnects, or 'False' to skip if the endpoint is offline."
+        },
+        {
+          "title": "Processes",
+          "description": "Perform analysis of active and historical processes running on the endpoint.",
+          "type": "checkbox",
+          "name": "processes",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "value": false,
+          "tooltip": "Activate at least one scan in processes, startup, disk, advanced, commands or forensic."
+        },
+        {
+          "title": "Startup",
+          "description": "Scan for persistence mechanisms and startup items configured on the endpoint.",
+          "type": "checkbox",
+          "name": "startup",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "value": false,
+          "tooltip": "Activate at least one scan in processes, startup, disk, advanced, commands or forensic."
+        },
+        {
+          "title": "Disk",
+          "description": "Perform disk-level forensic analysis for specified directories and file extensions.",
+          "type": "checkbox",
+          "name": "disk",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "value": false,
+          "tooltip": "Activate at least one scan in processes, startup, disk, advanced, commands or forensic."
+        },
+        {
+          "title": "Privacy",
+          "description": "Perform privacy-related forensic checks, such as identifying sensitive data exposure or user information artifacts.",
+          "type": "checkbox",
+          "name": "privacy",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "value": false,
+          "tooltip": "Enable to include privacy and data exposure checks in the forensic analysis."
+        },
+        {
+          "title": "Advanced",
+          "description": "Execute extended forensic scans including system logs, configurations, and advanced OS artifacts.",
+          "type": "checkbox",
+          "name": "advanced",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "value": false,
+          "tooltip": "Enable to perform in-depth system artifact and configuration analysis."
+        },
+        {
+          "title": "Commands",
+          "description": "Run a set of pre-defined forensic commands to collect detailed endpoint data.",
+          "type": "checkbox",
+          "name": "commands",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "value": false,
+          "tooltip": "Enable to execute system commands for forensic evidence collection."
+        },
+        {
+          "title": "Yara",
+          "description": "Apply YARA rules during analysis to detect potential malware or suspicious patterns.",
+          "type": "checkbox",
+          "name": "yara",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "value": false,
+          "tooltip": "Enable to perform YARA-based scanning for malware signatures and anomalies."
+        },
+        {
+          "title": "Forensic",
+          "description": "Trigger a comprehensive offline forensic analysis, encompassing all enabled modules.",
+          "type": "checkbox",
+          "name": "forensic",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "value": false,
+          "tooltip": "Enable to perform a full forensic investigation that includes all selected scanning modules."
+        },
+        {
+          "title": "Disk Paths",
+          "description": "Specify target directories to include in the disk forensic scan. Required only if disk scanning is enabled.",
+          "type": "object",
+          "name": "diskPaths",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Provide an array of paths to scan during disk analysis, e.g. [\"C:\\\\Windows\", \"C:\\\\Users\"]."
+        },
+        {
+          "title": "Extensions",
+          "description": "Specify file extensions to target during disk forensic analysis. Required only if disk scanning is enabled.",
+          "type": "object",
+          "name": "extensions",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "value": [
+            ".mov",
+            ".png"
+          ],
+          "tooltip": "Provide an array of file extensions to scan, e.g. [\".mov\", \".png\"]."
+        }
+      ],
+      "output_schema": {}
+    },
+    {
+      "operation": "stop_offline_forensic",
+      "title": "Stop Offline Forensic",
+      "category": "utilities",
+      "annotation": "stop_offline_forensic",
+      "description": "Terminate an ongoing TEHTRIS Offline Forensic analysis on a specified endpoint.",
+      "parameters": [
+        {
+          "title": "EDR UUID",
+          "description": "The unique identifier (UUID) of the endpoint as registered in the TEHTRIS EDR system.",
+          "type": "text",
+          "name": "edrUuid",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Provide the UUID of the endpoint where the offline forensic analysis should be stopped."
+        },
+        {
+          "title": "Appliance ID",
+          "description": "The numeric identifier of the appliance managing the specified endpoint.",
+          "type": "integer",
+          "name": "applianceId",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Enter the ID of the EDR appliance responsible for managing the endpoint.\""
+        }
+      ],
+      "output_schema": {}
+    },
+    {
+      "operation": "search_binaries",
+      "title": "Search Binaries",
+      "category": "utilities",
+      "annotation": "search_binaries",
+      "description": "Search and retrieve information about binaries detected by TEHTRIS EDR across endpoints managed by the specified appliance.",
+      "parameters": [
+        {
+          "title": "Appliance ID",
+          "description": "The numeric identifier of the TEHTRIS appliance managing the endpoints to be searched.",
+          "type": "integer",
+          "name": "applianceId",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Enter the ID of the appliance that manages the endpoints where the binaries were found."
+        },
+        {
+          "title": "Hostname",
+          "description": "Filter results to include binaries found on endpoints with the specified hostname.",
+          "type": "text",
+          "name": "hostname",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Filter binaries by exact or partial hostname of the endpoint."
+        },
+        {
+          "title": "Hostname Regex",
+          "description": "Apply a regular expression filter to match hostnames more flexibly.",
+          "type": "text",
+          "name": "hostnameRegex",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Filter binaries using a regex pattern applied to the hostname."
+        },
+        {
+          "title": "SHA256",
+          "description": "Filter results by the binary’s SHA256 cryptographic hash.",
+          "type": "text",
+          "name": "sha256",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Provide a SHA256 hash to find specific binaries with this hash value."
+        },
+        {
+          "title": "SHA1",
+          "description": "Filter results by the binary’s SHA1 hash value.",
+          "type": "text",
+          "name": "sha1",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Provide a SHA1 hash to search for binaries with this value."
+        },
+        {
+          "title": "MD5",
+          "description": "Filter results by the binary’s MD5 hash value.",
+          "type": "text",
+          "name": "md5",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Provide an MD5 hash to locate binaries with this hash signature."
+        },
+        {
+          "title": "Path",
+          "description": "Filter binaries by their file path. This filter matches any part of the path (substring-compatible).",
+          "type": "text",
+          "name": "path",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Filter on file path using substring matching."
+        },
+        {
+          "title": "Path Regex",
+          "description": "Apply a regular expression filter on file paths for flexible matching.",
+          "type": "text",
+          "name": "pathRegex",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Filter on file path using a regex expression."
+        },
+        {
+          "title": "Signature CN",
+          "description": "Filter binaries by the Common Name (CN) field in their digital signature. This is substring-compatible.",
+          "type": "text",
+          "name": "signatureCn",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Filter binaries by their certificate's Common Name (CN). Supports substring matching."
+        },
+        {
+          "title": "Signature CN Regex",
+          "description": "Apply a regex-based filter to the Common Name (CN) of binary signatures.",
+          "type": "text",
+          "name": "signatureCnRegex",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Filter binaries by Common Name (CN) in their digital signature using a regex expression."
+        },
+        {
+          "title": "Last Seen From",
+          "description": "Filter binaries last seen on or after this timestamp. Useful for tracking binaries detected in a specific timeframe.",
+          "type": "datetime",
+          "name": "lastSeenFrom",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Set the earliest 'last seen' time for matching binaries. Format: YYYY-MM-DDThh:mm:ss.sssZ"
+        },
+        {
+          "title": "Last Seen To",
+          "description": "Filter binaries last seen before this timestamp. Must be greater than 'Last Seen From' if both are provided.",
+          "type": "datetime",
+          "name": "lastSeenTo",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Set the latest 'last seen' time for matching binaries. Must be after 'Last Seen From'. Format: YYYY-MM-DDThh:mm:ss.sssZ"
+        },
+        {
+          "title": "Offset",
+          "description": "Specify the number of results to skip before returning data. Used for pagination when results exceed 10,000 entries.",
+          "type": "text",
+          "name": "offset",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "value": 0,
+          "tooltip": "Default value is 0. Increment by 10,000 for each subsequent query when more than 10,000 results are returned."
+        }
+      ],
+      "output_schema": {}
+    },
+    {
+      "operation": "search_user_accesslogs",
+      "title": "Search User Access Logs",
+      "category": "utilities",
+      "annotation": "search_user_accesslogs",
+      "description": "Retrieve and filter user access logs collected by TEHTRIS EDR for the specified appliance. Supports detailed filtering based on username, login/logout timestamps, and regex-based pattern matching.",
+      "parameters": [
+        {
+          "title": "Appliance ID",
+          "description": "The numeric identifier of the TEHTRIS appliance managing the endpoints where access logs are collected.",
+          "type": "integer",
+          "name": "applianceId",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Enter the ID of the appliance that manages user access logs to be searched."
+        },
+        {
+          "title": "Username",
+          "description": "Filter results to include logs corresponding to a specific username. This filter supports partial (substring) matches.",
+          "type": "text",
+          "name": "username",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Filter user access logs by exact or partial username match."
+        },
+        {
+          "title": "Username Regex",
+          "description": "Filter access logs by username using a regular expression for flexible pattern-based matching.",
+          "type": "text",
+          "name": "usernameRegex",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Use a regex expression to match usernames dynamically."
+        },
+        {
+          "title": "Logon Event Time From",
+          "description": "Retrieve logs for user logon events that occurred on or after the specified timestamp.",
+          "type": "datetime",
+          "name": "logonEventTimeFrom",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Set the earliest timestamp for logon events to include. Format: YYYY-MM-DDThh:mm:ss.sssZ"
+        },
+        {
+          "title": "Logon Event Time To",
+          "description": "Retrieve logs for user logon events that occurred before the specified timestamp. Must be greater than 'Logon Event Time From' if both are specified.",
+          "type": "datetime",
+          "name": "logonEventTimeTo",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Set the latest timestamp for logon events to include. Must be after 'Logon Event Time From'. Format: YYYY-MM-DDThh:mm:ss.sssZ"
+        },
+        {
+          "title": "Logoff Event Time From",
+          "description": "Retrieve logs for user logoff events that occurred on or after the specified timestamp.",
+          "type": "datetime",
+          "name": "logoffEventTimeFrom",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Set the earliest timestamp for logoff events to include. Format: YYYY-MM-DDThh:mm:ss.sssZ"
+        },
+        {
+          "title": "Logoff Event Time To",
+          "description": "Retrieve logs for user logoff events that occurred before the specified timestamp. Must be greater than 'Logoff Event Time From' if both are specified.",
+          "type": "datetime",
+          "name": "logoffEventTimeTo",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Set the latest timestamp for logoff events to include. Must be after 'Logoff Event Time From'. Format: YYYY-MM-DDThh:mm:ss.sssZ"
+        },
+        {
+          "title": "Limit",
+          "description": "Specify the maximum number of results to return per query. Must not exceed 10,000 entries.",
+          "type": "integer",
+          "name": "limit",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "value": 10,
+          "tooltip": "Set the maximum number of results per page. Cannot exceed 10,000."
+        },
+        {
+          "title": "Offset",
+          "description": "Define the number of records to skip before starting to return results. Used for pagination when results exceed the specified limit.",
+          "type": "integer",
+          "name": "offset",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "value": 0,
+          "tooltip": "Default is 0. Increment by the 'limit' value to fetch subsequent pages of results."
+        }
+      ],
+      "output_schema": {}
+    },
+    {
+      "operation": "search_persistent_entries_category",
+      "title": "Search Persistent Entries by Category",
+      "category": "utilities",
+      "annotation": "search_persistent_entries_category",
+      "description": "Search persistent entries on endpoints using filters across different persistence categories (Files, Keys, Services, or Tasks). Supports regex-based and substring filtering for multiple attributes.",
+      "parameters": [
+        {
+          "title": "Category",
+          "description": "Select the persistence entry category to search within. Available options include Files, Keys, Services, and Tasks.",
+          "type": "select",
+          "name": "category",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "value": "Files",
+          "tooltip": "Select the persistence entry category to search within. Available options include Files, Keys, Services, and Tasks.",
+          "options": [
+            "Files",
+            "Keys",
+            "Services",
+            "Tasks"
+          ]
+        },
+        {
+          "title": "Appliance ID",
+          "description": "The numeric identifier of the TEHTRIS appliance that manages the persistence data for endpoints.",
+          "type": "integer",
+          "name": "applianceId",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Enter the applianceId of the appliance managing persistence entries."
+        },
+        {
+          "title": "Hostname",
+          "description": "Filter persistence entries based on the endpoint hostname (substring match).",
+          "type": "text",
+          "name": "hostname",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Filter results by exact or partial hostname."
+        },
+        {
+          "title": "Hostname Regex",
+          "description": "Filter hostnames using a regular expression pattern for flexible matching.",
+          "type": "text",
+          "name": "hostnameRegex",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Filter results by hostname using regex pattern matching."
+        },
+        {
+          "title": "Path Regex",
+          "description": "Filter persistence entries by path using a regular expression.",
+          "type": "text",
+          "name": "pathRegex",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Filter on path using regex pattern matching."
+        },
+        {
+          "title": "CMD Line Regex",
+          "description": "Filter entries based on command line content using a regular expression.",
+          "type": "text",
+          "name": "cmdlineRegex",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Filter on command line using regex pattern matching."
+        },
+        {
+          "title": "Signature CN",
+          "description": "Filter entries based on the certificate Common Name (CN) used to sign the file (substring match).",
+          "type": "text",
+          "name": "signatureCn",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Filter on file signature Common Name (substring compatible)."
+        },
+        {
+          "title": "Signature CN Regex",
+          "description": "Filter file signatures using a regular expression for Common Name (CN).",
+          "type": "text",
+          "name": "signatureCnRegex",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Filter on signature CN using regex."
+        },
+        {
+          "title": "Persistence Path",
+          "description": "Filter entries by the path of the configuration or source file that defines the persistence mechanism (substring match).",
+          "type": "text",
+          "name": "persistencePath",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Filter on \"source\" file path (substring compatible). This means if the persistence is defined in a configuration file, the filter will be applied on that file's path"
+        },
+        {
+          "title": "Persistence Path Regex",
+          "description": "Filter entries by persistence source file path using a regex expression.",
+          "type": "text",
+          "name": "persistencePathRegex",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Filter by persistence source file path using regex."
+        },
+        {
+          "title": "Persistence Type",
+          "description": "Filter entries by type of persistence (e.g., service, task, registry key, or file).",
+          "type": "text",
+          "name": "persistenceType",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Filter on the type of persistence, similar to previous \"category\" parameter (substring compatible)"
+        },
+        {
+          "title": "Persistence Type Regex",
+          "description": "Filter entries by persistence type using a regular expression.",
+          "type": "text",
+          "name": "persistenceTypeRegex",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Filter by persistence type using regex pattern matching."
+        },
+        {
+          "title": "Name",
+          "description": "Filter entries by name. Depending on category, this corresponds to file path, registry key, service name, or task name.",
+          "type": "text",
+          "name": "name",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Depending on category, it will filter on file path, key path, service name or task name (substring compatible)"
+        },
+        {
+          "title": "Name Regex",
+          "description": "Filter entries by name using a regular expression.",
+          "type": "text",
+          "name": "nameRegex",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Filter by persistence entry name using regex."
+        },
+        {
+          "title": "SHA256",
+          "description": "Filter entries by SHA256 hash value.",
+          "type": "text",
+          "name": "sha256",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Filter by file SHA256 hash."
+        },
+        {
+          "title": "SHA1",
+          "description": "Filter entries by SHA1 hash value.",
+          "type": "text",
+          "name": "sha1",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Filter by file SHA1 hash."
+        },
+        {
+          "title": "MD5",
+          "description": "Filter entries by MD5 hash value.",
+          "type": "text",
+          "name": "md5",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Filter by file MD5 hash."
+        },
+        {
+          "title": "Path",
+          "description": "Filter persistence entries based on the file or executable path (substring match).",
+          "type": "text",
+          "name": "path",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Provide a substring of the file or executable path to filter persistence entries."
+        },
+        {
+          "title": "CMD Line",
+          "description": "Filter persistence entries based on command-line arguments or execution strings (substring match).",
+          "type": "text",
+          "name": "cmdline",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Provide a substring from the command line used by the persistence mechanism."
+        },
+        {
+          "title": "Created From",
+          "description": "Filter entries created after a specified timestamp (inclusive).",
+          "type": "datetime",
+          "name": "createdFrom",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Specify a starting creation time (ISO 8601 format, e.g., 2025-09-26T14:40:22.924Z)."
+        },
+        {
+          "title": "Created To",
+          "description": "Filter entries created before a specified timestamp (inclusive).",
+          "type": "datetime",
+          "name": "createdTo",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Specify an end creation time (ISO 8601 format, e.g., 2025-09-26T14:40:22.924Z). Must be greater than 'createdFrom'."
+        },
+        {
+          "title": "Deleted From",
+          "description": "Filter entries deleted after a specified timestamp (inclusive).",
+          "type": "datetime",
+          "name": "deletedFrom",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Specify a starting deletion time (ISO 8601 format, e.g., 2025-09-26T14:40:22.924Z)."
+        },
+        {
+          "title": "Deleted To",
+          "description": "Filter entries deleted before a specified timestamp (inclusive).",
+          "type": "text",
+          "name": "deletedTo",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Specify an end deletion time (ISO 8601 format, e.g., 2025-09-26T14:40:22.924Z). Must be greater than 'deletedFrom'."
+        },
+        {
+          "title": "Limit",
+          "description": "The maximum number of results to return in a single response.",
+          "type": "integer",
+          "name": "limit",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "value": 10,
+          "tooltip": "Specify the number of results to return (must be less than or equal to 10,000)."
+        },
+        {
+          "title": "Offset",
+          "description": "The number of results to skip before starting to return data, used for pagination.",
+          "type": "integer",
+          "name": "offset",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "value": 0,
+          "tooltip": "Default is 0, used for pagination. If more than 10 000 results are found, call API another time by incrementing offset by 10 000 until less than 10 000 results are found."
+        }
+      ],
+      "output_schema": {}
+    },
+    {
+      "operation": "search_persistent_entries",
+      "title": "Search Persistent Entries",
+      "category": "utilities",
+      "annotation": "search_persistent_entries",
+      "description": "Search persistent entries across endpoints using flexible filters.",
+      "parameters": [
+        {
+          "title": "Appliance ID",
+          "description": "The numeric identifier of the TEHTRIS appliance managing persistence data for endpoints.",
+          "type": "integer",
+          "name": "applianceId",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Enter the applianceId of the appliance managing persistence entries."
+        },
+        {
+          "title": "Hostname",
+          "description": "Filter entries based on the endpoint hostname (substring match).",
+          "type": "text",
+          "name": "hostname",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Filter results by exact or partial hostname."
+        },
+        {
+          "title": "Hostname Regex",
+          "description": "Filter hostnames using a regular expression for advanced pattern matching.",
+          "type": "text",
+          "name": "hostnameRegex",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Filter results by hostname using regex pattern matching."
+        },
+        {
+          "title": "Path",
+          "description": "Filter entries based on file or registry path (substring match).",
+          "type": "text",
+          "name": "path",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Filter on file or registry path (substring compatible)."
+        },
+        {
+          "title": "Path Regex",
+          "description": "Filter entries by file or registry path using a regular expression.",
+          "type": "text",
+          "name": "pathRegex",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Filter by file or registry path using regex."
+        },
+        {
+          "title": "CMD Line",
+          "description": "Filter entries based on command line content (substring match).",
+          "type": "text",
+          "name": "cmdline",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Filter on command line content (substring compatible)."
+        },
+        {
+          "title": "CMD Line Regex",
+          "description": "Filter entries by command line using a regular expression.",
+          "type": "text",
+          "name": "cmdlineRegex",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Filter on command line using regex pattern matching."
+        },
+        {
+          "title": "Signature CN",
+          "description": "Filter entries by the Common Name (CN) from the file signature (substring match).",
+          "type": "text",
+          "name": "signatureCn",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Filter entries based on certificate Common Name (CN) used for signing."
+        },
+        {
+          "title": "Signature CN Regex",
+          "description": "Filter file signatures using a regular expression for Common Name (CN).",
+          "type": "text",
+          "name": "signatureCnRegex",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Filter on signature CN using regex."
+        },
+        {
+          "title": "Persistence Path",
+          "description": "Filter entries by the source or configuration file path that defines persistence (substring match).",
+          "type": "text",
+          "name": "persistencePath",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Filter on \"source\" file path (substring compatible). This means if the persistence is defined in a configuration file, the filter will be applied on that file's path"
+        },
+        {
+          "title": "Persistence Path Regex",
+          "description": "Filter entries by persistence source path using a regular expression.",
+          "type": "text",
+          "name": "persistencePathRegex",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Filter by persistence source file path using regex."
+        },
+        {
+          "title": "Persistence Type",
+          "description": "Filter entries based on the type of persistence mechanism (substring match).",
+          "type": "text",
+          "name": "persistenceType",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Filter on the type of persistence, similar to previous \"category\" parameter (substring compatible)"
+        },
+        {
+          "title": "Persistence Type Regex",
+          "description": "Filter entries by persistence type using a regular expression.",
+          "type": "text",
+          "name": "persistenceTypeRegex",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Filter persistence type using regex pattern matching."
+        },
+        {
+          "title": "Name",
+          "description": "Filter entries by name. Depending on the category, this may represent a file path, registry key, service name, or scheduled task name.",
+          "type": "text",
+          "name": "name",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Depending on category, it will filter on file path, key path, service name or task name (substring compatible)"
+        },
+        {
+          "title": "Name Regex",
+          "description": "Filter entries by name using a regular expression.",
+          "type": "text",
+          "name": "nameRegex",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Filter persistence entry name using regex."
+        },
+        {
+          "title": "SHA256",
+          "description": "Filter entries by SHA256 file hash value.",
+          "type": "text",
+          "name": "sha256",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Filter entries by file SHA256 hash."
+        },
+        {
+          "title": "SHA1",
+          "description": "Filter entries by SHA1 file hash value.",
+          "type": "text",
+          "name": "sha1",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Filter entries by file SHA1 hash."
+        },
+        {
+          "title": "MD5",
+          "description": "Filter entries by MD5 file hash value.",
+          "type": "text",
+          "name": "md5",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Filter entries by file MD5 hash."
+        },
+        {
+          "title": "Created From",
+          "description": "Return entries created after this date and time.",
+          "type": "datetime",
+          "name": "createdFrom",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Format: ISO 8601 (e.g., 2025-09-26T14:40:22.924Z)."
+        },
+        {
+          "title": "Created To",
+          "description": "Return entries created before this date and time.",
+          "type": "datetime",
+          "name": "createdTo",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Must be later than 'createdFrom'. Format: ISO 8601 (e.g., 2025-09-26T14:40:22.924Z)."
+        },
+        {
+          "title": "Deleted From",
+          "description": "Return entries deleted after this date and time.",
+          "type": "datetime",
+          "name": "deletedFrom",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Format: ISO 8601 (e.g., 2025-09-26T14:40:22.924Z)."
+        },
+        {
+          "title": "Deleted To",
+          "description": "Return entries deleted before this date and time.",
+          "type": "datetime",
+          "name": "deletedTo",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Must be later than 'deletedFrom'. Format: ISO 8601 (e.g., 2025-09-26T14:40:22.924Z)."
+        },
+        {
+          "title": "Limit",
+          "description": "Maximum number of results to return (must be less than or equal to 10,000).",
+          "type": "integer",
+          "name": "limit",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "value": 10,
+          "tooltip": "Specify the maximum number of results per query (≤ 10,000)."
+        },
+        {
+          "title": "Offset",
+          "description": "Result offset for pagination. Increment by 10,000 to fetch additional results.",
+          "type": "integer",
+          "name": "offset",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Default is 0, used for pagination. If more than 10 000 results are found, call API another time by incrementing offset by 10 000 until less than 10 000 results are found."
+        }
+      ],
+      "output_schema": {}
+    },
+    {
+      "operation": "get_disk_scan_status",
+      "title": "Get Disk Scan Status",
+      "category": "utilities",
+      "annotation": "get_disk_scan_status",
+      "description": "Retrieve the current status of a disk scan for a specified endpoint.",
+      "parameters": [
+        {
+          "title": "EDR UUID",
+          "description": "The unique identifier (UUID) of the endpoint as registered in the TEHTRIS EDR system.",
+          "type": "text",
+          "name": "edrUuid",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Provide the UUID of the endpoint to retrieve its disk scan status."
+        },
+        {
+          "title": "Appliance ID",
+          "description": "The numeric identifier of the EDR appliance managing the endpoint.",
+          "type": "integer",
+          "name": "applianceId",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Enter the ID of the EDR appliance responsible for managing or monitoring the specified endpoint."
+        },
+        {
+          "title": "Scan ID",
+          "description": "The unique identifier of the specific disk scan. If not provided, the API returns the status of the most recent or scheduled scan for the endpoint.",
+          "type": "text",
+          "name": "scanId",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Specify a scan ID to retrieve the status of a specific scan. If omitted, retrieves the latest or scheduled scan status."
+        }
+      ],
+      "output_schema": {}
+    },
+    {
+      "operation": "launch_disk_scan",
+      "title": "Launch Disk Scan",
+      "category": "utilities",
+      "annotation": "launch_disk_scan",
+      "description": "Initiate a disk scan on a specified endpoint to detect potential threats or anomalies.",
+      "parameters": [
+        {
+          "title": "EDR UUID",
+          "description": "The unique identifier (UUID) of the endpoint as registered in the TEHTRIS EDR system.",
+          "type": "text",
+          "name": "edrUuid",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Provide the UUID of the endpoint where the disk scan will be executed."
+        },
+        {
+          "title": "Appliance ID",
+          "description": "The numeric identifier of the EDR appliance managing the specified endpoint.",
+          "type": "integer",
+          "name": "applianceId",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Enter the ID of the appliance responsible for managing or monitoring the specified endpoint."
+        },
+        {
+          "title": "Persist",
+          "description": "Specify whether the task should remain pending until execution if the endpoint is currently offline.",
+          "type": "checkbox",
+          "name": "persist",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Select 'True' to ensure the scan is executed automatically once the endpoint reconnects, or 'False' to skip if the endpoint is offline."
+        },
+        {
+          "title": "Scan ADS",
+          "description": "Enable scanning of Alternate Data Streams (ADS) on Windows systems.",
+          "type": "checkbox",
+          "name": "scanADS",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "value": false,
+          "tooltip": "Enable this option to include Alternate Data Streams in the scan scope. Recommended for in-depth forensic or advanced scans."
+        },
+        {
+          "title": "Scan White List Paths",
+          "description": "List of directory paths to exclude from the scan (whitelisted).",
+          "type": "object",
+          "name": "scanWhitelistPaths",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Specify an array of file or folder paths to be excluded from the scan. Example: [\"C:\\\\Windows\", \"C:\\\\Users\"]"
+        },
+        {
+          "title": "Start Folders",
+          "description": "Define specific folders or drives where the scan should begin.",
+          "type": "object",
+          "name": "startFolders",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Provide an array of folder paths where the disk scan should start. Example: [\"C:\\\\Windows\", \"C:\\\\Users\"]"
+        }
+      ],
+      "output_schema": {}
+    },
+    {
+      "operation": "get_current_scan_status",
+      "title": "Get Current Scan Status",
+      "category": "utilities",
+      "annotation": "get_current_scan_status",
+      "description": "Retrieve the current scan status for a specific endpoint.",
+      "parameters": [
+        {
+          "title": "EDR UUID",
+          "description": "The unique identifier (UUID) of the endpoint as registered in the TEHTRIS EDR system.",
+          "type": "text",
+          "name": "edrUuid",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Provide the UUID of the endpoint for which you want to retrieve the scan status."
+        },
+        {
+          "title": "Appliance ID",
+          "description": "The numeric identifier of the EDR appliance managing the specified endpoint.",
+          "type": "integer",
+          "name": "applianceId",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Enter the ID of the appliance responsible for managing the target endpoint."
+        }
+      ],
+      "output_schema": {}
+    },
+    {
+      "operation": "stop_current_scan",
+      "title": "Stop Current Scan",
+      "category": "utilities",
+      "annotation": "stop_current_scan",
+      "description": "Terminate an active disk scan for a specified endpoint.",
+      "parameters": [
+        {
+          "title": "EDR UUID",
+          "description": "The unique identifier (UUID) of the endpoint where the scan is running.",
+          "type": "text",
+          "name": "edrUuid",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Provide the UUID of the endpoint whose active scan you want to stop."
+        },
+        {
+          "title": "Appliance ID",
+          "description": "The numeric identifier of the EDR appliance managing the specified endpoint.",
+          "type": "integer",
+          "name": "applianceId",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Enter the appliance ID responsible for managing the endpoint."
+        }
+      ],
+      "output_schema": {}
+    },
+    {
+      "operation": "list_quarantine_files",
+      "title": "Get All Quarantine Files",
+      "category": "utilities",
+      "annotation": "list_quarantine_files",
+      "description": "Retrieve the complete list of quarantined files detected on a specific endpoint.",
+      "parameters": [
+        {
+          "title": "EDR UUID",
+          "description": "The unique identifier (UUID) of the endpoint from which to retrieve quarantined files.",
+          "type": "text",
+          "name": "edrUuid",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Provide the UUID of the endpoint to identify which device’s quarantine list should be retrieved."
+        },
+        {
+          "title": "Appliance ID",
+          "description": "The numeric identifier of the appliance managing the specified endpoint.",
+          "type": "integer",
+          "name": "applianceId",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Enter the appliance ID responsible for managing the endpoint."
+        }
+      ],
+      "output_schema": {}
+    },
+    {
+      "operation": "quarantine_file",
+      "title": "Quarantine a File",
+      "category": "utilities",
+      "annotation": "quarantine_file",
+      "description": "Remotely quarantine a specific file on an endpoint.",
+      "parameters": [
+        {
+          "title": "EDR UUID",
+          "description": "The unique identifier of the endpoint on which the file quarantine operation will be executed.",
+          "type": "text",
+          "name": "edrUuid",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Provide the UUID of the endpoint to perform the quarantine operation."
+        },
+        {
+          "title": "Appliance ID",
+          "description": "The numeric identifier of the appliance managing the target endpoint.",
+          "type": "integer",
+          "name": "applianceId",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Specify the appliance ID responsible for the endpoint."
+        },
+        {
+          "title": "Path",
+          "description": "The full path to the file that should be quarantined on the endpoint.",
+          "type": "text",
+          "name": "path",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Provide the complete file path, for example: 'C:\\\\Users\\\\John\\\\Documents\\\\suspicious.exe'."
+        },
+        {
+          "title": "Persist",
+          "description": "Defines whether the task should be queued and executed when the endpoint reconnects if it is currently offline.",
+          "type": "checkbox",
+          "name": "persist",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "If set to 'True', the quarantine task will persist and execute automatically once the endpoint becomes available."
+        },
+        {
+          "title": "Notification",
+          "description": "Custom message to display on the endpoint when the file is quarantined (Windows only).",
+          "type": "text",
+          "name": "notification",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Optional message displayed to the user on the endpoint upon quarantine action."
+        }
+      ],
+      "output_schema": {}
+    },
+    {
+      "operation": "restore_file_from_quarantine",
+      "title": "Restore File from Quarantine",
+      "category": "utilities",
+      "annotation": "restore_file_from_quarantine",
+      "description": "Restore a previously quarantined file on a given endpoint.",
+      "parameters": [
+        {
+          "title": "EDR UUID",
+          "description": "The unique identifier of the endpoint where the quarantined file should be restored.",
+          "type": "text",
+          "name": "edrUuid",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Provide the UUID of the endpoint where the restoration will be performed."
+        },
+        {
+          "title": "Appliance ID",
+          "description": "The numeric identifier of the TEHTRIS appliance managing the target endpoint.",
+          "type": "integer",
+          "name": "applianceId",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Specify the appliance ID responsible for the endpoint."
+        },
+        {
+          "title": "Path",
+          "description": "The full path of the quarantined file to restore.",
+          "type": "text",
+          "name": "path",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Provide the exact file path to restore, for example: 'C:\\\\Quarantine\\\\test.txt'."
+        },
+        {
+          "title": "Persist",
+          "description": "Defines whether the restore task should be queued and executed when the endpoint reconnects if it is currently offline.",
+          "type": "checkbox",
+          "name": "persist",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "If set to 'True', the restore task will persist and execute automatically once the endpoint becomes available."
+        }
+      ],
+      "output_schema": {}
+    },
+    {
+      "operation": "get_unmanaged_hosts",
+      "title": "Get Unmanaged Hosts",
+      "category": "utilities",
+      "annotation": "get_unmanaged_hosts",
+      "description": "Retrieve a list of unmanaged hosts discovered on a specified appliance.",
+      "parameters": [
+        {
+          "title": "Appliance ID",
+          "description": "The unique numeric identifier of the TEHTRIS appliance responsible for host discovery and management.",
+          "type": "integer",
+          "name": "applianceId",
+          "required": true,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Enter the appliance ID of the TEHTRIS appliance from which to retrieve unmanaged hosts."
+        },
+        {
+          "title": "Last Seen From",
+          "description": "Return unmanaged hosts that were last seen on or after this timestamp. Useful for time-based filtering of discovery results.",
+          "type": "datetime",
+          "name": "lastSeenFrom",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Specify the start of the last-seen time range in date-time format (e.g., 2025-09-26T14:40:22.924Z)."
+        },
+        {
+          "title": "Last Seen To",
+          "description": "Return unmanaged hosts that were last seen on or before this timestamp. The value must be later than 'Last Seen From' if both are provided.",
+          "type": "datetime",
+          "name": "lastSeenTo",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "tooltip": "Specify the end of the last-seen time range in date-time format (e.g., 2025-09-26T14:40:22.924Z)."
+        },
+        {
+          "title": "Limit",
+          "description": "The maximum number of results to return per request. The value must not exceed 10,000.",
+          "type": "integer",
+          "name": "limit",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "value": 10,
+          "tooltip": "Set the maximum number of unmanaged hosts to retrieve (up to 10,000 per request)."
+        },
+        {
+          "title": "Offset",
+          "description": "The number of records to skip before starting to collect the result set. Used for pagination when more than 10,000 results are available.",
+          "type": "integer",
+          "name": "offset",
+          "required": false,
+          "visible": true,
+          "editable": true,
+          "value": 0,
+          "tooltip": "Default is 0, used for pagination. If more than 10 000 results are found, call API another time by incrementing offset by 10 000 until less than 10 000 results are found."
+        }
+      ],
+      "output_schema": {}
+    },
+    {
+      "operation": "execute_an_api_call",
+      "title": "Execute an API Request",
+      "annotation": "execute_an_api_call",
+      "description": "Sends an API request to an API endpoint based on specified HTTP method, endpoint, and other input parameters that you have specified, enabling flexible API interactions tailored to user needs.",
+      "category": "investigation",
+      "visible": true,
+      "enabled": true,
+      "parameters": [
+        {
+          "name": "method",
+          "title": "HTTP Method",
+          "type": "select",
+          "editable": true,
+          "visible": true,
+          "required": true,
+          "description": "Select an HTTP action for the request. You can select from the following options:  \n\nDELETE \n\nGET \n\nPATCH \n\nPOST \n\nPUT ",
+          "options": [
+            "GET",
+            "POST",
+            "PUT",
+            "PATCH",
+            "DELETE"
+          ]
+        },
+        {
+          "title": "Endpoint",
+          "name": "endpoint",
+          "tooltip": "Specify the target API URL path for example: /api/edr/v2/inventory",
+          "description": "Specify the target API URL path for the request. For example, if the website is https://example.com and URL path is https://example.com/images/pic.jpg, the endpoint would be /images/pic.jpg.",
+          "type": "text",
+          "visible": true,
+          "editable": true,
+          "required": true
+        },
+        {
+          "title": "Query Parameters",
+          "name": "query_params",
+          "description": "(Optional) Specify any optional parameters to add to the URL and refine the request.",
+          "type": "json",
+          "visible": true,
+          "editable": true,
+          "required": false
+        },
+        {
+          "name": "payload",
+          "title": "Request Payload",
+          "type": "json",
+          "editable": true,
+          "visible": true,
+          "required": false,
+          "description": "(Optional) Specify data, as JSON, to be sent as the request payload (typically for POST or PUT requests)."
+        }
+      ],
+      "output_schema": {}
+    }
+  ],
+  "playbook_collections": [
+    {
+      "@id": "/api/3/workflow_collections/03ef8c12-f7da-48e6-9710-78093ddfad5e",
+      "name": "Sample - TEHTRIS EDR - 1.0.0",
+      "image": null,
+      "description": "Sample playbooks for \"TEHTRIS EDR\" connector. If you are planning to use any of the sample playbooks in your environment, ensure that you clone those playbooks and move them to a different collection, since the sample playbook collection gets deleted during connector upgrade and delete."
+    }
+  ]
+}

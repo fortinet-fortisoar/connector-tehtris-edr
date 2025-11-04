@@ -3,16 +3,17 @@
   "data": [
     {
       "@type": "WorkflowCollection",
-      "name": "Sample - Tehtris - 1.0.0",
-      "description": "Sample playbooks for \"Tehtris\" connector. If you are planning to use any of the sample playbooks in your environment, ensure that you clone those playbooks and move them to a different collection, since the sample playbook collection gets deleted during connector upgrade and delete.",
+      "name": "Sample - TEHTRIS EDR - 1.0.0",
+      "description": "Sample playbooks for \"TEHTRIS EDR\" connector. If you are planning to use any of the sample playbooks in your environment, ensure that you clone those playbooks and move them to a different collection, since the sample playbook collection gets deleted during connector upgrade and delete.",
       "visible": true,
-      "image": "data:png;base64,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",
+      "image": null,
       "uuid": "03ef8c12-f7da-48e6-9710-78093ddfad5e",
-      "id": 304,
+      "id": 390,
       "deletedAt": null,
       "importedBy": [],
       "recordTags": [
-        "tehtris"
+        "TEHTRIS",
+        "tehtris-edr"
       ],
       "workflows": [
         {
@@ -20,7 +21,7 @@
           "triggerLimit": null,
           "name": "> Tehtris > Fetch > FilterId",
           "aliasName": null,
-          "tag": "#tehtris #fetch #dataingestion",
+          "tag": "#tehtris-edr #fetch #dataingestion",
           "description": "Playbook responsible to retrieve the Tehtris filterId dedicated to Ingestion",
           "isActive": false,
           "debug": false,
@@ -42,7 +43,7 @@
               "name": "Create a Tehtris Filter",
               "description": "Create a filter for Ingestion with severity level range",
               "arguments": {
-                "name": "Tehtris",
+                "name": "TEHTRIS EDR",
                 "config": "17c325d3-27aa-4a61-8ef5-c215d2ab199d",
                 "params": {
                   "name": "{{vars.filterIdMacroName | replace(\"_\", \"-\")}}",
@@ -52,7 +53,7 @@
                   "description": "Filter autocreated by FortiSOAR for Playbook ingestion, based on severity level"
                 },
                 "version": "1.0.0",
-                "connector": "tehtris",
+                "connector": "tehtris-edr",
                 "operation": "create_filter",
                 "mock_result": "{\n  \"id\": \"95582d0d-52bd-4372-bb78-7e1c7f511c82\",\n  \"name\": \"Test\",\n  \"description\": \"string\",\n  \"createdAt\": \"2025-09-30T06:50:23.435174Z\",\n  \"updatedAt\": null,\n  \"owner\": 1049,\n  \"editors\": [],\n  \"viewers\": [],\n  \"parentFolderIds\": [\n    \"f0c2fd08-5f41-4e73-81af-9c10e6cc6bcf\"\n  ],\n  \"isPreset\": false,\n  \"history\": [\n    {\n      \"id\": \"b1487531-6e79-4173-b1ef-50ac013f11e1\",\n      \"eventType\": \"CREATED\",\n      \"userId\": 1049,\n      \"entityId\": \"95582d0d-52bd-4372-bb78-7e1c7f511c82\",\n      \"eventDate\": \"2025-09-30T06:50:23.435174Z\",\n      \"detail\": {}\n    }\n  ],\n  \"oldFilterId\": null,\n  \"module\": \"Endpoint\",\n  \"frontEndFilters\": {},\n  \"filterQuery\": {\n    \"module\": \"Endpoint_Active\",\n    \"offset\": 0,\n    \"limit\": 25,\n    \"timeOrder\": \"ASC\",\n    \"columns\": {\n      \"lvl\": {\n        \"searchValue\": \"4~9\",\n        \"fetch\": null\n      }\n    },\n    \"advFilter\": null,\n    \"bookmarks\": null,\n    \"hotData\": null,\n    \"countOnly\": null,\n    \"byTag\": null,\n    \"aggregateOnGroups\": null,\n    \"groupFilter\": null,\n    \"incidentFilter\": null,\n    \"timeLapse\": null,\n    \"headers\": null\n  },\n  \"tags\": []\n}",
                 "operationTitle": "Create Filter",
@@ -127,14 +128,14 @@
               "name": "Get Filter Details",
               "description": null,
               "arguments": {
-                "name": "Tehtris",
+                "name": "TEHTRIS EDR",
                 "config": "17c325d3-27aa-4a61-8ef5-c215d2ab199d",
                 "params": {
                   "filterId": "{{vars.filterId}}",
                   "filterId ": "{{vars.filterId}}"
                 },
                 "version": "1.0.0",
-                "connector": "tehtris",
+                "connector": "tehtris-edr",
                 "operation": "get_filter_by_id",
                 "mock_result": "{\n  \"id\": \"5c2985d3-a0be-477b-b148-a75afb2a9d51\",\n  \"name\": \"Test-SOAR\",\n  \"description\": \"\",\n  \"createdAt\": \"2025-09-26T10:33:42.522915Z\",\n  \"updatedAt\": \"2025-09-29T16:50:32.162902Z\",\n  \"owner\": 1049,\n  \"editors\": [],\n  \"viewers\": [],\n  \"parentFolderIds\": [\n    \"f0c2fd08-5f41-4e73-81af-9c10e6cc6bcf\"\n  ],\n  \"isPreset\": false,\n  \"history\": [],\n  \"oldFilterId\": null,\n  \"module\": \"Endpoint\",\n  \"frontEndFilters\": {\n    \"egKBId\": {\n      \"hidden\": [],\n      \"shown\": []\n    },\n    \"fe_device\": {\n      \"hidden\": [],\n      \"shown\": []\n    },\n    \"sha256\": {\n      \"hidden\": [],\n      \"shown\": []\n    },\n    \"cmdline\": {\n      \"hidden\": [],\n      \"shown\": []\n    },\n    \"location\": {\n      \"hidden\": [],\n      \"shown\": []\n    },\n    \"path\": {\n      \"hidden\": [],\n      \"shown\": []\n    },\n    \"wl\": 0,\n    \"bl\": 0\n  },\n  \"filterQuery\": {\n    \"module\": \"Endpoint_Active\",\n    \"offset\": 0,\n    \"limit\": 25,\n    \"timeOrder\": \"DESC\",\n    \"columns\": {\n      \"time\": {\n        \"searchValue\": \"~\",\n        \"fetch\": null\n      },\n      \"lvl\": {\n        \"searchValue\": \"4~9\",\n        \"fetch\": null\n      }\n    },\n    \"advFilter\": \"\",\n    \"bookmarks\": null,\n    \"hotData\": true,\n    \"countOnly\": null,\n    \"byTag\": null,\n    \"aggregateOnGroups\": null,\n    \"groupFilter\": null,\n    \"incidentFilter\": null,\n    \"timeLapse\": \"24h\",\n    \"headers\": null\n  },\n  \"tags\": []\n}",
                 "operationTitle": "Get Filter by Id",
@@ -239,7 +240,7 @@
               "name": "Update Filter with Severity",
               "description": null,
               "arguments": {
-                "name": "Tehtris",
+                "name": "TEHTRIS EDR",
                 "config": "17c325d3-27aa-4a61-8ef5-c215d2ab199d",
                 "params": {
                   "tag": "",
@@ -257,7 +258,7 @@
                   "description": "{{vars.steps.Get_Filter_Details.data.description}}"
                 },
                 "version": "1.0.0",
-                "connector": "tehtris",
+                "connector": "tehtris-edr",
                 "operation": "update_filter",
                 "operationTitle": "Update Filter",
                 "pickFromTenant": false,
@@ -378,14 +379,14 @@
           "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
           "isEditable": true,
           "uuid": "01d4a942-9585-42cd-b68b-983407ebdd7d",
-          "id": 3494,
+          "id": 5532,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
           "importedBy": [],
           "recordTags": [
             "dataingestion",
-            "tehtris"
+            "tehtris-edr"
           ]
         },
         {
@@ -414,7 +415,7 @@
               "name": "Set an Event Status",
               "description": "Set the status of an event in the Tehtris API.",
               "arguments": {
-                "name": "Tehtris",
+                "name": "TEHTRIS EDR",
                 "config": "094cc00d-352b-4cc9-8488-4ee63e0b70b0",
                 "params": {
                   "id": "{{vars.input.params.eventId}}",
@@ -422,7 +423,7 @@
                   "oldStatus": ""
                 },
                 "version": "1.0.0",
-                "connector": "tehtris",
+                "connector": "tehtris-edr",
                 "operation": "set_event_status",
                 "operationTitle": "Set an event status",
                 "pickFromTenant": false,
@@ -474,13 +475,13 @@
           "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
           "isEditable": true,
           "uuid": "0a629cc9-7cec-45d4-b976-ab6043d33f15",
-          "id": 3495,
+          "id": 5533,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
           "importedBy": [],
           "recordTags": [
-            "tehtris"
+            "tehtris-edr"
           ]
         },
         {
@@ -509,14 +510,14 @@
               "name": "Get Current Scan Status",
               "description": "Get current scan status. Indicates the status of the scheduled scan and the scan id of the current live scan if there is one",
               "arguments": {
-                "name": "Tehtris",
+                "name": "TEHTRIS EDR",
                 "config": "094cc00d-352b-4cc9-8488-4ee63e0b70b0",
                 "params": {
                   "edrUuid": "{{vars.input.params.edrUuid}}",
                   "applianceId": "{{vars.input.params.applianceId}}"
                 },
                 "version": "1.0.0",
-                "connector": "tehtris",
+                "connector": "tehtris-edr",
                 "operation": "get_current_scan_status",
                 "operationTitle": "Get Current Scan Status",
                 "pickFromTenant": false,
@@ -568,13 +569,13 @@
           "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
           "isEditable": true,
           "uuid": "113edf6c-d857-4391-b7fd-13065424d4bd",
-          "id": 3496,
+          "id": 5534,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
           "importedBy": [],
           "recordTags": [
-            "tehtris"
+            "tehtris-edr"
           ]
         },
         {
@@ -603,14 +604,14 @@
               "name": "Get Offline Forensic Report",
               "description": "Get TEHTRIS Offline Forensic status on a given EDR.",
               "arguments": {
-                "name": "Tehtris",
+                "name": "TEHTRIS EDR",
                 "config": "094cc00d-352b-4cc9-8488-4ee63e0b70b0",
                 "params": {
                   "edrUuid": "{{vars.input.params.edrUuid}}",
                   "applianceId": "{{vars.input.params.applianceId}}"
                 },
                 "version": "1.0.0",
-                "connector": "tehtris",
+                "connector": "tehtris-edr",
                 "operation": "get_offline_forensic_status",
                 "operationTitle": "Get Offline Forensic Status",
                 "pickFromTenant": false,
@@ -662,13 +663,13 @@
           "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
           "isEditable": true,
           "uuid": "145d3d83-b746-4519-8da9-f41c57e80f2e",
-          "id": 3497,
+          "id": 5535,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
           "importedBy": [],
           "recordTags": [
-            "tehtris"
+            "tehtris-edr"
           ]
         },
         {
@@ -696,7 +697,7 @@
               "name": "Search Persistent Entries",
               "description": "Search persistent entries using filters. If more than 10 000 results are found, call API another time by incrementing offset by 10 000 until less than 10 000 results are found.",
               "arguments": {
-                "name": "Tehtris",
+                "name": "TEHTRIS EDR",
                 "config": "094cc00d-352b-4cc9-8488-4ee63e0b70b0",
                 "params": {
                   "md5": "",
@@ -725,7 +726,7 @@
                   "persistenceTypeRegex": ""
                 },
                 "version": "1.0.0",
-                "connector": "tehtris",
+                "connector": "tehtris-edr",
                 "operation": "search_persistent_entries",
                 "operationTitle": "Search Persistent Entries",
                 "pickFromTenant": false,
@@ -777,13 +778,13 @@
           "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
           "isEditable": true,
           "uuid": "163f9336-514f-4031-bb28-955a45aa8549",
-          "id": 3498,
+          "id": 5536,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
           "importedBy": [],
           "recordTags": [
-            "tehtris"
+            "tehtris-edr"
           ]
         },
         {
@@ -812,14 +813,14 @@
               "name": "Get Software List",
               "description": "Get software list of endpoint.",
               "arguments": {
-                "name": "Tehtris",
+                "name": "TEHTRIS EDR",
                 "config": "094cc00d-352b-4cc9-8488-4ee63e0b70b0",
                 "params": {
                   "edrUuid": "{{vars.input.params.edrUuid}}",
                   "applianceId": "{{vars.input.params.applianceId}}"
                 },
                 "version": "1.0.0",
-                "connector": "tehtris",
+                "connector": "tehtris-edr",
                 "operation": "get_software_list",
                 "operationTitle": "Get Software List",
                 "pickFromTenant": false,
@@ -871,13 +872,13 @@
           "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
           "isEditable": true,
           "uuid": "2aa32d8c-b616-4297-a535-bce8180ec173",
-          "id": 3499,
+          "id": 5537,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
           "importedBy": [],
           "recordTags": [
-            "tehtris"
+            "tehtris-edr"
           ]
         },
         {
@@ -906,7 +907,7 @@
               "name": "Get Users Connected",
               "description": "Get users connected within 6 months on the given endpoint.",
               "arguments": {
-                "name": "Tehtris",
+                "name": "TEHTRIS EDR",
                 "config": "094cc00d-352b-4cc9-8488-4ee63e0b70b0",
                 "params": {
                   "limit": 10,
@@ -916,7 +917,7 @@
                   "applianceId": "{{vars.input.params.applianceId}}"
                 },
                 "version": "1.0.0",
-                "connector": "tehtris",
+                "connector": "tehtris-edr",
                 "operation": "get_users_connected",
                 "operationTitle": "Get Users Connected",
                 "pickFromTenant": false,
@@ -968,13 +969,13 @@
           "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
           "isEditable": true,
           "uuid": "3ace0229-0d38-494d-b2a4-a53d914791b8",
-          "id": 3500,
+          "id": 5538,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
           "importedBy": [],
           "recordTags": [
-            "tehtris"
+            "tehtris-edr"
           ]
         },
         {
@@ -984,7 +985,7 @@
           "aliasName": null,
           "tag": null,
           "description": "Send an isolation action to the Tehtris API.",
-          "isActive": true,
+          "isActive": false,
           "debug": false,
           "singleRecordExecution": false,
           "remoteExecutableFlag": false,
@@ -1004,7 +1005,7 @@
               "name": "Send Isolation Action",
               "description": "Send an isolation action to the Tehtris API.",
               "arguments": {
-                "name": "Tehtris",
+                "name": "TEHTRIS EDR",
                 "config": "094cc00d-352b-4cc9-8488-4ee63e0b70b0",
                 "params": {
                   "edrUuid": "{{vars.input.params.edrUuid}}",
@@ -1013,7 +1014,7 @@
                   "isolationAction": "{{vars.input.params.isolationAction}}"
                 },
                 "version": "1.0.0",
-                "connector": "tehtris",
+                "connector": "tehtris-edr",
                 "operation": "send_isolation_action",
                 "operationTitle": "Send isolation action",
                 "pickFromTenant": false,
@@ -1065,13 +1066,13 @@
           "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
           "isEditable": true,
           "uuid": "47cb319e-6372-48f0-bad8-8333dd4a42ac",
-          "id": 3501,
+          "id": 5539,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
           "importedBy": [],
           "recordTags": [
-            "tehtris"
+            "tehtris-edr"
           ]
         },
         {
@@ -1081,7 +1082,7 @@
           "aliasName": null,
           "tag": null,
           "description": "Playbook to manage isolation of an Endpoint with Input Action prompt",
-          "isActive": true,
+          "isActive": false,
           "debug": false,
           "singleRecordExecution": false,
           "remoteExecutableFlag": false,
@@ -1504,13 +1505,13 @@
           "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
           "isEditable": true,
           "uuid": "4c88c126-3c29-4fbd-ad2c-2cb015dbea87",
-          "id": 3539,
+          "id": 5540,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
           "importedBy": [],
           "recordTags": [
-            "tehtris"
+            "tehtris-edr"
           ]
         },
         {
@@ -1560,7 +1561,7 @@
               "name": "Start Offline Forensic Analysis",
               "description": "Start TEHTRIS Offline Forensic analysis on given EDR.",
               "arguments": {
-                "name": "Tehtris",
+                "name": "TEHTRIS EDR",
                 "config": "094cc00d-352b-4cc9-8488-4ee63e0b70b0",
                 "params": {
                   "disk": false,
@@ -1577,7 +1578,7 @@
                   "applianceId": "{{vars.input.params.applianceId}}"
                 },
                 "version": "1.0.0",
-                "connector": "tehtris",
+                "connector": "tehtris-edr",
                 "operation": "start_offline_forensic",
                 "operationTitle": "Start Offline Forensic",
                 "pickFromTenant": false,
@@ -1608,13 +1609,13 @@
           "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
           "isEditable": true,
           "uuid": "5ef90d1a-5946-45ef-bfcf-fef566380229",
-          "id": 3502,
+          "id": 5541,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
           "importedBy": [],
           "recordTags": [
-            "tehtris"
+            "tehtris-edr"
           ]
         },
         {
@@ -1622,7 +1623,7 @@
           "triggerLimit": null,
           "name": "Tehtris > Ingest",
           "aliasName": null,
-          "tag": "#tehtris #create #dataingestion #ingest",
+          "tag": "#tehtris-edr #create #dataingestion #ingest",
           "description": "Playbook used to Ingest Events from Tehtris Application",
           "isActive": false,
           "debug": false,
@@ -1756,7 +1757,7 @@
           "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
           "isEditable": true,
           "uuid": "74f11acf-1034-49cb-b35d-89de9c3bf3db",
-          "id": 3503,
+          "id": 5542,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -1764,7 +1765,7 @@
           "recordTags": [
             "dataingestion",
             "ingest",
-            "tehtris"
+            "tehtris-edr"
           ]
         },
         {
@@ -1790,11 +1791,11 @@
               "name": "Get All Endpoints",
               "description": "Retrieve all endpoints managed by TEHTRIS EDR.",
               "arguments": {
-                "name": "Tehtris",
+                "name": "TEHTRIS EDR",
                 "config": "094cc00d-352b-4cc9-8488-4ee63e0b70b0",
                 "params": [],
                 "version": "1.0.0",
-                "connector": "tehtris",
+                "connector": "tehtris-edr",
                 "operation": "get_all_endpoints",
                 "operationTitle": "Get All Endpoints",
                 "pickFromTenant": false,
@@ -1846,13 +1847,13 @@
           "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
           "isEditable": true,
           "uuid": "7753205c-06e4-4366-849d-a898ec3e2c88",
-          "id": 3504,
+          "id": 5543,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
           "importedBy": [],
           "recordTags": [
-            "tehtris"
+            "tehtris-edr"
           ]
         },
         {
@@ -1878,11 +1879,11 @@
               "name": "Get All Global Policies",
               "description": "Get all global policies from the Tehtris API.",
               "arguments": {
-                "name": "Tehtris",
+                "name": "TEHTRIS EDR",
                 "config": "094cc00d-352b-4cc9-8488-4ee63e0b70b0",
                 "params": [],
                 "version": "1.0.0",
-                "connector": "tehtris",
+                "connector": "tehtris-edr",
                 "operation": "get_all_global_policies",
                 "operationTitle": "Get all global policies",
                 "pickFromTenant": false,
@@ -1934,13 +1935,13 @@
           "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
           "isEditable": true,
           "uuid": "7b7c7296-d789-4bbf-9c58-ac67d341ef31",
-          "id": 3505,
+          "id": 5544,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
           "importedBy": [],
           "recordTags": [
-            "tehtris"
+            "tehtris-edr"
           ]
         },
         {
@@ -1969,14 +1970,14 @@
               "name": "List Quarantine Files",
               "description": "Get the list of all files quarantined on an endpoint. The paths found in the result should be used for the restoration API call.",
               "arguments": {
-                "name": "Tehtris",
+                "name": "TEHTRIS EDR",
                 "config": "094cc00d-352b-4cc9-8488-4ee63e0b70b0",
                 "params": {
                   "edrUuid": "{{vars.input.params.edrUuid}}",
                   "applianceId": "{{vars.input.params.applianceId}}"
                 },
                 "version": "1.0.0",
-                "connector": "tehtris",
+                "connector": "tehtris-edr",
                 "operation": "list_quarantine_files",
                 "operationTitle": "List Quarantine Files",
                 "pickFromTenant": false,
@@ -2028,13 +2029,13 @@
           "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
           "isEditable": true,
           "uuid": "7ed8dde1-ecf2-4573-abcc-e9a79f243584",
-          "id": 3506,
+          "id": 5545,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
           "importedBy": [],
           "recordTags": [
-            "tehtris"
+            "tehtris-edr"
           ]
         },
         {
@@ -2062,7 +2063,7 @@
               "name": "Search User Access Logs",
               "description": "Search user access logs using filters. If more than 10 000 results are found, call API another time by incrementing offset by 10 000 until less than 10 000 results are found.",
               "arguments": {
-                "name": "Tehtris",
+                "name": "TEHTRIS EDR",
                 "config": "094cc00d-352b-4cc9-8488-4ee63e0b70b0",
                 "params": {
                   "limit": 10,
@@ -2076,7 +2077,7 @@
                   "logoffEventTimeFrom": ""
                 },
                 "version": "1.0.0",
-                "connector": "tehtris",
+                "connector": "tehtris-edr",
                 "operation": "search_user_accesslogs",
                 "operationTitle": "Search User Access Logs",
                 "pickFromTenant": false,
@@ -2128,13 +2129,13 @@
           "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
           "isEditable": true,
           "uuid": "821f52e7-df1d-4c2a-a0c7-bf7d152e4c5d",
-          "id": 3507,
+          "id": 5546,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
           "importedBy": [],
           "recordTags": [
-            "tehtris"
+            "tehtris-edr"
           ]
         },
         {
@@ -2163,7 +2164,7 @@
               "name": "Get Access Logs",
               "description": "Create a cursor and fetch first batch of data from it. Accesslogs are displayed from the most recent to the least recent by default.",
               "arguments": {
-                "name": "Tehtris",
+                "name": "TEHTRIS EDR",
                 "config": "094cc00d-352b-4cc9-8488-4ee63e0b70b0",
                 "params": {
                   "limit": 10,
@@ -2175,7 +2176,7 @@
                   "logonEventTimeFrom": ""
                 },
                 "version": "1.0.0",
-                "connector": "tehtris",
+                "connector": "tehtris-edr",
                 "operation": "get_accesslogs",
                 "operationTitle": "Get Access Logs",
                 "pickFromTenant": false,
@@ -2227,13 +2228,13 @@
           "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
           "isEditable": true,
           "uuid": "8c237718-8551-4f8f-b6dc-848c1c35668d",
-          "id": 3508,
+          "id": 5547,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
           "importedBy": [],
           "recordTags": [
-            "tehtris"
+            "tehtris-edr"
           ]
         },
         {
@@ -2241,7 +2242,7 @@
           "triggerLimit": null,
           "name": "> Tehtris > Create",
           "aliasName": null,
-          "tag": "#tehtris #create #dataingestion",
+          "tag": "#tehtris-edr #create #dataingestion",
           "description": "Playbook responsible to create Alerts into FSR",
           "isActive": false,
           "debug": false,
@@ -2287,7 +2288,7 @@
                   "type": "/api/3/picklists/574a6ee2-7265-4701-815e-cff83b053bce",
                   "state": "/api/3/picklists/a1bac09b-1441-45aa-ad1b-c88744e48e72",
                   "domain": "{{vars.item.domain__}}",
-                  "source": "Tehtris",
+                  "source": "TEHTRIS EDR",
                   "status": "/api/3/picklists/7de816ff-7140-4ee5-bd05-93ce22002146",
                   "fileHash": "{{vars.item.sha256}}",
                   "fileName": "{{vars.item.originalFilename__}}",
@@ -2379,7 +2380,7 @@
           "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
           "isEditable": true,
           "uuid": "8d677681-53cd-484c-97b1-20c909cda501",
-          "id": 3509,
+          "id": 5548,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -2387,7 +2388,7 @@
           "recordTags": [
             "create",
             "dataingestion",
-            "tehtris"
+            "tehtris-edr"
           ]
         },
         {
@@ -2415,7 +2416,7 @@
               "name": "Get Unmanaged Hosts",
               "description": "Get unmanaged hosts discovered on a given appliance. Create a cursor and fetch first batch of data from it.",
               "arguments": {
-                "name": "Tehtris",
+                "name": "TEHTRIS EDR",
                 "config": "094cc00d-352b-4cc9-8488-4ee63e0b70b0",
                 "params": {
                   "limit": 10,
@@ -2425,7 +2426,7 @@
                   "lastSeenFrom": ""
                 },
                 "version": "1.0.0",
-                "connector": "tehtris",
+                "connector": "tehtris-edr",
                 "operation": "get_unmanaged_hosts",
                 "operationTitle": "Get Unmanaged Hosts",
                 "pickFromTenant": false,
@@ -2477,13 +2478,13 @@
           "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
           "isEditable": true,
           "uuid": "9900c313-0e9f-41a6-a6ee-49c605fb3be3",
-          "id": 3510,
+          "id": 5549,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
           "importedBy": [],
           "recordTags": [
-            "tehtris"
+            "tehtris-edr"
           ]
         },
         {
@@ -2511,7 +2512,7 @@
               "name": "Fetch Events",
               "description": null,
               "arguments": {
-                "name": "Tehtris",
+                "name": "TEHTRIS EDR",
                 "config": "094cc00d-352b-4cc9-8488-4ee63e0b70b0",
                 "params": {
                   "limit": "",
@@ -2522,7 +2523,7 @@
                   "fromDate": "{{vars.input.params.fromDate}}"
                 },
                 "version": "1.0.0",
-                "connector": "tehtris",
+                "connector": "tehtris-edr",
                 "operation": "fetch_events",
                 "operationTitle": "Fetch Events",
                 "pickFromTenant": false,
@@ -2574,13 +2575,13 @@
           "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
           "isEditable": true,
           "uuid": "99ca72aa-ccd6-4fc4-b6bb-d7ed8aae69f6",
-          "id": 3511,
+          "id": 5550,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
           "importedBy": [],
           "recordTags": [
-            "tehtris"
+            "tehtris-edr"
           ]
         },
         {
@@ -2612,7 +2613,7 @@
               "name": "Get Process Tree",
               "description": "Get process tree from a process.",
               "arguments": {
-                "name": "Tehtris",
+                "name": "TEHTRIS EDR",
                 "config": "094cc00d-352b-4cc9-8488-4ee63e0b70b0",
                 "params": {
                   "pid": "{{vars.input.params.pid}}",
@@ -2624,7 +2625,7 @@
                   "applianceId": "{{vars.input.params.applianceId}}"
                 },
                 "version": "1.0.0",
-                "connector": "tehtris",
+                "connector": "tehtris-edr",
                 "operation": "get_process_tree",
                 "operationTitle": "Get Process Tree",
                 "pickFromTenant": false,
@@ -2676,13 +2677,13 @@
           "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
           "isEditable": true,
           "uuid": "a2f9d08d-0605-446e-97c4-6eef05112103",
-          "id": 3512,
+          "id": 5551,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
           "importedBy": [],
           "recordTags": [
-            "tehtris"
+            "tehtris-edr"
           ]
         },
         {
@@ -2711,14 +2712,14 @@
               "name": "Fetch Info About Endpoint",
               "description": "Fetch various info about endpoint (cpu, memory, users, disks).",
               "arguments": {
-                "name": "Tehtris",
+                "name": "TEHTRIS EDR",
                 "config": "094cc00d-352b-4cc9-8488-4ee63e0b70b0",
                 "params": {
                   "edrUuid": "{{vars.input.params.edrUuid}}",
                   "applianceId": "{{vars.input.params.applianceId}}"
                 },
                 "version": "1.0.0",
-                "connector": "tehtris",
+                "connector": "tehtris-edr",
                 "operation": "fetch_info_about_endpoint",
                 "operationTitle": "Fetch Info About Endpoint",
                 "pickFromTenant": false,
@@ -2770,13 +2771,13 @@
           "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
           "isEditable": true,
           "uuid": "a4447c7c-b73a-4524-b5c4-9043160c306c",
-          "id": 3513,
+          "id": 5552,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
           "importedBy": [],
           "recordTags": [
-            "tehtris"
+            "tehtris-edr"
           ]
         },
         {
@@ -2826,14 +2827,14 @@
               "name": "Stop Offline Forensic Analysis",
               "description": "Stop TEHTRIS Offline Forensic analysis on given EDR.",
               "arguments": {
-                "name": "Tehtris",
+                "name": "TEHTRIS EDR",
                 "config": "094cc00d-352b-4cc9-8488-4ee63e0b70b0",
                 "params": {
                   "edrUuid": "{{vars.input.params.edrUuid}}",
                   "applianceId": "{{vars.input.params.applianceId}}"
                 },
                 "version": "1.0.0",
-                "connector": "tehtris",
+                "connector": "tehtris-edr",
                 "operation": "stop_offline_forensic",
                 "operationTitle": "Stop Offline Forensic",
                 "pickFromTenant": false,
@@ -2864,13 +2865,120 @@
           "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
           "isEditable": true,
           "uuid": "a4a4d1b9-2553-4467-b07b-05468a95f1e4",
-          "id": 3514,
+          "id": 5553,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
           "importedBy": [],
           "recordTags": [
-            "tehtris"
+            "tehtris-edr"
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "triggerLimit": null,
+          "name": "Execute an API Request",
+          "aliasName": null,
+          "tag": null,
+          "description": "Sends an API request to an API endpoint based on specified HTTP method, endpoint, and other input parameters that you have specified, enabling flexible API interactions tailored to user needs.",
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "remoteExecutableFlag": false,
+          "parameters": [],
+          "synchronous": false,
+          "lastModifyDate": 1761896537,
+          "collection": "/api/3/workflow_collections/03ef8c12-f7da-48e6-9710-78093ddfad5e",
+          "versions": [],
+          "triggerStep": "/api/3/workflow_steps/568ab669-06e1-4a34-9377-2794da469fcd",
+          "steps": [
+            {
+              "@type": "WorkflowStep",
+              "name": "Execute an API Request",
+              "description": null,
+              "arguments": {
+                "name": "TEHTRIS EDR",
+                "config": "68131666-3d41-4efd-9538-20b0cf97d6aa",
+                "params": {
+                  "method": "GET",
+                  "payload": "",
+                  "endpoint": "/api/edr/v2/inventory",
+                  "query_params": ""
+                },
+                "version": "1.0.0",
+                "connector": "tehtris-edr",
+                "operation": "execute_an_api_call",
+                "operationTitle": "Execute an API Request",
+                "pickFromTenant": false,
+                "step_variables": []
+              },
+              "status": null,
+              "top": "165",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671",
+              "group": null,
+              "uuid": "aa69c7c6-006f-4f45-8d6f-15250b7e7966"
+            },
+            {
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "arguments": {
+                "route": "deeecb36-eb33-440e-9c96-c0360bece83d",
+                "title": "TEHTRIS EDR: Execute an API Request",
+                "resources": [
+                  "alerts"
+                ],
+                "__triggerLimit": true,
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "params": [],
+                    "records": "{{vars.input.records}}"
+                  }
+                },
+                "triggerOnSource": true,
+                "executeButtonText": "Execute",
+                "noRecordExecution": true,
+                "showToasterMessage": {
+                  "visible": false,
+                  "messageVisible": true
+                },
+                "triggerOnReplicate": false,
+                "singleRecordExecution": false
+              },
+              "status": null,
+              "top": "30",
+              "left": "125",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a",
+              "group": null,
+              "uuid": "568ab669-06e1-4a34-9377-2794da469fcd"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "name": "Start -> Execute an API Request",
+              "targetStep": "/api/3/workflow_steps/aa69c7c6-006f-4f45-8d6f-15250b7e7966",
+              "sourceStep": "/api/3/workflow_steps/568ab669-06e1-4a34-9377-2794da469fcd",
+              "label": null,
+              "isExecuted": false,
+              "group": null,
+              "uuid": "59c4e712-cac8-4eac-9076-9e96adeaa96d"
+            }
+          ],
+          "groups": [],
+          "priority": "/api/3/picklists/2b563c61-ae2c-41c0-a85a-c9709585e3f2",
+          "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
+          "isEditable": true,
+          "uuid": "a679023e-f2ea-4c87-b0d2-56a896bf5eae",
+          "id": 5577,
+          "owners": [],
+          "isPrivate": false,
+          "deletedAt": null,
+          "importedBy": [],
+          "recordTags": [
+            "tehtris-edr"
           ]
         },
         {
@@ -2896,11 +3004,11 @@
               "name": "List Folders and Filters",
               "description": "Return a list of all folders and all filters the user has access to (as owner, editor or viewer). The results can be filtered by name and filters can be filtered by module.",
               "arguments": {
-                "name": "Tehtris",
+                "name": "TEHTRIS EDR",
                 "config": "094cc00d-352b-4cc9-8488-4ee63e0b70b0",
                 "params": [],
                 "version": "1.0.0",
-                "connector": "tehtris",
+                "connector": "tehtris-edr",
                 "operation": "list_folders_and_filters",
                 "operationTitle": "List Folders and Filters",
                 "pickFromTenant": false,
@@ -2952,13 +3060,13 @@
           "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
           "isEditable": true,
           "uuid": "aaf0e533-54ce-4a98-a08d-eb1b8d917345",
-          "id": 3515,
+          "id": 5554,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
           "importedBy": [],
           "recordTags": [
-            "tehtris"
+            "tehtris-edr"
           ]
         },
         {
@@ -2987,7 +3095,7 @@
               "name": "Get Network Information",
               "description": "Get network information for a given endpoint.",
               "arguments": {
-                "name": "Tehtris",
+                "name": "TEHTRIS EDR",
                 "config": "094cc00d-352b-4cc9-8488-4ee63e0b70b0",
                 "params": {
                   "edrUuid": "{{vars.input.params.edrUuid}}",
@@ -2995,7 +3103,7 @@
                   "applianceId": "{{vars.input.params.applianceId}}"
                 },
                 "version": "1.0.0",
-                "connector": "tehtris",
+                "connector": "tehtris-edr",
                 "operation": "get_network_infos",
                 "operationTitle": "Get Network Infos",
                 "pickFromTenant": false,
@@ -3047,13 +3155,13 @@
           "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
           "isEditable": true,
           "uuid": "af4ad115-62f5-4272-aa5f-62b21b0c86ce",
-          "id": 3516,
+          "id": 5555,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
           "importedBy": [],
           "recordTags": [
-            "tehtris"
+            "tehtris-edr"
           ]
         },
         {
@@ -3082,7 +3190,7 @@
               "name": "Get Browser Security",
               "description": "Get browser security for a given endpoint.",
               "arguments": {
-                "name": "Tehtris",
+                "name": "TEHTRIS EDR",
                 "config": "094cc00d-352b-4cc9-8488-4ee63e0b70b0",
                 "params": {
                   "edrUuid": "{{vars.input.params.edrUuid}}",
@@ -3090,7 +3198,7 @@
                   "applianceId": "{{vars.input.params.applianceId}}"
                 },
                 "version": "1.0.0",
-                "connector": "tehtris",
+                "connector": "tehtris-edr",
                 "operation": "get_browser_security",
                 "operationTitle": "Get Browser Security",
                 "pickFromTenant": false,
@@ -3142,13 +3250,13 @@
           "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
           "isEditable": true,
           "uuid": "b079ffb4-fddf-41b4-a27c-2c51bc8cc6bb",
-          "id": 3517,
+          "id": 5556,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
           "importedBy": [],
           "recordTags": [
-            "tehtris"
+            "tehtris-edr"
           ]
         },
         {
@@ -3177,7 +3285,7 @@
               "name": "Search Persistent Entries Using Category",
               "description": "Search persistent entries using filters on Category: files, keys, services, tasks. If more than 10 000 results are found, call API another time by incrementing offset by 10 000 until less than 10 000 results are found.",
               "arguments": {
-                "name": "Tehtris",
+                "name": "TEHTRIS EDR",
                 "config": "094cc00d-352b-4cc9-8488-4ee63e0b70b0",
                 "params": {
                   "md5": "",
@@ -3207,7 +3315,7 @@
                   "persistenceTypeRegex": ""
                 },
                 "version": "1.0.0",
-                "connector": "tehtris",
+                "connector": "tehtris-edr",
                 "operation": "search_persistent_entries_category",
                 "operationTitle": "Search Persistent Entries using Category",
                 "pickFromTenant": false,
@@ -3259,13 +3367,13 @@
           "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
           "isEditable": true,
           "uuid": "c458aceb-01d2-4837-9baf-0d515cbf97c8",
-          "id": 3518,
+          "id": 5557,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
           "importedBy": [],
           "recordTags": [
-            "tehtris"
+            "tehtris-edr"
           ]
         },
         {
@@ -3315,14 +3423,14 @@
               "name": "Stop Current Scan",
               "description": "Stop the current scan.",
               "arguments": {
-                "name": "Tehtris",
+                "name": "TEHTRIS EDR",
                 "config": "094cc00d-352b-4cc9-8488-4ee63e0b70b0",
                 "params": {
                   "edrUuid": "{{vars.input.params.edrUuid}}",
                   "applianceId": "{{vars.input.params.applianceId}}"
                 },
                 "version": "1.0.0",
-                "connector": "tehtris",
+                "connector": "tehtris-edr",
                 "operation": "stop_current_scan",
                 "operationTitle": "Stop Current Scan",
                 "pickFromTenant": false,
@@ -3353,13 +3461,13 @@
           "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
           "isEditable": true,
           "uuid": "c4774331-307c-4de3-a8ce-64e6d0484b6d",
-          "id": 3519,
+          "id": 5558,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
           "importedBy": [],
           "recordTags": [
-            "tehtris"
+            "tehtris-edr"
           ]
         },
         {
@@ -3412,7 +3520,7 @@
               "name": "Update Filter",
               "description": "Update a Filter",
               "arguments": {
-                "name": "Tehtris",
+                "name": "TEHTRIS EDR",
                 "config": "094cc00d-352b-4cc9-8488-4ee63e0b70b0",
                 "params": {
                   "tag": "",
@@ -3430,7 +3538,7 @@
                   "description": "{{vars.input.params.description}}"
                 },
                 "version": "1.0.0",
-                "connector": "tehtris",
+                "connector": "tehtris-edr",
                 "operation": "update_filter",
                 "operationTitle": "Update Filter",
                 "pickFromTenant": false,
@@ -3461,13 +3569,13 @@
           "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
           "isEditable": true,
           "uuid": "c79defa7-30e9-42c6-b22c-6538d0154416",
-          "id": 3520,
+          "id": 5559,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
           "importedBy": [],
           "recordTags": [
-            "tehtris"
+            "tehtris-edr"
           ]
         },
         {
@@ -3495,13 +3603,13 @@
               "name": "Delete Filter",
               "description": "Delete a Filter",
               "arguments": {
-                "name": "Tehtris",
+                "name": "TEHTRIS EDR",
                 "config": "094cc00d-352b-4cc9-8488-4ee63e0b70b0",
                 "params": {
                   "filterId": "{{vars.input.params.filterId}}"
                 },
                 "version": "1.0.0",
-                "connector": "tehtris",
+                "connector": "tehtris-edr",
                 "operation": "delete_filter",
                 "operationTitle": "Delete Filter",
                 "pickFromTenant": false,
@@ -3553,13 +3661,13 @@
           "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
           "isEditable": true,
           "uuid": "c7ecb4ab-e631-48e7-8863-4de8bfcec550",
-          "id": 3521,
+          "id": 5560,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
           "importedBy": [],
           "recordTags": [
-            "tehtris"
+            "tehtris-edr"
           ]
         },
         {
@@ -3589,7 +3697,7 @@
               "name": "Restore File From Quarantine",
               "description": "Restore a file from quarantine.",
               "arguments": {
-                "name": "Tehtris",
+                "name": "TEHTRIS EDR",
                 "config": "094cc00d-352b-4cc9-8488-4ee63e0b70b0",
                 "params": {
                   "path": "{{vars.input.params.path}}",
@@ -3597,7 +3705,7 @@
                   "applianceId": "{{vars.input.params.applianceId}}"
                 },
                 "version": "1.0.0",
-                "connector": "tehtris",
+                "connector": "tehtris-edr",
                 "operation": "restore_file_from_quarantine",
                 "operationTitle": "Restore File from Quarantine",
                 "pickFromTenant": false,
@@ -3649,13 +3757,13 @@
           "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
           "isEditable": true,
           "uuid": "cb9d774b-7caf-45dc-837a-bc95e944f73d",
-          "id": 3522,
+          "id": 5561,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
           "importedBy": [],
           "recordTags": [
-            "tehtris"
+            "tehtris-edr"
           ]
         },
         {
@@ -3684,7 +3792,7 @@
               "name": "Get Disk Scan Status",
               "description": "Get a disk scan status.",
               "arguments": {
-                "name": "Tehtris",
+                "name": "TEHTRIS EDR",
                 "config": "094cc00d-352b-4cc9-8488-4ee63e0b70b0",
                 "params": {
                   "scanId": "",
@@ -3692,7 +3800,7 @@
                   "applianceId": "{{vars.input.params.applianceId}}"
                 },
                 "version": "1.0.0",
-                "connector": "tehtris",
+                "connector": "tehtris-edr",
                 "operation": "get_disk_scan_status",
                 "operationTitle": "Get Disk Scan Status",
                 "pickFromTenant": false,
@@ -3744,13 +3852,13 @@
           "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
           "isEditable": true,
           "uuid": "d678fdc4-2b6b-48e4-94a0-2b0ab8ba3cb2",
-          "id": 3523,
+          "id": 5562,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
           "importedBy": [],
           "recordTags": [
-            "tehtris"
+            "tehtris-edr"
           ]
         },
         {
@@ -3779,7 +3887,7 @@
               "name": "Launch Disk Scan",
               "description": "Launch a disk scan.",
               "arguments": {
-                "name": "Tehtris",
+                "name": "TEHTRIS EDR",
                 "config": "094cc00d-352b-4cc9-8488-4ee63e0b70b0",
                 "params": {
                   "edrUuid": "{{vars.input.params.edrUuid}}",
@@ -3789,7 +3897,7 @@
                   "scanWhitelistPaths": ""
                 },
                 "version": "1.0.0",
-                "connector": "tehtris",
+                "connector": "tehtris-edr",
                 "operation": "launch_disk_scan",
                 "operationTitle": "Launch Disk Scan",
                 "pickFromTenant": false,
@@ -3841,13 +3949,13 @@
           "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
           "isEditable": true,
           "uuid": "d74d26b0-c60e-4ea5-b6f4-196ea830159f",
-          "id": 3524,
+          "id": 5563,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
           "importedBy": [],
           "recordTags": [
-            "tehtris"
+            "tehtris-edr"
           ]
         },
         {
@@ -3876,7 +3984,7 @@
               "name": "Get History of Processes",
               "description": "Get history of processes for a given endpoint during a time interval.",
               "arguments": {
-                "name": "Tehtris",
+                "name": "TEHTRIS EDR",
                 "config": "094cc00d-352b-4cc9-8488-4ee63e0b70b0",
                 "params": {
                   "md5": "",
@@ -3898,7 +4006,7 @@
                   "userIdentifier": ""
                 },
                 "version": "1.0.0",
-                "connector": "tehtris",
+                "connector": "tehtris-edr",
                 "operation": "get_history_of_processes",
                 "operationTitle": "Get History of Processes",
                 "pickFromTenant": false,
@@ -3950,13 +4058,13 @@
           "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
           "isEditable": true,
           "uuid": "d9496c1c-6b25-47f0-a635-253fddd7cf21",
-          "id": 3525,
+          "id": 5564,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
           "importedBy": [],
           "recordTags": [
-            "tehtris"
+            "tehtris-edr"
           ]
         },
         {
@@ -3985,7 +4093,7 @@
               "name": "Get Persistence Entries",
               "description": "Get persistence entries on a given endpoint. (Linux only as of now)",
               "arguments": {
-                "name": "Tehtris",
+                "name": "TEHTRIS EDR",
                 "config": "094cc00d-352b-4cc9-8488-4ee63e0b70b0",
                 "params": {
                   "t": "",
@@ -4003,7 +4111,7 @@
                   "persistence_type": ""
                 },
                 "version": "1.0.0",
-                "connector": "tehtris",
+                "connector": "tehtris-edr",
                 "operation": "get_persistence_entries",
                 "operationTitle": "Get Persistence Entries",
                 "pickFromTenant": false,
@@ -4055,13 +4163,13 @@
           "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
           "isEditable": true,
           "uuid": "ddafd4e5-1556-4a6c-93c5-34208e5d438b",
-          "id": 3526,
+          "id": 5565,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
           "importedBy": [],
           "recordTags": [
-            "tehtris"
+            "tehtris-edr"
           ]
         },
         {
@@ -4087,11 +4195,11 @@
               "name": "Get Tags",
               "description": "Get tags from the Tehtris API.",
               "arguments": {
-                "name": "Tehtris",
+                "name": "TEHTRIS EDR",
                 "config": "094cc00d-352b-4cc9-8488-4ee63e0b70b0",
                 "params": [],
                 "version": "1.0.0",
-                "connector": "tehtris",
+                "connector": "tehtris-edr",
                 "operation": "get_tags",
                 "operationTitle": "Get tags",
                 "pickFromTenant": false,
@@ -4143,13 +4251,13 @@
           "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
           "isEditable": true,
           "uuid": "e316df00-1fa7-4fc0-8ffb-da4897c890c4",
-          "id": 3527,
+          "id": 5566,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
           "importedBy": [],
           "recordTags": [
-            "tehtris"
+            "tehtris-edr"
           ]
         },
         {
@@ -4199,14 +4307,14 @@
               "name": "Update Endpoints Tags",
               "description": "Update tags for specified endpoints.",
               "arguments": {
-                "name": "Tehtris",
+                "name": "TEHTRIS EDR",
                 "config": "094cc00d-352b-4cc9-8488-4ee63e0b70b0",
                 "params": {
                   "tags": "{{vars.input.params.tags}}",
                   "edrUuidList": "{{vars.input.params.edrUuidList}}"
                 },
                 "version": "1.0.0",
-                "connector": "tehtris",
+                "connector": "tehtris-edr",
                 "operation": "update_endpoints_tags",
                 "operationTitle": "Update Endpoints Tags",
                 "pickFromTenant": false,
@@ -4237,19 +4345,19 @@
           "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
           "isEditable": true,
           "uuid": "e45c04ac-ca56-455f-9019-fe5b6312eb35",
-          "id": 3528,
+          "id": 5567,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
           "importedBy": [],
           "recordTags": [
-            "tehtris"
+            "tehtris-edr"
           ]
         },
         {
           "@type": "Workflow",
           "triggerLimit": null,
-          "name": "Get Filter by Id",
+          "name": "Get Filter by ID",
           "aliasName": null,
           "tag": null,
           "description": "Return filter matching given identifier.",
@@ -4261,7 +4369,7 @@
             "filterId"
           ],
           "synchronous": false,
-          "lastModifyDate": 1759568125,
+          "lastModifyDate": 1761896589,
           "collection": "/api/3/workflow_collections/03ef8c12-f7da-48e6-9710-78093ddfad5e",
           "versions": [],
           "triggerStep": "/api/3/workflow_steps/d2b604e2-cf20-467c-aeda-1a89a0143ea5",
@@ -4271,13 +4379,13 @@
               "name": "Get Filter by Id",
               "description": "Retrieve a filter by its ID.",
               "arguments": {
-                "name": "Tehtris",
+                "name": "TEHTRIS EDR",
                 "config": "094cc00d-352b-4cc9-8488-4ee63e0b70b0",
                 "params": {
                   "filterId": "{{vars.input.params.filterId}}"
                 },
                 "version": "1.0.0",
-                "connector": "tehtris",
+                "connector": "tehtris-edr",
                 "operation": "get_filter_by_id",
                 "operationTitle": "Get Filter by Id",
                 "pickFromTenant": false,
@@ -4329,13 +4437,13 @@
           "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
           "isEditable": true,
           "uuid": "e4bc8ed2-086d-4c44-8e23-d071f0fab34d",
-          "id": 3529,
+          "id": 5568,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
           "importedBy": [],
           "recordTags": [
-            "tehtris"
+            "tehtris-edr"
           ]
         },
         {
@@ -4343,7 +4451,7 @@
           "triggerLimit": null,
           "name": "> Tehtris > Fetch",
           "aliasName": null,
-          "tag": "#tehtris #fetch #dataingestion",
+          "tag": "#tehtris-edr #fetch #dataingestion",
           "description": "Playbook responsible to retreive Alerts from Tehtris application",
           "isActive": false,
           "debug": false,
@@ -4423,7 +4531,7 @@
               "name": "Fetch Events by FilterId",
               "description": null,
               "arguments": {
-                "name": "Tehtris",
+                "name": "TEHTRIS EDR",
                 "config": "17c325d3-27aa-4a61-8ef5-c215d2ab199d",
                 "params": {
                   "limit": 1000,
@@ -4434,7 +4542,7 @@
                   "fromDate": "{{vars.fromDate}}"
                 },
                 "version": "1.0.0",
-                "connector": "tehtris",
+                "connector": "tehtris-edr",
                 "operation": "fetch_events",
                 "ignore_errors": false,
                 "operationTitle": "Fetch Events",
@@ -4453,7 +4561,7 @@
               "name": "Fetch Sample Events by FilterId",
               "description": null,
               "arguments": {
-                "name": "Tehtris",
+                "name": "TEHTRIS EDR",
                 "config": "17c325d3-27aa-4a61-8ef5-c215d2ab199d",
                 "params": {
                   "limit": "{{vars.event_count}}",
@@ -4464,7 +4572,7 @@
                   "fromDate": "{{arrow.utcnow().int_timestamp-vars.minutes*60}}"
                 },
                 "version": "1.0.0",
-                "connector": "tehtris",
+                "connector": "tehtris-edr",
                 "operation": "fetch_events",
                 "ignore_errors": false,
                 "operationTitle": "Fetch Events",
@@ -4688,7 +4796,7 @@
           "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
           "isEditable": true,
           "uuid": "e5522568-440b-4e68-a78f-06f47db59422",
-          "id": 3530,
+          "id": 5569,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
@@ -4696,7 +4804,7 @@
           "recordTags": [
             "dataingestion",
             "fetch",
-            "tehtris"
+            "tehtris-edr"
           ]
         },
         {
@@ -4722,14 +4830,14 @@
               "name": "Create New Global Policies",
               "description": "Create new global policies in the Tehtris API.",
               "arguments": {
-                "name": "Tehtris",
+                "name": "TEHTRIS EDR",
                 "config": "094cc00d-352b-4cc9-8488-4ee63e0b70b0",
                 "params": {
                   "position": "POST",
                   "policyData": "{\r\n  \"rules\": [\r\n    {\r\n      \"name\": \"string\",\r\n      \"description\": \"\",\r\n      \"order\": \"WHITELIST\",\r\n      \"offlineOrder\": \"WHITELIST\",\r\n      \"alert\": \"DEFAULT\",\r\n      \"notify\": \"DEFAULT\",\r\n      \"conditions\": [\r\n        {\r\n          \"name\": \"string\",\r\n          \"match\": \"ANY\",\r\n          \"type\": \"Sha256\",\r\n          \"content\": [\r\n            \"string\"\r\n          ]\r\n        },\r\n        {\r\n          \"name\": \"string\",\r\n          \"match\": \"ANY\",\r\n          \"type\": \"Sha1\",\r\n          \"content\": [\r\n            \"string\"\r\n          ]\r\n        },\r\n        {\r\n          \"name\": \"string\",\r\n          \"match\": \"ANY\",\r\n          \"type\": \"Md5\",\r\n          \"content\": [\r\n            \"string\"\r\n          ]\r\n        },\r\n        {\r\n          \"name\": \"string\",\r\n          \"match\": \"ANY\",\r\n          \"content\": [\r\n            \"string\"\r\n          ],\r\n          \"options\": {\r\n            \"caseSensitive\": true,\r\n            \"purify\": true\r\n          },\r\n          \"type\": \"Cmdline\"\r\n        },\r\n        {\r\n          \"name\": \"string\",\r\n          \"match\": \"ANY\",\r\n          \"content\": [\r\n            \"string\"\r\n          ],\r\n          \"options\": {\r\n            \"caseSensitive\": true\r\n          },\r\n          \"type\": \"Path\"\r\n        },\r\n        {\r\n          \"name\": \"string\",\r\n          \"match\": \"ANY\",\r\n          \"content\": [\r\n            \"string\"\r\n          ],\r\n          \"options\": {\r\n            \"caseSensitive\": true\r\n          },\r\n          \"type\": \"Hostname\"\r\n        },\r\n        {\r\n          \"name\": \"string\",\r\n          \"match\": \"ANY\",\r\n          \"content\": [\r\n            \"string\"\r\n          ],\r\n          \"options\": {\r\n            \"caseSensitive\": true\r\n          },\r\n          \"type\": \"Domain\"\r\n        },\r\n        {\r\n          \"name\": \"string\",\r\n          \"match\": \"ANY\",\r\n          \"content\": [\r\n            \"string\"\r\n          ],\r\n          \"options\": {\r\n            \"caseSensitive\": true\r\n          },\r\n          \"type\": \"MachineTag\"\r\n        },\r\n        {\r\n          \"name\": \"string\",\r\n          \"match\": \"ANY\",\r\n          \"type\": \"SignatureV2\",\r\n          \"content\": [\r\n            {\r\n              \"publisherName\": \"string\",\r\n              \"status\": [\r\n                \"valid\"\r\n              ]\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"name\": \"string\",\r\n          \"match\": \"ANY\",\r\n          \"content\": [\r\n            \"string\"\r\n          ],\r\n          \"options\": {\r\n            \"caseSensitive\": true\r\n          },\r\n          \"type\": \"OriginalFileName\"\r\n        },\r\n        {\r\n          \"name\": \"string\",\r\n          \"match\": \"ANY\",\r\n          \"content\": [\r\n            \"string\"\r\n          ],\r\n          \"options\": {\r\n            \"caseSensitive\": true\r\n          },\r\n          \"type\": \"ProductName\"\r\n        },\r\n        {\r\n          \"name\": \"string\",\r\n          \"match\": \"ANY\",\r\n          \"content\": [\r\n            {\r\n              \"operator\": \"<=\",\r\n              \"version\": \"string\"\r\n            }\r\n          ],\r\n          \"type\": \"FileVersion\"\r\n        },\r\n        {\r\n          \"name\": \"string\",\r\n          \"match\": \"ANY\",\r\n          \"type\": \"Module\",\r\n          \"content\": [\r\n            \"autostart\"\r\n          ]\r\n        },\r\n        {\r\n          \"name\": \"string\",\r\n          \"match\": \"ANY\",\r\n          \"content\": [\r\n            \"string\"\r\n          ],\r\n          \"options\": {\r\n            \"caseSensitive\": true\r\n          },\r\n          \"type\": \"Username\"\r\n        },\r\n        {\r\n          \"name\": \"string\",\r\n          \"match\": \"ANY\",\r\n          \"content\": [\r\n            \"string\"\r\n          ],\r\n          \"options\": {\r\n            \"caseSensitive\": true\r\n          },\r\n          \"type\": \"Uid\"\r\n        }\r\n      ],\r\n      \"appliances\": [\r\n        254\r\n      ],\r\n      \"tags\": []\r\n    }\r\n  ]\r\n}"
                 },
                 "version": "1.0.0",
-                "connector": "tehtris",
+                "connector": "tehtris-edr",
                 "operation": "create_new_global_policies",
                 "operationTitle": "Create new global policies",
                 "pickFromTenant": false,
@@ -4781,13 +4889,13 @@
           "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
           "isEditable": true,
           "uuid": "eb20e17f-b3ea-4115-a44f-2eb87bfd0210",
-          "id": 3531,
+          "id": 5570,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
           "importedBy": [],
           "recordTags": [
-            "tehtris"
+            "tehtris-edr"
           ]
         },
         {
@@ -4817,7 +4925,7 @@
               "name": "Quarantine File",
               "description": "Quarantine a file.",
               "arguments": {
-                "name": "Tehtris",
+                "name": "TEHTRIS EDR",
                 "config": "094cc00d-352b-4cc9-8488-4ee63e0b70b0",
                 "params": {
                   "path": "{{vars.input.params.path}}",
@@ -4826,7 +4934,7 @@
                   "notification": ""
                 },
                 "version": "1.0.0",
-                "connector": "tehtris",
+                "connector": "tehtris-edr",
                 "operation": "quarantine_file",
                 "operationTitle": "Quarantine a File",
                 "pickFromTenant": false,
@@ -4878,13 +4986,13 @@
           "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
           "isEditable": true,
           "uuid": "f0315a9b-aae0-499b-b9f5-b2dd783588fa",
-          "id": 3532,
+          "id": 5571,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
           "importedBy": [],
           "recordTags": [
-            "tehtris"
+            "tehtris-edr"
           ]
         },
         {
@@ -4894,7 +5002,7 @@
           "aliasName": null,
           "tag": null,
           "description": "Get the isolation status from the Tehtris API.",
-          "isActive": true,
+          "isActive": false,
           "debug": false,
           "singleRecordExecution": false,
           "remoteExecutableFlag": false,
@@ -4913,14 +5021,14 @@
               "name": "Get Isolation Status",
               "description": "Get the isolation status from the Tehtris API.",
               "arguments": {
-                "name": "Tehtris",
+                "name": "TEHTRIS EDR",
                 "config": "094cc00d-352b-4cc9-8488-4ee63e0b70b0",
                 "params": {
                   "edrUuid": "{{vars.input.params.edrUuid}}",
                   "applianceId": "{{vars.input.params.applianceId}}"
                 },
                 "version": "1.0.0",
-                "connector": "tehtris",
+                "connector": "tehtris-edr",
                 "operation": "get_isolation_status",
                 "operationTitle": "Get isolation status",
                 "pickFromTenant": false,
@@ -4972,13 +5080,13 @@
           "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
           "isEditable": true,
           "uuid": "f3f17c83-c259-493f-8d2c-7ddb85af9c26",
-          "id": 3533,
+          "id": 5572,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
           "importedBy": [],
           "recordTags": [
-            "tehtris"
+            "tehtris-edr"
           ]
         },
         {
@@ -5007,14 +5115,14 @@
               "name": "Get Last Offline Forensic Report",
               "description": "Get Last TEHTRIS Offline Forensic report on a given EDR.",
               "arguments": {
-                "name": "Tehtris",
+                "name": "TEHTRIS EDR",
                 "config": "094cc00d-352b-4cc9-8488-4ee63e0b70b0",
                 "params": {
                   "edrUuid": "{{vars.input.params.edrUuid}}",
                   "applianceId": "{{vars.input.params.applianceId}}"
                 },
                 "version": "1.0.0",
-                "connector": "tehtris",
+                "connector": "tehtris-edr",
                 "operation": "get_last_offline_forensic_report",
                 "operationTitle": "Get Last Offline Forensic Report",
                 "pickFromTenant": false,
@@ -5066,19 +5174,19 @@
           "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
           "isEditable": true,
           "uuid": "f8eda6c0-9a0e-49c4-8dd8-bc62018af0a6",
-          "id": 3534,
+          "id": 5573,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
           "importedBy": [],
           "recordTags": [
-            "tehtris"
+            "tehtris-edr"
           ]
         },
         {
           "@type": "Workflow",
           "triggerLimit": null,
-          "name": "Search binaries",
+          "name": "Search Binaries",
           "aliasName": null,
           "tag": null,
           "description": "Search binaries using filters. Search among all binaries found by TEHTRIS EDR on the chosen appliance using filters on: hostname, hash (sha256, sh1, md5), path, signature.",
@@ -5090,7 +5198,7 @@
             "applianceId"
           ],
           "synchronous": false,
-          "lastModifyDate": 1759572410,
+          "lastModifyDate": 1761896558,
           "collection": "/api/3/workflow_collections/03ef8c12-f7da-48e6-9710-78093ddfad5e",
           "versions": [],
           "triggerStep": "/api/3/workflow_steps/3f53826c-f862-48ca-b67f-a95d2f52adfb",
@@ -5100,7 +5208,7 @@
               "name": "Search Binaries",
               "description": "Search binaries using filters. Search among all binaries found by TEHTRIS EDR on the chosen appliance using filters on: hostname, hash (sha256, sh1, md5), path, signature. If more than 10 000 results are found, call API another time by incrementing offset by 10 000 until less than 10 000 results are found.",
               "arguments": {
-                "name": "Tehtris",
+                "name": "TEHTRIS EDR",
                 "config": "094cc00d-352b-4cc9-8488-4ee63e0b70b0",
                 "params": {
                   "md5": "",
@@ -5118,7 +5226,7 @@
                   "signatureCnRegex": ""
                 },
                 "version": "1.0.0",
-                "connector": "tehtris",
+                "connector": "tehtris-edr",
                 "operation": "search_binaries",
                 "operationTitle": "Search Binaries",
                 "pickFromTenant": false,
@@ -5170,13 +5278,13 @@
           "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
           "isEditable": true,
           "uuid": "fa10cc5b-96c6-46c5-91e9-791612a4e5da",
-          "id": 3535,
+          "id": 5574,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
           "importedBy": [],
           "recordTags": [
-            "tehtris"
+            "tehtris-edr"
           ]
         },
         {
@@ -5205,7 +5313,7 @@
               "name": "Get USB History",
               "description": "Get USB history for a given endpoint.",
               "arguments": {
-                "name": "Tehtris",
+                "name": "TEHTRIS EDR",
                 "config": "094cc00d-352b-4cc9-8488-4ee63e0b70b0",
                 "params": {
                   "edrUuid": "{{vars.input.params.edrUuid}}",
@@ -5213,7 +5321,7 @@
                   "applianceId": "{{vars.input.params.applianceId}}"
                 },
                 "version": "1.0.0",
-                "connector": "tehtris",
+                "connector": "tehtris-edr",
                 "operation": "get_usb_history",
                 "operationTitle": "Get USB History",
                 "pickFromTenant": false,
@@ -5265,13 +5373,13 @@
           "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
           "isEditable": true,
           "uuid": "fb6a6fc8-6999-4dab-bfe2-eb7c3991b34a",
-          "id": 3536,
+          "id": 5575,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
           "importedBy": [],
           "recordTags": [
-            "tehtris"
+            "tehtris-edr"
           ]
         },
         {
@@ -5301,7 +5409,7 @@
               "name": "Create Severity Based Filter",
               "description": "Create a filter based on the severity level",
               "arguments": {
-                "name": "Tehtris",
+                "name": "TEHTRIS EDR",
                 "config": "094cc00d-352b-4cc9-8488-4ee63e0b70b0",
                 "params": {
                   "name": "{{vars.input.params.name}}",
@@ -5311,7 +5419,7 @@
                   "description": "Filter autocreated by FortiSOAR for Playbook ingestion, based on severity level"
                 },
                 "version": "1.0.0",
-                "connector": "tehtris",
+                "connector": "tehtris-edr",
                 "operation": "create_filter",
                 "operationTitle": "Create Filter",
                 "pickFromTenant": false,
@@ -5363,20 +5471,21 @@
           "playbookOrigin": "/api/3/picklists/15c1e8c9-22bf-4e66-8fbb-0a502d4a4a3f",
           "isEditable": true,
           "uuid": "fc5dc984-eca5-4754-88d3-8d1411c9a1c9",
-          "id": 3537,
+          "id": 5576,
           "owners": [],
           "isPrivate": false,
           "deletedAt": null,
           "importedBy": [],
           "recordTags": [
-            "tehtris"
+            "tehtris-edr"
           ]
         }
       ]
     }
   ],
   "exported_tags": [
-    "tehtris",
+    "TEHTRIS",
+    "tehtris-edr",
     "dataingestion",
     "ingest",
     "create",
